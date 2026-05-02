@@ -138,7 +138,7 @@ const Index = () => {
       {/* MANIFESTO — layered: paper bg + drifting notebook + telescope corner + dot field + crinkle */}
       <section
         id="after-hero"
-        className="relative py-16 md:py-24 scroll-mt-16 overflow-hidden dots crinkle"
+        className="relative py-16 md:py-24 scroll-mt-16 overflow-hidden dots crinkle film-grain leak"
       >
         <img
           src={texturePaper}
@@ -198,7 +198,7 @@ const Index = () => {
       </div>
 
       {/* SKILLS TOOLKIT — layered telescope + cosmos veil + scanlines */}
-      <section className="relative py-14 md:py-20 overflow-hidden scanlines">
+      <section className="relative py-14 md:py-20 overflow-hidden scanlines film-grain dust">
         <img
           src={atmosTelescope}
           alt=""
@@ -246,7 +246,7 @@ const Index = () => {
       </section>
 
       {/* FEATURED HIGHLIGHTS BENTO — cosmos bg + dot field + drifting notebook */}
-      <section className="relative py-14 md:py-20 overflow-hidden dots-fine">
+      <section className="relative py-14 md:py-20 overflow-hidden dots-fine film-grain leak">
         <img
           src={textureCosmos}
           alt=""
@@ -312,7 +312,7 @@ const Index = () => {
       </section>
 
       {/* RANDOM WINS / CURIOSITIES TEASER — paper texture wash + crinkle */}
-      <section className="relative py-12 md:py-16 overflow-hidden crinkle">
+      <section className="relative py-12 md:py-16 overflow-hidden crinkle film-grain dust linen">
         <img
           src={texturePaper}
           alt=""
@@ -436,7 +436,7 @@ const Index = () => {
       </section>
 
       {/* CORE TRAITS BAND — layered cosmos + telescope + dots */}
-      <section className="force-light bg-navy-deep text-paper py-20 md:py-28 relative overflow-hidden grain dots-fine">
+      <section className="force-light bg-navy-deep text-paper py-20 md:py-28 relative overflow-hidden grain dots-fine film-grain leak halftone">
         <img
           src={textureCosmos}
           alt=""
