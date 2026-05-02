@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight, Eye, EyeOff } from "lucide-react";
 
 export type Slide = {
@@ -21,6 +21,32 @@ export function HeroSlideshow({ slides, intervalMs = 6000 }: Props) {
   const [i, setI] = useState(0);
   const [showText, setShowText] = useState(true);
   const total = slides.length;
+  const sectionRef = useRef<HTMLElement | null>(null);
+
+  // While the slideshow is on screen, mark the document so the global header
+  // can flip to light-on-dark styling regardless of the active theme.
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+    const root = document.documentElement;
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        // Treat "any visible part of the slideshow" as in-view.
+        if (entry.isIntersecting && entry.intersectionRatio > 0.05) {
+          root.classList.add("hero-in-view");
+        } else {
+          root.classList.remove("hero-in-view");
+        }
+      },
+      { threshold: [0, 0.05, 0.5, 1] },
+    );
+    obs.observe(el);
+    return () => {
+      obs.disconnect();
+      root.classList.remove("hero-in-view");
+    };
+  }, []);
+
 
   const go = (n: number) => setI(((n % total) + total) % total);
   const next = () => go(i + 1);
@@ -58,6 +84,7 @@ export function HeroSlideshow({ slides, intervalMs = 6000 }: Props) {
 
   return (
     <section
+      ref={sectionRef}
       className="force-light relative w-full h-screen -mt-16 overflow-hidden bg-navy-deep"
       aria-roledescription="carousel"
       aria-label="Portfolio hero slideshow"
