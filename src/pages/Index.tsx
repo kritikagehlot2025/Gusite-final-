@@ -342,7 +342,7 @@ const Index = () => {
       </section>
 
       {/* GRAND GROUPS — index, layered music plate */}
-      <section className="relative py-16 md:py-24 overflow-hidden">
+      <section className="relative py-16 md:py-24 overflow-hidden tx-linen tx-halftone tx-smoke">
         <img
           src={atmosMusic}
           alt=""
