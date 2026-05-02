@@ -133,71 +133,103 @@ const Index = () => {
       <HeroSlideshow slides={HERO_SLIDES} />
 
       {/* MANIFESTO */}
-      <section id="after-hero" className="container py-24 md:py-32 scroll-mt-16">
-
-        <div className="grid md:grid-cols-12 gap-10">
-          <div className="md:col-span-3">
-            <p className="label-gold">§ 00 · Foreword</p>
-            <p className="eyebrow mt-3">Read aloud</p>
-          </div>
-          <div className="md:col-span-9 max-w-3xl">
-            <p className="font-display text-3xl md:text-5xl text-ink leading-tight text-balance drop-cap">
-              This is not a résumé. It is a working dossier — equal parts laboratory
-              notebook, gallery catalogue, and founder's manifesto. Every page has
-              layers, sublayers, evidence. Every claim is meant to be examined.
-            </p>
-            <div className="rule-double my-12 max-w-xs" />
-            <p className="text-ink-soft text-lg leading-relaxed">
-              I was born in India, raised between two continents, and I now write,
-              perform, code, and study physics from Montréal. I have spent the
-              last ten years collecting questions; this site is where I begin to
-              answer them — in public, with proof.
-            </p>
+      <section id="after-hero" className="relative py-24 md:py-32 scroll-mt-16 overflow-hidden">
+        <img
+          src={texturePaper}
+          alt=""
+          aria-hidden
+          className="absolute inset-0 w-full h-full object-cover opacity-40 mix-blend-multiply pointer-events-none"
+        />
+        <img
+          src={atmosNotebook}
+          alt=""
+          aria-hidden
+          className="absolute -right-20 top-10 w-[42%] max-w-2xl h-[80%] object-cover opacity-15 grayscale pointer-events-none hidden md:block"
+        />
+        <div className="container relative">
+          <div className="grid md:grid-cols-12 gap-10">
+            <div className="md:col-span-3">
+              <p className="label-gold">§ 00 · Foreword</p>
+              <p className="eyebrow mt-3">Read aloud</p>
+            </div>
+            <div className="md:col-span-9 max-w-3xl">
+              <p className="font-display text-3xl md:text-5xl text-ink leading-tight text-balance drop-cap">
+                This is not a résumé. It is a working dossier — equal parts laboratory
+                notebook, gallery catalogue, and founder's manifesto. Every page has
+                layers, sublayers, evidence. Every claim is meant to be examined.
+              </p>
+              <div className="rule-double my-12 max-w-xs" />
+              <p className="text-ink-soft text-lg leading-relaxed">
+                I was born in India, raised between two continents, and I now write,
+                perform, code, and study physics from Montréal. I have spent the
+                last ten years collecting questions; this site is where I begin to
+                answer them — in public, with proof.
+              </p>
+            </div>
           </div>
         </div>
       </section>
+
 
       <PullQuote attr="The operating principle">
         Curiosity is not my hobby. It is my operating system.
       </PullQuote>
 
       {/* SKILLS TOOLKIT */}
-      <section className="container py-20 md:py-28">
-        <div className="flex items-end justify-between mb-10 gap-6 flex-wrap">
-          <div>
-            <p className="label-gold mb-3">§ 01 · Toolkit</p>
-            <h2 className="display-xl text-4xl md:text-6xl text-ink">Skills I bring to the table.</h2>
+      <section className="relative py-20 md:py-28 overflow-hidden">
+        <img
+          src={atmosTelescope}
+          alt=""
+          aria-hidden
+          className="absolute -left-24 top-20 w-[36%] max-w-xl h-[70%] object-cover opacity-20 grayscale pointer-events-none hidden md:block"
+        />
+        <div className="container relative">
+          <div className="flex items-end justify-between mb-10 gap-6 flex-wrap">
+            <div>
+              <p className="label-gold mb-3">§ 01 · Toolkit</p>
+              <h2 className="display-xl text-4xl md:text-6xl text-ink">Skills I bring to the table.</h2>
+            </div>
+            <p className="max-w-md text-ink-soft text-sm leading-relaxed">
+              A working list, not a brag sheet. Each tool earns its place by what I've shipped, not what I've studied.
+            </p>
           </div>
-          <p className="max-w-md text-ink-soft text-sm leading-relaxed">
-            A working list, not a brag sheet. Each tool earns its place by what I've shipped, not what I've studied.
-          </p>
+          <ul className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-px bg-border border border-border">
+            {SKILLS.map(({ icon: I, label, level }) => (
+              <li key={label} className="bg-paper p-5 group hover:bg-navy-deep hover:text-paper transition-colors duration-500">
+                <I className="w-5 h-5 text-gold mb-4" />
+                <p className="font-display text-xl leading-tight">{label}</p>
+                <p className="font-mono text-[0.6rem] uppercase tracking-[0.2em] text-ink-soft group-hover:text-paper/60 mt-2">
+                  {level}
+                </p>
+              </li>
+            ))}
+          </ul>
         </div>
-        <ul className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-px bg-border border border-border">
-          {SKILLS.map(({ icon: I, label, level }) => (
-            <li key={label} className="bg-paper p-5 group hover:bg-navy-deep hover:text-paper transition-colors duration-500">
-              <I className="w-5 h-5 text-gold mb-4" />
-              <p className="font-display text-xl leading-tight">{label}</p>
-              <p className="font-mono text-[0.6rem] uppercase tracking-[0.2em] text-ink-soft group-hover:text-paper/60 mt-2">
-                {level}
-              </p>
-            </li>
-          ))}
-        </ul>
       </section>
 
+
       {/* FEATURED HIGHLIGHTS BENTO */}
-      <section className="container py-20 md:py-28">
-        <div className="flex items-end justify-between mb-10 gap-6 flex-wrap">
-          <div>
-            <p className="label-gold mb-3">§ 02 · Showcase</p>
-            <h2 className="display-xl text-4xl md:text-6xl text-ink">Featured work.</h2>
+      <section className="relative py-20 md:py-28 overflow-hidden">
+        <img
+          src={textureCosmos}
+          alt=""
+          aria-hidden
+          className="absolute inset-0 w-full h-full object-cover opacity-10 pointer-events-none"
+        />
+        <div className="container relative">
+          <div className="flex items-end justify-between mb-10 gap-6 flex-wrap">
+            <div>
+              <p className="label-gold mb-3">§ 02 · Showcase</p>
+              <h2 className="display-xl text-4xl md:text-6xl text-ink">Featured work.</h2>
+            </div>
+            <p className="max-w-md text-ink-soft text-sm leading-relaxed">
+              Hover for the elevator pitch. Click for the full story.
+            </p>
           </div>
-          <p className="max-w-md text-ink-soft text-sm leading-relaxed">
-            Hover for the elevator pitch. Click for the full story.
-          </p>
+          <Bento items={FEATURED} />
         </div>
-        <Bento items={FEATURED} />
       </section>
+
 
       {/* TRIPTYCH */}
       <section className="container py-12">
@@ -237,21 +269,29 @@ const Index = () => {
       </section>
 
       {/* GRAND GROUPS — ALWAYS EXPANDED INDEX */}
-      <section className="container py-24 md:py-32">
-        <div className="flex items-end justify-between mb-12 gap-6 flex-wrap">
-          <div>
-            <p className="label-gold mb-3">§ 04 · The Archive</p>
-            <h2 className="display-xl text-4xl md:text-6xl text-ink">Every cluster, in four groups.</h2>
+      <section className="relative py-24 md:py-32 overflow-hidden">
+        <img
+          src={atmosMusic}
+          alt=""
+          aria-hidden
+          className="absolute right-0 top-0 w-[40%] max-w-2xl h-[55%] object-cover opacity-15 grayscale pointer-events-none hidden md:block"
+        />
+        <div className="container relative">
+          <div className="flex items-end justify-between mb-12 gap-6 flex-wrap">
+            <div>
+              <p className="label-gold mb-3">§ 04 · The Archive</p>
+              <h2 className="display-xl text-4xl md:text-6xl text-ink">Every cluster, in four groups.</h2>
+            </div>
+            <div className="flex items-center gap-4">
+              <button
+                onClick={toggleAll}
+                className="font-mono text-[0.65rem] uppercase tracking-[0.3em] text-ink-soft hover:text-gold transition-colors border border-border hover:border-gold px-3 py-2"
+              >
+                {allOpen ? "Collapse all" : "Expand all"}
+              </button>
+            </div>
           </div>
-          <div className="flex items-center gap-4">
-            <button
-              onClick={toggleAll}
-              className="font-mono text-[0.65rem] uppercase tracking-[0.3em] text-ink-soft hover:text-gold transition-colors border border-border hover:border-gold px-3 py-2"
-            >
-              {allOpen ? "Collapse all" : "Expand all"}
-            </button>
-          </div>
-        </div>
+
 
         <div className="space-y-16">
           {GRAND_GROUPS.map((g) => {
@@ -311,7 +351,9 @@ const Index = () => {
             );
           })}
         </div>
+        </div>
       </section>
+
 
       {/* CORE TRAITS BAND */}
       <section className="bg-navy-deep text-paper py-24 md:py-32 relative overflow-hidden grain">
