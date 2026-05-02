@@ -69,12 +69,11 @@ export function BentoCard({ item }: { item: BentoItem }) {
         onClick={() => setOpen(true)}
         className={[
           SIZE_CLASS[size],
-          "group fancy-tile relative overflow-hidden border border-border text-left",
+          "group fancy-tile tile-soft relative overflow-hidden border border-border text-left",
           "transition-all duration-[700ms] ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform",
           "hover:border-gold",
           "hover:-translate-y-1.5 hover:scale-[1.02] hover:rotate-[0.25deg] hover:z-10",
           "focus:outline-none focus-visible:border-gold focus-visible:ring-2 focus-visible:ring-gold/40",
-          hasImage ? "film-grain crumpled-paper stipple" : "crumpled-paper film-grain fibers stipple",
           accent === "navy" ? ACCENT_BG.navy : ACCENT_BG[accent],
         ].join(" ")}
         aria-label={`${item.title} — open detail`}
