@@ -48,6 +48,12 @@ export const SiteNav = () => {
     }
   }, [currentGroup]);
 
+  // When the hero slideshow is in view, override header colors to light
+  // (the slideshow has a dark overlay regardless of theme).
+  const heroLight = "[html.hero-in-view_&]:text-paper";
+  const heroLightSoft = "[html.hero-in-view_&]:text-paper/80";
+  const heroLightBorder = "[html.hero-in-view_&]:border-paper/30";
+
   return (
     <>
       <header
@@ -58,22 +64,22 @@ export const SiteNav = () => {
         <div className="container flex items-center justify-between h-16">
           <Link to="/" className="flex items-center gap-3 group">
             <span className="font-mono text-[0.65rem] uppercase tracking-[0.3em] text-gold">GG</span>
-            <span className="hidden sm:inline font-display text-lg text-ink">
+            <span className={`hidden sm:inline font-display text-lg text-ink ${scrolled ? "" : heroLight}`}>
               Geetika Gehlot
             </span>
           </Link>
 
-          <div className="flex items-center gap-3">
-            <ThemeToggle />
+          <div className={`flex items-center gap-3 ${scrolled ? "" : heroLight}`}>
+            <ThemeToggle className={scrolled ? "" : `${heroLight} ${heroLightBorder} hover:text-gold`} />
             <button
               onClick={() => setOpen(true)}
               className="flex items-center gap-2 group"
               aria-label="Open menu"
             >
-              <span className="hidden md:inline eyebrow text-ink-soft group-hover:text-gold transition-colors">
+              <span className={`hidden md:inline eyebrow text-ink-soft group-hover:text-gold transition-colors ${scrolled ? "" : heroLightSoft}`}>
                 Index
               </span>
-              <Menu className="w-5 h-5 text-ink group-hover:text-gold transition-colors" />
+              <Menu className={`w-5 h-5 text-ink group-hover:text-gold transition-colors ${scrolled ? "" : heroLight}`} />
             </button>
           </div>
         </div>
