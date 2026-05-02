@@ -436,7 +436,7 @@ const Index = () => {
       </section>
 
       {/* CORE TRAITS BAND — layered cosmos + telescope + dots */}
-      <section className="force-light bg-navy-deep text-paper py-20 md:py-28 relative overflow-hidden grain dots-fine">
+      <section className="force-light bg-navy-deep text-paper py-20 md:py-28 relative overflow-hidden grain dots-fine tx-holo tx-bokeh tx-glitch tx-film-grain">
         <img
           src={textureCosmos}
           alt=""
