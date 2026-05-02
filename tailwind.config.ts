@@ -12,8 +12,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ['"Cormorant Garamond"', "Georgia", "serif"],
-        sans: ["Inter", "system-ui", "sans-serif"],
+        display: ['"Libre Baskerville"', "Georgia", '"Times New Roman"', "Times", "serif"],
+        sans: ['"Source Sans 3"', "system-ui", "sans-serif"],
         mono: ['"JetBrains Mono"', "ui-monospace", "monospace"],
       },
       colors: {
