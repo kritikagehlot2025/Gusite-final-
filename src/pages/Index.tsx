@@ -229,7 +229,7 @@ const Index = () => {
                 key={label}
                 data-reveal
                 data-reveal-delay={String(idx * 40)}
-                className="bg-paper p-5 group hover:bg-navy-deep hover:text-paper-contrast transition-colors duration-500 relative overflow-hidden fibers stipple"
+                className="fancy-tile bg-paper p-5 group hover:bg-navy-deep hover:text-paper-contrast transition-all duration-500 relative overflow-hidden fibers stipple hover:-translate-y-1"
               >
                 <I className="w-5 h-5 text-gold mb-4 transition-transform duration-500 group-hover:rotate-[8deg] group-hover:scale-110" />
                 <p className="font-display text-xl leading-tight">{label}</p>
@@ -411,7 +411,7 @@ const Index = () => {
                           <li key={cs} className="bg-paper">
                             <Link
                               to={`/${c.slug}`}
-                              className="group/tile block p-5 h-full hover:bg-navy-deep hover:text-paper-contrast transition-colors duration-500 relative overflow-hidden fibers stipple"
+                              className="fancy-tile group/tile block p-5 h-full hover:bg-navy-deep hover:text-paper-contrast transition-all duration-500 relative overflow-hidden fibers stipple hover:-translate-y-1"
                             >
                               <div className="flex items-start justify-between mb-6">
                                 <span className="font-mono text-[0.65rem] tracking-widest text-gold">{c.num}</span>
