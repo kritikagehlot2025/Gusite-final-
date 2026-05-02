@@ -75,7 +75,38 @@
   .dark {
     --background: 222 65% 6%;
     --foreground: 38 35% 95%;
+
+    --paper: 222 55% 9%;
+    --paper-deep: 222 55% 7%;
+    --ink: 38 35% 95%;
+    --ink-soft: 38 25% 78%;
+
+    --card: 222 50% 11%;
+    --card-foreground: 38 35% 95%;
+
+    --popover: 222 50% 11%;
+    --popover-foreground: 38 35% 95%;
+
+    --primary: 41 55% 60%;
+    --primary-foreground: 222 65% 6%;
+
+    --secondary: 222 40% 16%;
+    --secondary-foreground: 38 35% 95%;
+
+    --muted: 222 30% 18%;
+    --muted-foreground: 38 15% 65%;
+
+    --accent: 41 55% 60%;
+    --accent-foreground: 222 65% 6%;
+
+    --border: 222 30% 22%;
+    --input: 222 30% 22%;
+    --ring: 41 55% 60%;
+
+    --gold: 41 65% 62%;
+    --gold-bright: 43 80% 70%;
   }
+
 }
 
 @layer base {
