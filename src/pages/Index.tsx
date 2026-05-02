@@ -381,15 +381,15 @@ const Index = () => {
                 <div key={g.slug} data-reveal>
                   <header className="grid md:grid-cols-12 gap-6 items-baseline mb-5 pb-3 border-b border-border">
                     <div className="md:col-span-3 flex items-center gap-3">
-                      <GI className="w-5 h-5 text-gold" />
-                      <span className="font-mono text-[0.65rem] uppercase tracking-[0.3em] text-gold">Grand Group</span>
+                      <GI className="w-4 h-4 text-gold" />
+                      <span className="font-mono text-[0.6rem] uppercase tracking-[0.3em] text-gold">Grand Group</span>
                     </div>
                     <div className="md:col-span-7">
-                      <h3 className="font-display text-3xl md:text-4xl text-ink leading-tight">{g.label}</h3>
-                      <p className="font-accent text-base text-ink-soft mt-1">{g.tagline}</p>
+                      <h3 className="font-display text-xl md:text-2xl text-ink leading-tight">{g.label}</h3>
+                      <p className="font-accent text-sm md:text-base text-ink-soft mt-1">{g.tagline}</p>
                     </div>
                     <div className="md:col-span-2 md:text-right flex md:justify-end items-center gap-3">
-                      <span className="font-mono text-[0.6rem] tracking-widest text-ink-soft">
+                      <span className="font-mono text-[0.55rem] tracking-widest text-ink-soft">
                         {g.clusterSlugs.length} clusters
                       </span>
                       <button
