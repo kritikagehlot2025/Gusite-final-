@@ -289,7 +289,7 @@ const Index = () => {
               key={x.label}
               data-reveal
               data-reveal-delay={String(idx * 120)}
-              className="relative aspect-[3/4] overflow-hidden group dots-fine"
+              className="relative aspect-[3/4] overflow-hidden group dots-fine tx-film-grain tx-light-leak"
             >
               <img
                 src={x.src}
