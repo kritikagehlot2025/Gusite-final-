@@ -163,7 +163,7 @@ export function BentoCard({ item }: { item: BentoItem }) {
 
       {/* Click-to-detail modal */}
       <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent className="max-w-3xl !bg-paper !text-ink !border-gold/60 p-0 overflow-y-auto relative crinkle film-grain dust ring-1 ring-gold/20">
+        <DialogContent className="z-[1000] max-w-3xl !bg-paper !text-ink !border-gold/60 p-0 overflow-y-auto relative crinkle film-grain dust ring-1 ring-gold/20">
           {hasImage && (
             <div className="relative aspect-[16/9] overflow-hidden halftone leak">
               <img src={item.image} alt={item.imageAlt ?? ""} className="w-full h-full object-cover" />
