@@ -106,73 +106,30 @@ export const SiteNav = () => {
               ))}
             </ol>
 
-            {/* Expand/collapse all */}
-            <div className="flex items-center justify-between mt-6 mb-2">
-              <span className="eyebrow">Clusters</span>
-              <button
-                onClick={() => setAllGroups(!allOpen)}
-                className="font-mono text-[0.6rem] uppercase tracking-[0.25em] text-ink-soft hover:text-gold transition-colors flex items-center gap-1.5"
-              >
-                {allOpen ? "Collapse all" : "Expand all"}
-                <ChevronDown className={`w-3 h-3 transition-transform ${allOpen ? "rotate-180" : ""}`} />
-              </button>
+            {/* Flat list of all clusters */}
+            <div className="mt-6 mb-2">
+              <span className="eyebrow">Pages</span>
             </div>
-
-            {/* Grand groups: contract/expandable */}
             <ul className="border-t border-border/60">
-              {GRAND_GROUPS.map((g) => {
-                const GI = g.icon;
-                const isOpen = openGroups.has(g.slug);
+              {CLUSTERS.map((c) => {
+                const CI = c.icon;
                 return (
-                  <li key={g.slug} className="border-b border-border/60">
-                    <button
-                      onClick={() => toggleGroup(g.slug)}
-                      className="w-full flex items-center gap-3 py-3 text-left group"
-                      aria-expanded={isOpen}
+                  <li key={c.slug} className="border-b border-border/60">
+                    <NavLink
+                      to={`/${c.slug}`}
+                      onClick={() => setOpen(false)}
+                      className={({ isActive }) =>
+                        `flex items-baseline gap-4 py-3 transition-colors ${
+                          isActive ? "text-gold" : "text-ink hover:text-gold"
+                        }`
+                      }
                     >
-                      <GI className="w-3.5 h-3.5 text-gold shrink-0" />
-                      <span className="font-display text-lg text-ink group-hover:text-gold transition-colors flex-1">
-                        {g.label}
+                      <CI className="w-3.5 h-3.5 text-gold shrink-0 self-center" />
+                      <span className="font-mono text-[0.65rem] tracking-widest text-muted-foreground w-8">
+                        {c.num}
                       </span>
-                      <span className="font-mono text-[0.6rem] tracking-widest text-muted-foreground">
-                        {g.clusterSlugs.length}
-                      </span>
-                      <ChevronDown
-                        className={`w-3.5 h-3.5 text-ink-soft transition-transform ${isOpen ? "rotate-180" : ""}`}
-                      />
-                    </button>
-                    <div
-                      className={`grid transition-all duration-300 ease-out ${
-                        isOpen ? "grid-rows-[1fr] opacity-100 pb-3" : "grid-rows-[0fr] opacity-0"
-                      }`}
-                    >
-                      <div className="overflow-hidden">
-                        <ul className="pl-6 space-y-0">
-                          {g.clusterSlugs.map((cs) => {
-                            const c = CLUSTERS.find((x) => x.slug === cs);
-                            if (!c) return null;
-                            return (
-                              <li key={cs}>
-                                <NavLink
-                                  to={`/${c.slug}`}
-                                  onClick={() => setOpen(false)}
-                                  className={({ isActive }) =>
-                                    `flex items-baseline gap-4 py-2 transition-colors ${
-                                      isActive ? "text-gold" : "text-ink-soft hover:text-gold"
-                                    }`
-                                  }
-                                >
-                                  <span className="font-mono text-[0.65rem] tracking-widest text-muted-foreground w-8">
-                                    {c.num}
-                                  </span>
-                                  <span className="font-display text-base">{c.label}</span>
-                                </NavLink>
-                              </li>
-                            );
-                          })}
-                        </ul>
-                      </div>
-                    </div>
+                      <span className="font-display text-lg">{c.label}</span>
+                    </NavLink>
                   </li>
                 );
               })}
@@ -224,8 +181,12 @@ export const SiteFooter = forwardRef<HTMLElement>((_, ref) => (
         <ul className="space-y-2 font-mono text-xs">
           <li><Link to="/" className="link-underline hover:text-gold">00 · Home</Link></li>
           <li><Link to="/dashboard" className="link-underline hover:text-gold">✦✦ · Dashboard</Link></li>
-          {GRAND_GROUPS.map((g) => (
-            <li key={g.slug} className="text-gold/80">{g.label}</li>
+          {CLUSTERS.map((c) => (
+            <li key={c.slug}>
+              <Link to={`/${c.slug}`} className="link-underline hover:text-gold">
+                {c.num} · {c.label}
+              </Link>
+            </li>
           ))}
         </ul>
       </div>
