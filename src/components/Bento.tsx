@@ -30,6 +30,8 @@ export type BentoItem = {
   /** Long-form detail rendered inside the modal. Defaults to blurb if absent. */
   detail?: ReactNode;
   accent?: "gold" | "navy" | "paper";
+  /** Override texture stack on the card. "whisper" = ultra-light paper crumple only. */
+  texture?: "default" | "whisper";
 };
 
 const SIZE_CLASS: Record<BentoSize, string> = {
