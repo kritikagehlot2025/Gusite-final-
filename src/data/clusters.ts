@@ -1,23 +1,23 @@
 import type { LucideIcon } from "lucide-react";
 import {
-  User, GraduationCap, Atom, Cpu, BookOpen, Music2, Film,
-  Code2, Palette, Users, Trophy, FileText, Compass, Mail, Sparkles,
-  Brain, Wand2, Heart, Archive, Shapes,
+  User, GraduationCap, Wand2, FileText, Mail, Sparkles, Brain, Compass,
 } from "lucide-react";
 
-export type Subpage = { slug: string; label: string; kind?: "overview" | "highlights" | "evidence" | "media" | "reflection" | "related" | "topic" };
+export type Subpage = {
+  slug: string;
+  label: string;
+  kind?: "overview" | "highlights" | "evidence" | "media" | "reflection" | "related" | "topic";
+};
 export type Cluster = {
   num: string;
   slug: string;
   label: string;
   tagline: string;
   icon: LucideIcon;
-  /** if a route in the OLD flat site already covers the Overview, point at it */
   legacyOverviewPath?: string;
   subpages: Subpage[];
 };
 
-/* The fractal pattern: visual-first ordering — Overview → Highlights → Media → Topics → Evidence → Reflection → Related. */
 const HEAD: Subpage[] = [
   { slug: "overview", label: "Overview", kind: "overview" },
   { slug: "highlights", label: "Highlights", kind: "highlights" },
@@ -29,104 +29,107 @@ const TAIL: Subpage[] = [
   { slug: "related", label: "Related", kind: "related" },
 ];
 
+const topic = (label: string): Subpage => ({
+  slug: label.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, ""),
+  label,
+  kind: "topic",
+});
+
 const withTopics = (...topics: string[]): Subpage[] => [
   ...HEAD,
-  ...topics.map((t) => ({
-    slug: t.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, ""),
-    label: t,
-    kind: "topic" as const,
-  })),
+  ...topics.map(topic),
   ...TAIL,
 ];
 
+/* Five merged clusters. Every topic from the old 15-cluster site is preserved
+   as a named section/rail inside one of these pages. */
 export const CLUSTERS: Cluster[] = [
   {
-    num: "01", slug: "about", label: "About / Identity", icon: User,
-    tagline: "Who I am, what drives me, where I am headed.",
-    legacyOverviewPath: "/about",
-    subpages: withTopics("Personal Profile", "Identity Timeline", "Languages & Culture"),
+    num: "01", slug: "about", label: "About", icon: User,
+    tagline: "Who I am, where I come from, and where I am headed.",
+    subpages: withTopics(
+      "Personal Profile",
+      "Identity Timeline",
+      "Languages & Culture",
+      "Education Goals",
+      "Career Vision",
+      "What I Am Building",
+    ),
   },
   {
-    num: "02", slug: "academics", label: "Academics", icon: GraduationCap,
-    tagline: "Education timeline, exams, awards, subject strengths.",
-    legacyOverviewPath: "/academic",
-    subpages: withTopics("Education Timeline", "Subject Strengths", "Awards Vault", "Growth Notes"),
+    num: "02", slug: "academics", label: "Academics, STEM & Research", icon: GraduationCap,
+    tagline: "Education timeline, exams, awards, physics, and research interests.",
+    subpages: withTopics(
+      "Education Timeline",
+      "Subject Strengths",
+      "Awards Vault",
+      "Growth Notes",
+      "Physics Journey",
+      "Research Interests",
+      "Independent Archive",
+      "Mentorship",
+      "Future STEM Goals",
+    ),
   },
   {
-    num: "03", slug: "stem", label: "STEM + Research", icon: Atom,
-    tagline: "Self-taught physics, research interests, mentorship, future goals.",
-    legacyOverviewPath: "/research",
-    subpages: withTopics("Physics Journey", "Research Interests", "Independent Archive", "Mentorship", "Future STEM Goals"),
+    num: "03", slug: "works", label: "Works", icon: Wand2,
+    tagline: "Every craft under one roof — robotics, writing, music, screen, design, art, leadership, sport.",
+    subpages: withTopics(
+      // Robotics & Engineering
+      "FRC Team 7700",
+      "Engineering Skills",
+      "Robotics Build Log",
+      // Writing
+      "Novel Series Archive",
+      "Writing Samples",
+      "Podcast",
+      "Creative Method",
+      // Music
+      "Vocal Performance",
+      "Instrumental",
+      "Performance Portfolio",
+      "Repertoire",
+      // Acting & Media
+      "Child Artist Archive",
+      "Acting Reel",
+      "Voice & Screen",
+      "Media Credits",
+      // Design / Web / Tech
+      "Zionaxelle",
+      "Multimedia Production",
+      "Tech Skills",
+      "Tech Build Log",
+      // Art
+      "Canvas Art",
+      "Embroidery",
+      "Mixed Media",
+      // Leadership & Impact
+      "YMCA Youth Co-op",
+      "Mentoring",
+      "Community & Family",
+      "Cultural Integration",
+      // Sports & Strategy
+      "Badminton",
+      "Table Tennis",
+      "Chess",
+      "Strategic Thinking",
+      // Curiosities
+      "Karate",
+      "Abacus",
+      "Side Quests",
+      "Random Wins",
+      "Childhood Trophies",
+    ),
   },
   {
-    num: "04", slug: "robotics", label: "Robotics + Engineering", icon: Cpu,
-    tagline: "FRC Team 7700, build seasons, engineering instincts.",
-    subpages: withTopics("FRC Team 7700", "Engineering Skills", "Build Log"),
-  },
-  {
-    num: "05", slug: "writing", label: "Writing + Story Worlds", icon: BookOpen,
-    tagline: "The novel cycle, samples, podcast, creative method.",
-    legacyOverviewPath: "/writing",
-    subpages: withTopics("Novel Series Archive", "Writing Samples", "Podcast", "Creative Method"),
-  },
-  {
-    num: "06", slug: "music", label: "Music + Performance", icon: Music2,
-    tagline: "Vocal, instrumental, stage portfolio, repertoire.",
-    legacyOverviewPath: "/music",
-    subpages: withTopics("Vocal Performance", "Instrumental", "Performance Portfolio", "Repertoire"),
-  },
-  {
-    num: "07", slug: "acting", label: "Acting + Media", icon: Film,
-    tagline: "Child-artist archive, reels, voice, screen credits.",
-    legacyOverviewPath: "/film",
-    subpages: withTopics("Child Artist Archive", "Acting Reel", "Voice & Screen", "Media Credits"),
-  },
-  {
-    num: "08", slug: "tech", label: "Design + Web + Tech", icon: Code2,
-    tagline: "Zionaxelle, multimedia, tools, build log.",
-    legacyOverviewPath: "/technology",
-    subpages: withTopics("Zionaxelle", "Multimedia Production", "Tech Skills", "Build Log"),
-  },
-  {
-    num: "09", slug: "art", label: "Art + Handmade", icon: Palette,
-    tagline: "Canvas, embroidery, mixed media.",
-    legacyOverviewPath: "/art",
-    subpages: withTopics("Canvas Art", "Embroidery", "Mixed Media"),
-  },
-  {
-    num: "10", slug: "leadership", label: "Leadership + Impact", icon: Users,
-    tagline: "Initiative, mentoring, responsibility, integration.",
-    legacyOverviewPath: "/leadership",
-    subpages: withTopics("Mentoring", "Community & Family", "Cultural Integration"),
-  },
-  {
-    num: "11", slug: "athletics", label: "Sports + Strategy", icon: Trophy,
-    tagline: "Badminton, table tennis, chess, strategic thinking.",
-    legacyOverviewPath: "/athletics",
-    subpages: withTopics("Badminton", "Table Tennis", "Chess", "Strategic Thinking"),
-  },
-  {
-    num: "12", slug: "vault", label: "CV + Document Vault", icon: FileText,
-    tagline: "CV, certificates, transcripts, recognition.",
-    legacyOverviewPath: "/cv",
+    num: "04", slug: "vault", label: "CV & Document Vault", icon: FileText,
+    tagline: "CV, certificates, transcripts, recognition — every receipt, open for inspection.",
     subpages: withTopics("Certificates", "Transcripts", "Recognition"),
   },
   {
-    num: "13", slug: "vision", label: "Future Vision", icon: Compass,
-    tagline: "Education goals, career, what I am building.",
-    legacyOverviewPath: "/future",
-    subpages: withTopics("Education Goals", "Career Vision", "What I Am Building"),
-  },
-  {
-    num: "14", slug: "contact", label: "Contact + Links", icon: Mail,
-    tagline: "Open correspondence and links.",
-    legacyOverviewPath: "/contact",
+    num: "05", slug: "contact", label: "Contact & Links", icon: Mail,
+    tagline: "Open correspondence and links to everywhere else.",
     subpages: withTopics("Channels", "Links"),
-  },
-  {
-    num: "15", slug: "curiosities", label: "Curiosities + Odds & Ends", icon: Shapes,
-    tagline: "Karate belts, abacus medals, side quests, half-wins, oddities.",
-    subpages: withTopics("Karate", "Abacus", "Side Quests", "Random Wins", "Childhood Trophies"),
   },
 ];
 
@@ -140,7 +143,6 @@ export const findCluster = (slug: string) => CLUSTERS.find((c) => c.slug === slu
 export const findSubpage = (cluster: Cluster, slug: string) =>
   cluster.subpages.find((s) => s.slug === slug);
 
-/* Grand groups: meta-categories that bundle the 14 clusters. */
 export type GrandGroup = {
   slug: string;
   label: string;
@@ -149,46 +151,48 @@ export type GrandGroup = {
   clusterSlugs: string[];
 };
 
+/* Two light groupings, kept simple for the index/drawer. */
 export const GRAND_GROUPS: GrandGroup[] = [
   {
     slug: "mind",
-    label: "Mind & Method",
-    tagline: "How I think, learn, and prove it.",
+    label: "Mind",
+    tagline: "Who I am and how I think.",
     icon: Brain,
-    clusterSlugs: ["about", "academics", "stem", "robotics"],
+    clusterSlugs: ["about", "academics"],
   },
   {
-    slug: "craft",
-    label: "Craft & Expression",
-    tagline: "What I make — in words, sound, image, and code.",
-    icon: Wand2,
-    clusterSlugs: ["writing", "music", "acting", "tech", "art"],
-  },
-  {
-    slug: "world",
-    label: "World & Self",
-    tagline: "How I show up — for people, in play, in motion.",
-    icon: Heart,
-    clusterSlugs: ["leadership", "athletics"],
-  },
-  {
-    slug: "dossier",
-    label: "Dossier & Direction",
-    tagline: "Receipts, oddities, and the road ahead.",
-    icon: Archive,
-    clusterSlugs: ["vault", "curiosities", "vision", "contact"],
+    slug: "reach",
+    label: "Reach",
+    tagline: "What I make, the dossier, and how to reach me.",
+    icon: Compass,
+    clusterSlugs: ["works", "vault", "contact"],
   },
 ];
 
 export const findGrandGroup = (clusterSlug: string) =>
   GRAND_GROUPS.find((g) => g.clusterSlugs.includes(clusterSlug));
 
-/* Map of OLD flat URL -> NEW canonical URL (for redirects). */
+/* Map of OLD URLs -> NEW canonical merged URLs. Topic anchors map to the
+   matching section inside the new merged cluster page. */
 export const LEGACY_REDIRECTS: Record<string, string> = {
+  // Old flat URLs
   "/academic": "/academics",
-  "/research": "/stem",
-  "/film": "/acting",
-  "/technology": "/tech",
+  "/research": "/academics#physics-journey",
+  "/film": "/works#child-artist-archive",
+  "/technology": "/works#zionaxelle",
   "/cv": "/vault",
-  "/future": "/vision",
+  "/future": "/about#education-goals",
+
+  // Old cluster slugs that were merged
+  "/stem": "/academics#physics-journey",
+  "/robotics": "/works#frc-team-7700",
+  "/writing": "/works#novel-series-archive",
+  "/music": "/works#vocal-performance",
+  "/acting": "/works#child-artist-archive",
+  "/tech": "/works#zionaxelle",
+  "/art": "/works#canvas-art",
+  "/leadership": "/works#ymca-youth-co-op",
+  "/athletics": "/works#badminton",
+  "/curiosities": "/works#karate",
+  "/vision": "/about#education-goals",
 };
