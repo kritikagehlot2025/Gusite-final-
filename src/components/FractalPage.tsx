@@ -10,6 +10,11 @@ import { Bento, type BentoItem } from "./Bento";
 import { CLUSTERS, findCluster, type Cluster, type Subpage } from "@/data/clusters";
 import heroFallback from "@/assets/atmos-notebook.jpg";
 import heroPortrait from "@/assets/hero-portrait.jpg";
+import atmosTelescope from "@/assets/atmos-telescope.jpg";
+import atmosMusic from "@/assets/atmos-music.jpg";
+import atmosNotebook from "@/assets/atmos-notebook.jpg";
+import textureCosmos from "@/assets/texture-cosmos.jpg";
+import texturePaper from "@/assets/texture-paper.jpg";
 import { toast } from "@/hooks/use-toast";
 
 function SubpageHeader({ kicker, num, title, lede, portrait }: { kicker: string; num: string; title: string; lede?: string; portrait?: string }) {
