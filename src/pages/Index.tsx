@@ -328,7 +328,7 @@ const Index = () => {
               </h2>
             </div>
             <Link
-              to="/curiosities"
+              to="/works#karate"
               className="font-mono text-[0.65rem] uppercase tracking-[0.3em] text-ink-soft hover:text-gold transition-colors flex items-center gap-2 group"
             >
               Open the full vault

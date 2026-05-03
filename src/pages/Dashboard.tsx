@@ -14,22 +14,22 @@ const stats = [
 ];
 
 const featured = [
-  { tag: "Achievement", title: "FRC Team 7700", to: "/robotics#highlights" },
+  { tag: "Achievement", title: "FRC Team 7700", to: "/works#frc-team-7700" },
   { tag: "Academic", title: "AP Track + Olympiads", to: "/academics#highlights" },
-  { tag: "Artistic", title: "Child Artist reel", to: "/acting#child-artist-archive" },
-  { tag: "Technical", title: "Zionaxelle.com", to: "/tech#zionaxelle" },
-  { tag: "Performance", title: "Hindustani vocal", to: "/music#vocal-performance" },
-  { tag: "Leadership", title: "Cultural integration", to: "/leadership#cultural-integration" },
-  { tag: "Curiosity", title: "Karate + Abacus", to: "/curiosities" },
+  { tag: "Artistic", title: "Child Artist reel", to: "/works#child-artist-archive" },
+  { tag: "Technical", title: "Zionaxelle.com", to: "/works#zionaxelle" },
+  { tag: "Performance", title: "Hindustani vocal", to: "/works#vocal-performance" },
+  { tag: "Leadership", title: "YMCA Youth Co-op", to: "/works#ymca-youth-co-op" },
+  { tag: "Curiosity", title: "Karate + Abacus", to: "/works#karate" },
 ];
 
 const startHere = [
   { label: "AP Exams + Grades", to: "/academics#highlights" },
-  { label: "Robotics 7700", to: "/robotics" },
-  { label: "Zionaxelle", to: "/tech#zionaxelle" },
-  { label: "Child artist playlist", to: "/acting#child-artist-archive" },
-  { label: "Endless Portals podcast", to: "/writing#podcast" },
-  { label: "Random wins vault", to: "/curiosities" },
+  { label: "Robotics 7700", to: "/works#frc-team-7700" },
+  { label: "Zionaxelle", to: "/works#zionaxelle" },
+  { label: "Child artist playlist", to: "/works#child-artist-archive" },
+  { label: "Endless Portals podcast", to: "/works#podcast" },
+  { label: "Random wins vault", to: "/works#karate" },
 ];
 
 function GrandGroupBlock({ group }: { group: typeof GRAND_GROUPS[number] }) {
