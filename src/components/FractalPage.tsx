@@ -290,6 +290,21 @@ export function FractalPage() {
           </Rail>
         );
       })}
+
+      {c.slug === "vault" && (
+        <Rail id="live-cv" icon={FileText} label="Live CV" title="Interactive CV">
+          <div className="overflow-hidden rounded-2xl border border-border bg-card shadow-sm">
+            <iframe
+              src="https://potential-favorites-527709.framer.app/"
+              title="Live CV"
+              className="block w-full"
+              style={{ height: "min(120vh, 1400px)", border: "0" }}
+              loading="lazy"
+            />
+          </div>
+        </Rail>
+      )}
+
       <div className="h-24" />
     </ClusterShell>
   );
