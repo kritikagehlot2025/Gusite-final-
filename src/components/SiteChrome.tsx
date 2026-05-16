@@ -1,12 +1,15 @@
 import { NavLink, Link } from "react-router-dom";
 import { forwardRef, useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
-import { CLUSTERS } from "@/data/clusters";
+import { CLUSTERS, PROOF_CLUSTER } from "@/data/clusters";
 import { ThemeToggle } from "./ThemeToggle";
 
 const topLinks = [
   { to: "/", label: "Home (Editorial)", num: "00" },
   { to: "/dashboard", label: "Dashboard", num: "✦✦" },
+];
+const footerLinks = [
+  { to: `/${PROOF_CLUSTER.slug}`, label: PROOF_CLUSTER.label, num: PROOF_CLUSTER.num },
 ];
 
 export const SiteNav = () => {
@@ -132,6 +135,27 @@ export const SiteNav = () => {
               })}
             </ul>
 
+            {/* Footer fixed links (Proof) */}
+            <ol className="mt-2">
+              {footerLinks.map((s) => (
+                <li key={s.to}>
+                  <NavLink
+                    to={s.to}
+                    onClick={() => setOpen(false)}
+                    className={({ isActive }) =>
+                      `flex items-baseline gap-6 py-4 border-b border-border/60 transition-colors ${
+                        isActive ? "text-gold" : "text-ink hover:text-gold"
+                      }`
+                    }
+                  >
+                    <span className="font-mono text-[0.7rem] tracking-widest text-muted-foreground w-8">
+                      {s.num}
+                    </span>
+                    <span className="font-display text-2xl">{s.label}</span>
+                  </NavLink>
+                </li>
+              ))}
+            </ol>
 
             <p className="mt-8 eyebrow text-muted-foreground">
               Curiosity is not my hobby. It is my operating system.
@@ -171,6 +195,7 @@ export const SiteFooter = forwardRef<HTMLElement>((_, ref) => (
         <ul className="space-y-2 font-mono text-xs">
           <li><Link to="/contact" className="link-underline hover:text-gold">Email</Link></li>
           <li><Link to="/vault" className="link-underline hover:text-gold">Curriculum Vitae</Link></li>
+          <li><Link to="/proof" className="link-underline hover:text-gold">Proof of Curiosity</Link></li>
         </ul>
       </div>
     </div>

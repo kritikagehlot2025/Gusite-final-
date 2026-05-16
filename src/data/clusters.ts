@@ -1,6 +1,6 @@
 import type { LucideIcon } from "lucide-react";
 import {
-  User, GraduationCap, Wand2, FileText, Mail,
+  User, GraduationCap, Wand2, FileText, Mail, Sparkles,
 } from "lucide-react";
 
 export type Subpage = {
@@ -133,6 +133,11 @@ export const CLUSTERS: Cluster[] = [
   },
 ];
 
+export const PROOF_CLUSTER = {
+  num: "✦", slug: "proof", label: "Proof of Curiosity", icon: Sparkles,
+  tagline: "Notebook scans, sketches, half-formed ideas.",
+  legacyOverviewPath: "/proof",
+};
 
 export const findCluster = (slug: string) => CLUSTERS.find((c) => c.slug === slug);
 export const findSubpage = (cluster: Cluster, slug: string) =>
