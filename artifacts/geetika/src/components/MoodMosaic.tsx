@@ -9,17 +9,14 @@ const CELL_LAYOUTS = {
     "col-span-1 row-span-1",
     "col-span-1 row-span-1",
     "col-span-2 row-span-1",
-    "col-span-2 row-span-1",
     "col-span-1 row-span-2",
     "col-span-1 row-span-1",
   ],
   md: [
     "col-span-2 row-span-2",
     "col-span-2 row-span-1",
-    "col-span-2 row-span-1",
     "col-span-1 row-span-1",
     "col-span-1 row-span-2",
-    "col-span-2 row-span-1",
     "col-span-2 row-span-1",
     "col-span-1 row-span-1",
     "col-span-1 row-span-1",
@@ -91,49 +88,30 @@ function MediaFrame({ topic }: { topic: TopicData }) {
 function MosaicTile({ topic, span, tint, index }: { topic: TopicData; span: string; tint: string; index: number }) {
   const [open, setOpen] = useState(false);
   const hasMedia = !!topic.embed;
-  const isChildhoodTrophies = topic.slug === "childhood-trophies";
   return (
     <>
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className={`group relative ${span} overflow-hidden border border-border bg-paper text-left fancy-tile ${isChildhoodTrophies ? "lg:col-span-2" : ""}`}
+        className={`group relative ${span} overflow-hidden border border-border bg-paper text-left fancy-tile`}
       >
         <div className={`absolute inset-0 bg-gradient-to-br ${tint}`} />
         <div className="absolute inset-0">
           <MediaFrame topic={topic} />
         </div>
         <div className="absolute inset-0 bg-gradient-to-t from-navy-deep/75 via-navy-deep/20 to-transparent" />
-        <div className={`absolute inset-0 p-4 md:p-5 flex ${isChildhoodTrophies ? "flex-row items-end justify-between gap-6" : "flex-col justify-between"}`}>
-          <div className={isChildhoodTrophies ? "max-w-[55%]" : "flex items-start justify-between gap-3"}>
-            {!isChildhoodTrophies && (
-              <span className="font-mono text-[0.6rem] uppercase tracking-[0.28em] text-paper/80">{String(index + 1).padStart(2, "0")}</span>
-            )}
-            {hasMedia && !isChildhoodTrophies && (
+        <div className="absolute inset-0 p-4 md:p-5 flex flex-col justify-between">
+          <div className="flex items-start justify-between gap-3">
+            <span className="font-mono text-[0.6rem] uppercase tracking-[0.28em] text-paper/80">{String(index + 1).padStart(2, "0")}</span>
+            {hasMedia && (
               <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-paper/15 text-paper border border-paper/20">
                 {topic.embed?.type === "youtube" ? <Play className="h-3.5 w-3.5 fill-paper" /> : <X className="h-3.5 w-3.5 opacity-0" />}
               </span>
             )}
-            {isChildhoodTrophies && (
-              <div className="space-y-1.5">
-                <span className="font-mono text-[0.6rem] uppercase tracking-[0.28em] text-paper/80">{String(index + 1).padStart(2, "0")}</span>
-                <h3 className="font-display leading-[0.95] text-paper text-lg md:text-xl lg:text-[1.35rem] line-clamp-2">Childhood Trophies</h3>
-                <p className="font-sans italic text-[0.72rem] md:text-[0.8rem] leading-snug text-paper/82 line-clamp-2">The early evidence.</p>
-              </div>
-            )}
           </div>
-          <div className={isChildhoodTrophies ? "w-[42%] text-right self-stretch flex flex-col justify-end" : "space-y-1.5"}>
-            {isChildhoodTrophies ? (
-              <>
-                <span className="font-display text-2xl md:text-3xl lg:text-4xl text-paper leading-none">Childhood Trophies</span>
-                <span className="font-sans italic text-[0.72rem] md:text-[0.8rem] leading-snug text-paper/82">The early evidence.</span>
-              </>
-            ) : (
-              <>
-                <h3 className="font-display leading-[0.95] text-paper text-lg md:text-xl lg:text-[1.35rem] line-clamp-2">{topic.label}</h3>
-                <p className="max-w-md font-sans italic text-[0.72rem] md:text-[0.8rem] leading-snug text-paper/82 line-clamp-2">{topic.blurb}</p>
-              </>
-            )}
+          <div className="space-y-1.5">
+            <h3 className="font-display leading-[0.95] text-paper text-lg md:text-xl lg:text-[1.35rem] line-clamp-2">{topic.label}</h3>
+            <p className="max-w-md font-sans italic text-[0.72rem] md:text-[0.8rem] leading-snug text-paper/82 line-clamp-2">{topic.blurb}</p>
           </div>
         </div>
       </button>

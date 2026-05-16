@@ -101,7 +101,7 @@ export const CLUSTERS: Cluster[] = [
       topic("Abacus", "Lightning arithmetic.", "Mental math training from the elementary years — abacus competitions, speed calculations, and the numerical intuition that still shapes how I approach mathematics."),
       topic("Side Quests", "Things that don't fit a category.", "Random projects, one-off experiments, and curiosities that didn't become obsessions but absolutely shaped the way I think. Side quests are the spice."),
       topic("Random Wins", "Unexpected victories.", "Competitions, certificates, and achievements that came from left field. Not every win is planned — some come from showing up and being ready."),
-      topic("Childhood Trophies", "The early evidence.", "From spelling bees to art contests — the trophies and certificates from the years before the dossier. They're small, but they're the first receipts. Childhood trophies mirror the same early wins."),
+      topic("Childhood Trophies", "The early evidence.", "From spelling bees to art contests — the trophies and certificates from the years before the dossier. They're small, but they're the first receipts."),
     ],
   },
   {
