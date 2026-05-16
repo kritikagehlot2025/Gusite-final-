@@ -4,8 +4,7 @@ import { ChevronRight, Chrome as Home, ArrowLeft } from "lucide-react";
 import { SiteNav, SiteFooter } from "./SiteChrome";
 import {
   Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarGroupLabel,
-  SidebarMenu, SidebarMenuButton, SidebarMenuItem, SidebarProvider, SidebarTrigger,
-  useSidebar,
+  SidebarMenu, SidebarMenuButton, SidebarMenuItem, SidebarProvider,
 } from "@/components/ui/sidebar";
 import { CLUSTERS, findCluster, findSubpage, getSubpages } from "@/data/clusters";
 
@@ -56,11 +55,28 @@ function railGlyph(index: number): string {
   return String(index + 1).padStart(2, "0");
 }
 
+function useScrollProgress() {
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    const update = () => {
+      const max = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+      setProgress(Math.max(0, Math.min(100, Math.round((window.scrollY / max) * 100))));
+    };
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    return () => {
+      window.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
+    };
+  }, []);
+
+  return progress;
+}
+
 function ClusterSidebar({ clusterSlug }: { clusterSlug: string }) {
   const cluster = findCluster(clusterSlug);
-  const { state } = useSidebar();
-  const collapsed = state === "collapsed";
-
   const subpages = cluster ? getSubpages(cluster) : [];
   const subSlugs = subpages.map((s) => s.slug);
   const activeSlug = useScrollSpy(subSlugs);
@@ -75,56 +91,40 @@ function ClusterSidebar({ clusterSlug }: { clusterSlug: string }) {
   const topics = subpages.filter((s) => s.kind === "topic");
 
   return (
-    <Sidebar collapsible="icon" className="border-r border-border">
+    <Sidebar collapsible="none" className="border-r border-border">
       <SidebarContent className="bg-paper">
-        <div className={`px-3 py-5 border-b border-border ${collapsed ? "px-2" : "px-4"}`}>
-          {!collapsed && (
-            <Link to="/dashboard" className="flex items-center gap-2 text-ink-soft hover:text-gold transition-colors">
-              <ArrowLeft className="w-3.5 h-3.5" />
-              <span className="font-mono text-[0.6rem] uppercase tracking-[0.25em]">Pages</span>
-            </Link>
-          )}
-          <div className={`mt-3 flex items-center gap-2.5 ${collapsed ? "justify-center mt-0" : ""}`}>
+        <div className="px-4 py-5 border-b border-border">
+          <Link to="/dashboard" className="flex items-center gap-2 text-ink-soft hover:text-gold transition-colors">
+            <ArrowLeft className="w-3.5 h-3.5" />
+            <span className="font-mono text-[0.6rem] uppercase tracking-[0.25em]">Pages</span>
+          </Link>
+          <div className="mt-3 flex items-center gap-2.5">
             <Icon className="w-4 h-4 text-gold shrink-0" />
-            {!collapsed && <span className="font-display text-lg leading-tight text-ink truncate">{cluster.label}</span>}
+            <span className="font-display text-lg leading-tight text-ink truncate">{cluster.label}</span>
           </div>
-          {!collapsed && <p className="font-mono text-[0.6rem] text-gold tracking-widest mt-1">§ {cluster.num}</p>}
+          <p className="font-mono text-[0.6rem] text-gold tracking-widest mt-1">§ {cluster.num}</p>
         </div>
 
         <SidebarGroup>
-          {!collapsed && (
-            <SidebarGroupLabel className="font-mono text-[0.6rem] tracking-[0.25em] uppercase text-muted-foreground">
-              Fractal Rails
-            </SidebarGroupLabel>
-          )}
+          <SidebarGroupLabel className="font-mono text-[0.6rem] tracking-[0.25em] uppercase text-muted-foreground">
+            Fractal Rails
+          </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {rails.map((s, i) => {
                 const active = isActiveSub(s.slug);
                 return (
                   <SidebarMenuItem key={s.slug}>
-                    <SidebarMenuButton
-                      asChild
-                      isActive={active}
-                      tooltip={collapsed ? s.label : undefined}
-                    >
+                    <SidebarMenuButton asChild isActive={active}>
                       <a
                         href={linkFor(s.slug)}
-                        title={collapsed ? s.label : undefined}
+                        title={s.label}
                         className={`font-mono text-xs tracking-wide flex items-center ${
                           active ? "text-gold bg-paper-deep" : "text-ink hover:text-gold"
                         }`}
                       >
-                        {collapsed ? (
-                          <span className={`font-mono text-[0.65rem] tracking-[0.15em] w-full text-center ${active ? "text-gold" : "text-ink-soft"}`}>
-                            {railGlyph(i)}
-                          </span>
-                        ) : (
-                          <>
-                            <span className={`mr-1 ${active ? "text-gold" : "text-gold"}`}>·</span>
-                            <span className="truncate">{s.label}</span>
-                          </>
-                        )}
+                        <span className="mr-2 text-gold">{active ? "◉" : "·"}</span>
+                        <span className="truncate">{s.label}</span>
                       </a>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
@@ -136,36 +136,25 @@ function ClusterSidebar({ clusterSlug }: { clusterSlug: string }) {
 
         {topics.length > 0 && (
           <SidebarGroup>
-            {!collapsed && (
-              <SidebarGroupLabel className="font-mono text-[0.6rem] tracking-[0.25em] uppercase text-muted-foreground">
-                Topics
-              </SidebarGroupLabel>
-            )}
+            <SidebarGroupLabel className="font-mono text-[0.6rem] tracking-[0.25em] uppercase text-muted-foreground">
+              Topics
+            </SidebarGroupLabel>
             <SidebarGroupContent>
               <SidebarMenu>
                 {topics.map((s, i) => {
                   const active = isActiveSub(s.slug);
                   return (
                     <SidebarMenuItem key={s.slug}>
-                      <SidebarMenuButton
-                        asChild
-                        isActive={active}
-                        tooltip={collapsed ? s.label : undefined}
-                      >
+                      <SidebarMenuButton asChild isActive={active}>
                         <a
                           href={linkFor(s.slug)}
-                          title={collapsed ? s.label : undefined}
+                          title={s.label}
                           className={`font-display text-sm flex items-center ${
                             active ? "text-gold" : "text-ink hover:text-gold"
                           }`}
                         >
-                          {collapsed ? (
-                            <span className="font-mono text-[0.7rem] tracking-widest w-full text-center">
-                              {String(i + 1).padStart(2, "0")}
-                            </span>
-                          ) : (
-                            <span className="truncate">{s.label}</span>
-                          )}
+                          <span className="mr-2 text-gold">◦</span>
+                          <span className="truncate">{s.label}</span>
                         </a>
                       </SidebarMenuButton>
                     </SidebarMenuItem>
@@ -177,11 +166,9 @@ function ClusterSidebar({ clusterSlug }: { clusterSlug: string }) {
         )}
 
         <SidebarGroup>
-          {!collapsed && (
-            <SidebarGroupLabel className="font-mono text-[0.6rem] tracking-[0.25em] uppercase text-muted-foreground">
-              All Pages
-            </SidebarGroupLabel>
-          )}
+          <SidebarGroupLabel className="font-mono text-[0.6rem] tracking-[0.25em] uppercase text-muted-foreground">
+            All Pages
+          </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {CLUSTERS.map((cc) => {
@@ -189,18 +176,14 @@ function ClusterSidebar({ clusterSlug }: { clusterSlug: string }) {
                 const isCurrent = cc.slug === cluster.slug;
                 return (
                   <SidebarMenuItem key={cc.slug}>
-                    <SidebarMenuButton asChild tooltip={collapsed ? cc.label : undefined} isActive={isCurrent}>
+                    <SidebarMenuButton asChild isActive={isCurrent}>
                       <NavLink
                         to={`/${cc.slug}`}
-                        title={collapsed ? cc.label : undefined}
-                        className={`flex items-center gap-2 ${
-                          collapsed ? "justify-center" : ""
-                        } ${isCurrent ? "text-gold" : "text-ink-soft hover:text-gold"}`}
+                        title={cc.label}
+                        className={`flex items-center gap-2 ${isCurrent ? "text-gold" : "text-ink-soft hover:text-gold"}`}
                       >
                         <CI className="w-3.5 h-3.5 shrink-0" />
-                        {!collapsed && (
-                          <span className="font-mono text-[0.7rem] tracking-wide truncate">{cc.label}</span>
-                        )}
+                        <span className="font-mono text-[0.7rem] tracking-wide truncate">{cc.label}</span>
                       </NavLink>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
@@ -211,6 +194,20 @@ function ClusterSidebar({ clusterSlug }: { clusterSlug: string }) {
         </SidebarGroup>
       </SidebarContent>
     </Sidebar>
+  );
+}
+
+function ScrollTile({ progress }: { progress: number }) {
+  return (
+    <div className="rounded-none border border-border bg-paper-deep px-3 py-2">
+      <div className="flex items-center justify-between gap-2">
+        <span className="font-mono text-[0.55rem] uppercase tracking-[0.25em] text-muted-foreground">Scrolled</span>
+        <span className="font-mono text-[0.65rem] text-gold">{String(progress).padStart(2, "0")}%</span>
+      </div>
+      <div className="mt-2 h-1.5 overflow-hidden bg-border">
+        <div className="h-full bg-gold" style={{ width: `${progress}%` }} />
+      </div>
+    </div>
   );
 }
 
@@ -240,17 +237,20 @@ export function Breadcrumbs({ cluster, sub }: { cluster: string; sub?: string })
 
 export function ClusterShell({ children }: { children: ReactNode }) {
   const { cluster = "", sub } = useParams();
+  const progress = useScrollProgress();
   return (
     <div className="min-h-screen bg-paper text-foreground flex flex-col">
       <SiteNav />
       <SidebarProvider>
         <div className="flex w-full pt-16 min-h-[calc(100vh-4rem)]">
-          <ClusterSidebar clusterSlug={cluster} />
+          <div className="w-[18rem] shrink-0 hidden md:block">
+            <ClusterSidebar clusterSlug={cluster} />
+          </div>
           <div className="flex-1 flex flex-col min-w-0">
             <div className="sticky top-16 z-30 bg-paper/90 backdrop-blur-md border-b border-border">
-              <div className="flex items-center gap-3 px-4 md:px-8 h-12">
-                <SidebarTrigger className="text-ink-soft hover:text-gold" />
+              <div className="flex flex-col gap-2 px-4 md:px-8 py-3">
                 <Breadcrumbs cluster={cluster} sub={sub} />
+                <ScrollTile progress={progress} />
               </div>
             </div>
             <main className="flex-1 min-w-0">{children}</main>
