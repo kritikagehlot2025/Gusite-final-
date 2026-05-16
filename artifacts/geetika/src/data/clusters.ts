@@ -46,7 +46,7 @@ export const CLUSTERS: Cluster[] = [
     ],
   },
   {
-    num: "02", slug: "academics", label: "Academics, STEM & Research", icon: GraduationCap,
+    num: "02", slug: "academics", label: "Academics", icon: GraduationCap,
     tagline: "Education timeline, exams, awards, physics, and research interests.",
     topics: [
       topic("Education Timeline", "Schools, moves, and academic chapters.", "From early schooling in India to the AP track in Montréal — every transition brought new challenges and new ways of thinking. The timeline maps the academic journey with grades, transitions, and key turning points."),
@@ -105,7 +105,7 @@ export const CLUSTERS: Cluster[] = [
     ],
   },
   {
-    num: "04", slug: "vault", label: "CV & Document Vault", icon: FileText,
+    num: "04", slug: "vault", label: "CV & Resume", icon: FileText,
     tagline: "CV, certificates, transcripts, recognition — every receipt, open for inspection.",
     topics: [
       topic("Certificates", "Every certificate, catalogued.", "Academic certificates, competition awards, extracurricular recognitions, and professional credentials — each one scanned, dated, and contextualized. The vault is the paper trail."),
@@ -114,7 +114,7 @@ export const CLUSTERS: Cluster[] = [
     ],
   },
   {
-    num: "05", slug: "contact", label: "Contact & Links", icon: Mail,
+    num: "05", slug: "contact", label: "Contact", icon: Mail,
     tagline: "Open correspondence and links to everywhere else.",
     topics: [
       topic("Channels", "Where to find me.", "Email, LinkedIn, GitHub, and other platforms — the official channels for professional and creative correspondence. Each channel has its purpose."),

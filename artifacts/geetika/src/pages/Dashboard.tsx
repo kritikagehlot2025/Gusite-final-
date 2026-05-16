@@ -1,15 +1,15 @@
 import { Link } from "react-router-dom";
-import { ArrowUpRight, Mail, FileText } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { PageShell } from "@/components/SiteChrome";
 import { CLUSTERS } from "@/data/clusters";
 import { useReveal } from "@/hooks/useReveal";
 
 const PAGE_BOXES = [
   { slug: "about", label: "About", num: "01", accent: "Foundations" },
-  { slug: "academics", label: "Academics, STEM & Research", num: "02", accent: "Evidence" },
+  { slug: "academics", label: "Academics", num: "02", accent: "Evidence" },
   { slug: "works", label: "Works", num: "03", accent: "Projects" },
-  { slug: "vault", label: "CV & Document Vault", num: "04", accent: "Records" },
-  { slug: "contact", label: "Contact & Links", num: "05", accent: "Reach out" },
+  { slug: "vault", label: "CV & Resume", num: "04", accent: "Records" },
+  { slug: "contact", label: "Contact", num: "05", accent: "Reach out" },
 ];
 
 const Dashboard = () => {
