@@ -46,14 +46,13 @@ const Dashboard = () => {
                 </div>
                 <div className="flex items-center justify-between mt-6 pt-4 border-t border-border">
                   <span className="font-mono text-[0.6rem] uppercase tracking-widest text-muted-foreground">
-                    {c.subpages.filter((s) => s.kind === "topic").length} topics
+                    {c.topics.length} topics
                   </span>
                   <ArrowUpRight className="w-4 h-4 text-ink-soft group-hover:text-gold transition-all group-hover:translate-x-1 group-hover:-translate-y-1" />
                 </div>
               </Link>
             );
           })}
-
           <Link
             to={`/${PROOF_CLUSTER.slug}`}
             className="group dossier-card p-6 hover-lift flex flex-col justify-between"
