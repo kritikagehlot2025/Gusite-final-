@@ -6,16 +6,16 @@ import type { TopicData } from "@/data/clusters";
 const SPANS = [
   "col-span-2 row-span-2",
   "col-span-1 row-span-1",
+  "col-span-1 row-span-1",
   "col-span-2 row-span-1",
   "col-span-1 row-span-2",
   "col-span-1 row-span-1",
   "col-span-2 row-span-1",
-  "col-span-1 row-span-2",
   "col-span-1 row-span-1",
   "col-span-2 row-span-2",
   "col-span-1 row-span-1",
-  "col-span-2 row-span-1",
   "col-span-1 row-span-1",
+  "col-span-2 row-span-1",
 ];
 
 const TINTS = [
@@ -155,6 +155,9 @@ export function MoodMosaic({ topics }: { topics: TopicData[] }) {
             tint={TINTS[i % TINTS.length]}
           />
         ))}
+        {topics.length % 2 === 1 && (
+          <div className="hidden lg:block col-span-2 row-span-1" aria-hidden="true" />
+        )}
       </div>
     </section>
   );
