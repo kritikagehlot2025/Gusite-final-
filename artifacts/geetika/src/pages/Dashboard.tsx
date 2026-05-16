@@ -31,6 +31,7 @@ const Dashboard = () => {
         </p>
         <div className="rule-gold mt-12" />
       </section>
+
       <section className="container pb-12 md:pb-16" data-reveal>
         <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-4">
           {PAGE_BOXES.map((page) => (
@@ -98,22 +99,23 @@ const Dashboard = () => {
           ))}
         </div>
       </section>
+
       <section className="container pb-16 md:pb-20" data-reveal>
         <div className="grid md:grid-cols-3 gap-4">
           <a href="mailto:geetikagehlot2009@gmail.com" className="group fancy-tile block border border-border bg-paper p-6 hover:border-gold transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1">
-            <p className="font-mono text-[0.65rem] tracking-[0.3em] text-gold">Contact & Links</p>
-            <h3 className="mt-4 font-display text-xl text-ink group-hover:text-gold transition-colors">Get in Touch</h3>
-            <p className="mt-3 text-sm text-ink-soft">With in-built email form and social links</p>
+            <p className="font-mono text-[0.65rem] tracking-[0.3em] text-gold">Email</p>
+            <h3 className="mt-4 font-display text-xl text-ink group-hover:text-gold transition-colors">Send a message</h3>
+            <p className="mt-3 text-sm text-ink-soft">Open the mail client directly.</p>
           </a>
           <Link to="/vault" className="group fancy-tile block border border-border bg-paper p-6 hover:border-gold transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1">
-            <p className="font-mono text-[0.65rem] tracking-[0.3em] text-gold">Documents</p>
-            <h3 className="mt-4 font-display text-xl text-ink group-hover:text-gold transition-colors">Open the CV & Resume page</h3>
-            <p className="mt-3 text-sm text-ink-soft">With interactive, in-built visual and viewable pdf formats.</p>
+            <p className="font-mono text-[0.65rem] tracking-[0.3em] text-gold">CV</p>
+            <h3 className="mt-4 font-display text-xl text-ink group-hover:text-gold transition-colors">Open the CV page</h3>
+            <p className="mt-3 text-sm text-ink-soft">The big CV box, downloads, and PDF views live there.</p>
           </Link>
           <Link to="/" className="group fancy-tile block border border-border bg-paper p-6 hover:border-gold transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1">
             <p className="font-mono text-[0.65rem] tracking-[0.3em] text-gold">Home</p>
             <h3 className="mt-4 font-display text-xl text-ink group-hover:text-gold transition-colors">Return to home</h3>
-            <p className="mt-3 text-sm text-ink-soft">Jump back to the slideshow page.</p>
+            <p className="mt-3 text-sm text-ink-soft">Jump back to the hero slideshow and manifesto.</p>
           </Link>
         </div>
       </section>
