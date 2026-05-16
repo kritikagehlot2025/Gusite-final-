@@ -239,6 +239,43 @@
     font-weight: 600;
   }
 
+  /* ── Scroll-expand essay styles ─────────────────────────────── */
+  .essay-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(41 80% 55% / 0.25) transparent;
+  }
+  .essay-scroll::-webkit-scrollbar { width: 4px; }
+  .essay-scroll::-webkit-scrollbar-track { background: transparent; }
+  .essay-scroll::-webkit-scrollbar-thumb {
+    background: hsl(41 80% 55% / 0.25);
+    border-radius: 2px;
+  }
+
+  .essay-body {
+    color: hsl(var(--ink) / 0.82);
+    font-family: 'Source Sans 3', system-ui, sans-serif;
+  }
+  .essay-body p {
+    font-size: clamp(14px, 1.5vw, 16px);
+    line-height: 1.85;
+    margin-bottom: 1.2em;
+    color: hsl(var(--ink) / 0.82);
+  }
+  .essay-body p:last-child { margin-bottom: 0; }
+  .essay-heading {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(13px, 1.4vw, 16px);
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: hsl(var(--gold));
+    margin-bottom: 1.2em;
+    margin-top: 0;
+    text-transform: uppercase;
+    font-style: normal;
+  }
+  .essay-section { overflow: hidden; }
+  .essay-section::after { content: ''; display: table; clear: both; }
+
   .dossier-card {
     background: hsl(var(--paper));
     border: 1px solid hsl(var(--border));
