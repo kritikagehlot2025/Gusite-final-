@@ -120,7 +120,7 @@ export const SiteNav = () => {
 
 export const SiteFooter = forwardRef<HTMLElement>((_, ref) => (
   <footer ref={ref} className="force-light bg-navy-deep text-paper relative overflow-hidden grain">
-    <div className="container py-20 grid md:grid-cols-4 gap-12">
+    <div className="container py-10 grid md:grid-cols-4 gap-8">
       <div className="md:col-span-2">
         <p className="label-gold mb-4">Colophon</p>
         <p className="font-display text-3xl text-balance leading-tight">
@@ -150,7 +150,7 @@ export const SiteFooter = forwardRef<HTMLElement>((_, ref) => (
       </div>
     </div>
     <div className="border-t border-paper/10">
-      <div className="container py-6 flex flex-col md:flex-row justify-between gap-3 font-mono text-[0.65rem] uppercase tracking-[0.25em] text-paper/50">
+      <div className="container py-3 flex flex-col md:flex-row justify-between gap-2 font-mono text-[0.65rem] uppercase tracking-[0.25em] text-paper/50">
         <span>© {new Date().getFullYear()} Geetika Gehlot · Montréal</span>
         <span>Edition I · Volume One · Ongoing</span>
       </div>
