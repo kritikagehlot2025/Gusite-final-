@@ -9,6 +9,8 @@ import { useReveal } from "@/hooks/useReveal";
 
 type IconCmp = React.ComponentType<{ className?: string }>;
 
+const CV_PDF_URL = "https://www.guelphhumber.ca/sites/default/files/page_files/Sample_CV-new2.pdf";
+
 const Vault = () => {
   useReveal();
 
@@ -127,53 +129,118 @@ function CVFeatureBlock() {
 }
 
 function CVDocumentGrid() {
-  const docs = [
-    {
-      icon: Download,
-      label: "Download CV",
-      sub: "Full curriculum vitae · PDF",
-      href: "/documents/geetika-cv.pdf",
-      badge: "PDF · A4",
-    },
-    {
-      icon: BookOpen,
-      label: "One-Page Résumé",
-      sub: "Condensed single-page version",
-      href: "/documents/geetika-resume.pdf",
-      badge: "PDF · Letter",
-    },
-    {
-      icon: ExternalLink,
-      label: "LinkedIn Profile",
-      sub: "Connect or view professional timeline",
-      href: "https://www.linkedin.com/in/geetika-gehlot",
-      badge: "External",
-    },
-  ];
+  const [activeTab, setActiveTab] = useState<"cv" | "resume">("cv");
 
   return (
-    <div className="grid sm:grid-cols-3 gap-3">
-      {docs.map(({ icon: I, label, sub, href, badge }) => (
-        <a
-          key={label}
-          href={href}
-          target={href.startsWith("http") ? "_blank" : undefined}
-          rel="noreferrer"
-          className="fancy-tile group block border border-border bg-paper hover:border-gold transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1 overflow-hidden p-6"
-        >
-          <div className="flex items-start justify-between mb-6">
-            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-gold/10 text-gold border border-gold/20">
-              <I className="h-4 w-4" />
-            </span>
-            <span className="font-mono text-[0.55rem] uppercase tracking-widest border border-border px-2 py-1 text-ink-soft group-hover:border-gold/50 transition-colors duration-500">
-              {badge}
-            </span>
+    <div className="space-y-6">
+      {/* PDF Embed Box */}
+      <div className="fancy-tile border border-border bg-paper overflow-hidden">
+        {/* Header bar with tabs & actions */}
+        <div className="border-b border-border p-4 md:p-5 flex flex-wrap items-center gap-3">
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => setActiveTab("cv")}
+              className={`px-3 py-1.5 font-mono text-[0.65rem] uppercase tracking-widest border transition-colors ${
+                activeTab === "cv"
+                  ? "border-gold text-gold bg-gold/10"
+                  : "border-border text-ink-soft hover:border-gold/50 hover:text-gold"
+              }`}
+            >
+              <span className="inline-flex items-center gap-1.5">
+                <FileText className="w-3 h-3" />
+                CV
+              </span>
+            </button>
+            <button
+              onClick={() => setActiveTab("resume")}
+              className={`px-3 py-1.5 font-mono text-[0.65rem] uppercase tracking-widest border transition-colors ${
+                activeTab === "resume"
+                  ? "border-gold text-gold bg-gold/10"
+                  : "border-border text-ink-soft hover:border-gold/50 hover:text-gold"
+              }`}
+            >
+              <span className="inline-flex items-center gap-1.5">
+                <BookOpen className="w-3 h-3" />
+                Résumé
+              </span>
+            </button>
           </div>
-          <p className="font-display text-lg text-ink group-hover:text-gold transition-colors duration-300 leading-tight">{label}</p>
-          <p className="mt-1 font-mono text-[0.6rem] uppercase tracking-wider text-ink-soft">{sub}</p>
-          <ArrowUpRight className="mt-4 h-4 w-4 text-ink-soft group-hover:text-gold group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-500" />
-        </a>
-      ))}
+
+          <span className="flex-1" />
+
+          <a
+            href={CV_PDF_URL}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-1.5 font-mono text-[0.6rem] uppercase tracking-widest text-ink-soft hover:text-gold transition-colors"
+          >
+            <Download className="w-3 h-3" />
+            Download {activeTab === "cv" ? "CV" : "Résumé"}
+          </a>
+          <span className="text-ink-soft/40">·</span>
+          <a
+            href={CV_PDF_URL}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-1.5 font-mono text-[0.6rem] uppercase tracking-widest text-ink-soft hover:text-gold transition-colors"
+          >
+            <ExternalLink className="w-3 h-3" />
+            Open in new tab
+          </a>
+          <span className="font-mono text-[0.55rem] uppercase tracking-widest border border-border px-2 py-0.5 text-ink-soft">
+            PDF
+          </span>
+        </div>
+
+        {/* PDF embed */}
+        <div className="relative w-full" style={{ height: "70vh", minHeight: "480px" }}>
+          <iframe
+            src={CV_PDF_URL}
+            title={activeTab === "cv" ? "Curriculum Vitae PDF" : "Résumé PDF"}
+            className="absolute inset-0 w-full h-full"
+            style={{ border: "none" }}
+          />
+        </div>
+
+        {/* Footer info */}
+        <div className="border-t border-border p-4 md:p-5 flex flex-wrap items-center gap-3 text-ink-soft">
+          <span className="inline-flex items-center gap-1.5 font-mono text-[0.6rem] uppercase tracking-widest">
+            <span>📄</span> Full curriculum vitae
+          </span>
+          <span className="text-ink-soft/30">|</span>
+          <span className="inline-flex items-center gap-1.5 font-mono text-[0.6rem] uppercase tracking-widest">
+            <span>📐</span> A4 format
+          </span>
+          <span className="text-ink-soft/30">|</span>
+          <span className="inline-flex items-center gap-1.5 font-mono text-[0.6rem] uppercase tracking-widest">
+            <span>🔍</span> Scroll to browse
+          </span>
+          <span className="flex-1" />
+          <span className="inline-flex items-center gap-1.5 font-mono text-[0.6rem] uppercase tracking-widest">
+            <span>✨</span> Updated 2025
+          </span>
+        </div>
+      </div>
+
+      {/* External link tile */}
+      <a
+        href="https://www.linkedin.com/in/geetika-gehlot"
+        target="_blank"
+        rel="noreferrer"
+        className="fancy-tile group block border border-border bg-paper hover:border-gold transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1 overflow-hidden p-6"
+      >
+        <div className="flex items-start justify-between mb-6">
+          <span className="flex h-10 w-10 items-center justify-center rounded-full bg-gold/10 text-gold border border-gold/20">
+            <Linkedin className="h-4 w-4" />
+          </span>
+          <span className="font-mono text-[0.55rem] uppercase tracking-widest border border-border px-2 py-1 text-ink-soft group-hover:border-gold/50 transition-colors duration-500">
+            External
+          </span>
+        </div>
+        <p className="font-display text-lg text-ink group-hover:text-gold transition-colors duration-300 leading-tight">LinkedIn Profile</p>
+        <p className="mt-1 font-mono text-[0.6rem] uppercase tracking-wider text-ink-soft">Connect or view professional timeline</p>
+        <ArrowUpRight className="mt-4 h-4 w-4 text-ink-soft group-hover:text-gold group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-500" />
+      </a>
     </div>
   );
 }

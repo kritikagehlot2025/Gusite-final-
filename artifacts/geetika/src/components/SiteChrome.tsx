@@ -2,7 +2,6 @@ import { NavLink, Link } from "react-router-dom";
 import { forwardRef, useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { CLUSTERS } from "@/data/clusters";
-import { ThemeToggle } from "./ThemeToggle";
 
 const topLinks = [
   { to: "/", label: "Home", num: "00" },
@@ -42,7 +41,6 @@ export const SiteNav = () => {
           </Link>
 
           <div className="flex items-center gap-3 text-paper">
-            <ThemeToggle className="!text-paper !border-paper/30 hover:!text-gold hover:!border-gold shadow-[0_6px_18px_-4px_hsl(220_60%_4%/0.55)]" />
             <button
               onClick={() => setOpen(true)}
               className="flex items-center gap-2 group px-2 py-1 text-paper hover:text-gold shadow-[0_6px_18px_-4px_hsl(220_60%_4%/0.55)]"
