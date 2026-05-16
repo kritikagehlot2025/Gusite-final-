@@ -124,7 +124,7 @@ function MosaicTile({ topic, span, tint, index }: { topic: TopicData; span: stri
               <MediaFrame topic={topic} />
             </div>
             <div className="p-7 md:p-10">
-              <DialogTitle className="font-display text-3xl md:text-5xl leading-tight text-ink">{topic.label}</DialogTitle>
+              <DialogTitle className="font-display text-2xl md:text-3xl lg:text-4xl leading-tight text-ink">{topic.label}</DialogTitle>
               <DialogDescription asChild>
                 <div className="mt-4 text-base md:text-lg leading-relaxed text-ink-soft font-display">
                   {topic.detail.split("\n").map((p, i) => (

@@ -157,7 +157,7 @@ const Index = () => {
             </div>
             <div className="md:col-span-9 max-w-3xl">
               <p
-                className="font-display text-3xl md:text-5xl text-ink leading-[1.05] text-balance drop-cap"
+                className="font-display text-2xl md:text-3xl lg:text-4xl text-ink leading-[1.05] text-balance drop-cap"
                 data-reveal
               >
                 This is not a résumé. It is a working dossier — equal parts laboratory
@@ -166,7 +166,7 @@ const Index = () => {
               </p>
               <div className="rule-double my-8 max-w-xs" data-reveal data-reveal-delay="120" />
               <p
-                className="font-accent text-xl md:text-2xl text-ink-soft leading-relaxed"
+                className="font-accent text-lg md:text-xl text-ink-soft leading-relaxed"
                 data-reveal
                 data-reveal-delay="200"
               >
@@ -204,7 +204,7 @@ const Index = () => {
           <div className="flex items-end justify-between mb-8 gap-6 flex-wrap" data-reveal>
             <div>
               <p className="label-gold mb-3">§ 01 · Toolkit</p>
-              <h2 className="display-xl text-3xl md:text-5xl text-ink">
+              <h2 className="display-xl text-2xl md:text-3xl lg:text-4xl text-ink">
                 Skills I bring <span className="font-accent text-gold">to the table.</span>
               </h2>
             </div>
@@ -252,7 +252,7 @@ const Index = () => {
           <div className="flex items-end justify-between mb-8 gap-6 flex-wrap" data-reveal>
             <div>
               <p className="label-gold mb-3">§ 02 · Showcase</p>
-              <h2 className="display-xl text-3xl md:text-5xl text-ink">
+              <h2 className="display-xl text-2xl md:text-3xl lg:text-4xl text-ink">
                 Featured <span className="font-accent text-gold">work.</span>
               </h2>
             </div>
@@ -292,7 +292,7 @@ const Index = () => {
               <div className="absolute inset-3 border border-paper/15 pointer-events-none" />
               <figcaption className="absolute bottom-6 left-6 right-6 text-paper">
                 <span className="font-mono text-xs text-gold tracking-widest">PLATE {x.num}</span>
-                <p className="font-display text-3xl md:text-4xl mt-1 leading-tight">{x.label}</p>
+                <p className="font-display text-xl md:text-2xl mt-1 leading-tight">{x.label}</p>
                 <span className="block w-10 h-px bg-gold mt-3 transition-all duration-500 group-hover:w-20" />
               </figcaption>
             </figure>
@@ -312,7 +312,7 @@ const Index = () => {
           <div className="flex items-end justify-between mb-8 gap-6 flex-wrap" data-reveal>
             <div>
               <p className="label-gold mb-3">§ 03 · Random Wins</p>
-              <h2 className="display-xl text-3xl md:text-5xl text-ink">
+              <h2 className="display-xl text-2xl md:text-3xl lg:text-4xl text-ink">
                 Belts, medals <span className="font-accent text-gold">& side quests.</span>
               </h2>
             </div>
@@ -348,7 +348,7 @@ const Index = () => {
           <div className="flex items-end justify-between mb-10 gap-6 flex-wrap" data-reveal>
             <div>
               <p className="label-gold mb-3">§ 04 · The Archive</p>
-              <h2 className="display-xl text-3xl md:text-5xl text-ink">
+              <h2 className="display-xl text-2xl md:text-3xl lg:text-4xl text-ink">
                 Five pages, <span className="font-accent text-gold">one dossier.</span>
               </h2>
               <p className="mt-4 max-w-xl text-ink-soft text-sm leading-relaxed font-accent italic">
@@ -372,7 +372,7 @@ const Index = () => {
                       <CI className="w-5 h-5 text-gold" />
                       <span className="font-mono text-[0.65rem] tracking-widest text-gold">{c.num}</span>
                     </div>
-                    <h4 className="font-display text-xl md:text-2xl leading-snug mb-2">{c.label}</h4>
+                    <h4 className="font-display text-lg md:text-xl leading-snug mb-2">{c.label}</h4>
                     <p className="font-mono text-[0.6rem] uppercase tracking-[0.2em] text-ink-soft group-hover/tile:text-paper-contrast-soft mt-2">
                       {c.tagline}
                     </p>
@@ -402,7 +402,7 @@ const Index = () => {
         />
         <div className="container relative">
           <p className="label-gold mb-6" data-reveal>§ 05 · Core Traits</p>
-          <h2 className="display-xl text-4xl md:text-6xl mb-12 max-w-3xl text-balance" data-reveal>
+          <h2 className="display-xl text-2xl md:text-4xl mb-8 max-w-3xl text-balance" data-reveal>
             Five instincts <span className="font-accent text-gold">I trust</span> before any plan.
           </h2>
           <div className="grid md:grid-cols-5 gap-8">

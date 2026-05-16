@@ -18,11 +18,11 @@ const Academics = () => {
         </div>
         <div className="flex items-start gap-5 mb-6 animate-fade-in">
           <GraduationCap className="w-6 h-6 text-gold shrink-0 mt-2" />
-          <h1 className="display-xl text-3xl md:text-5xl lg:text-6xl text-balance max-w-4xl animate-fade-up">
+          <h1 className="display-xl text-3xl md:text-4xl lg:text-5xl text-balance max-w-4xl animate-fade-up">
             Education timeline, exams, awards, physics, and research.
           </h1>
         </div>
-        <p className="mt-6 max-w-2xl text-sm md:text-base text-ink-soft leading-relaxed font-display italic animate-fade-up">
+        <p className="mt-6 max-w-2xl text-sm md:text-base text-ink-soft leading-relaxed font-accent italic animate-fade-up">
           Every academic claim has evidence. Click any box for the full story —
           transcripts, competition records, and the physics log.
         </p>

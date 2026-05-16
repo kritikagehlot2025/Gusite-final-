@@ -21,10 +21,10 @@ const Contact = () => {
           <span className="eyebrow">Contact & Links</span>
           <span className="flex-1 h-px bg-border" />
         </div>
-        <h1 className="display-xl text-5xl md:text-7xl lg:text-8xl text-balance max-w-5xl animate-fade-up">
+        <h1 className="display-xl text-4xl md:text-5xl lg:text-6xl text-balance max-w-5xl animate-fade-up">
           Open correspondence and links to everywhere else.
         </h1>
-        <p className="mt-8 max-w-2xl text-lg md:text-xl text-ink-soft leading-relaxed font-display italic animate-fade-up">
+        <p className="mt-8 max-w-2xl text-base md:text-lg text-ink-soft leading-relaxed font-accent italic animate-fade-up">
           Reach out directly via email or connect through any of the channels below.
         </p>
         <div className="rule-gold mt-10" />

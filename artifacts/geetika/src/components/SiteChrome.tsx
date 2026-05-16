@@ -82,7 +82,7 @@ export const SiteNav = () => {
                     }
                   >
                     <span className="font-mono text-[0.7rem] tracking-widest text-muted-foreground w-8">{s.num}</span>
-                    <span className="font-display text-2xl">{s.label}</span>
+                    <span className="font-display text-xl">{s.label}</span>
                   </NavLink>
                 </li>
               ))}
@@ -105,7 +105,7 @@ export const SiteNav = () => {
                     >
                       <CI className="w-3.5 h-3.5 text-gold shrink-0 self-center" />
                       <span className="font-mono text-[0.65rem] tracking-widest text-muted-foreground w-8">{c.num}</span>
-                      <span className="font-display text-lg">{c.label}</span>
+                      <span className="font-display text-base">{c.label}</span>
                     </NavLink>
                   </li>
                 );
@@ -123,7 +123,7 @@ export const SiteFooter = forwardRef<HTMLElement>((_, ref) => (
     <div className="container py-10 grid md:grid-cols-4 gap-8">
       <div className="md:col-span-2">
         <p className="label-gold mb-4">Colophon</p>
-        <p className="font-display text-3xl text-balance leading-tight">
+        <p className="font-display text-2xl text-balance leading-tight">
           A living dossier of one curious mind, updated as the work continues.
         </p>
       </div>

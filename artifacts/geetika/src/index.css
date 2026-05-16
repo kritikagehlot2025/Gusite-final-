@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,500&family=Source+Sans+3:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -150,20 +150,22 @@
   body {
     @apply bg-background text-foreground;
     font-family: 'Source Sans 3', system-ui, sans-serif;
+    font-weight: 400;
     font-feature-settings: 'kern';
     -webkit-font-smoothing: antialiased;
   }
 
   h1, h2, h3, h4, h5, .font-display {
-    font-family: 'Libre Baskerville', Georgia, 'Times New Roman', Times, serif;
+    font-family: 'Playfair Display', Georgia, 'Times New Roman', Times, serif;
     font-feature-settings: 'liga', 'dlig', 'kern';
-    letter-spacing: 0;
-    font-weight: 700;
+    letter-spacing: -0.01em;
+    font-weight: 500;
   }
 
   .font-italic-display, .font-accent {
     font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', Times, serif;
     font-style: italic;
+    font-weight: 500;
     letter-spacing: 0;
   }
 
@@ -208,17 +210,17 @@
     height: 6px;
   }
   .eyebrow {
-    @apply font-mono text-[0.7rem] uppercase tracking-[0.22em] text-muted-foreground;
+    @apply font-mono text-[0.6rem] uppercase tracking-[0.25em] text-muted-foreground;
   }
   .label-gold {
-    @apply font-mono text-[0.65rem] uppercase tracking-[0.3em];
+    @apply font-mono text-[0.55rem] uppercase tracking-[0.32em];
     color: hsl(var(--gold));
   }
   .display-xl {
-    font-family: 'Libre Baskerville', Georgia, 'Times New Roman', Times, serif;
-    font-weight: 700;
-    line-height: 0.96;
-    letter-spacing: 0;
+    font-family: 'Playfair Display', Georgia, 'Times New Roman', Times, serif;
+    font-weight: 500;
+    line-height: 1.02;
+    letter-spacing: -0.02em;
   }
   .drop-cap::first-letter {
     font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', Times, serif;

@@ -24,11 +24,11 @@ const Vault = () => {
         </div>
         <div className="flex items-start gap-5 mb-6 animate-fade-in">
           <FileText className="w-6 h-6 text-gold shrink-0 mt-2" />
-          <h1 className="display-xl text-5xl md:text-7xl lg:text-8xl text-balance max-w-5xl animate-fade-up">
+          <h1 className="display-xl text-4xl md:text-5xl lg:text-6xl text-balance max-w-5xl animate-fade-up">
             Every receipt, open for inspection.
           </h1>
         </div>
-        <p className="mt-8 max-w-2xl text-lg md:text-xl text-ink-soft leading-relaxed font-display italic animate-fade-up">
+        <p className="mt-8 max-w-2xl text-base md:text-lg text-ink-soft leading-relaxed font-accent italic animate-fade-up">
           The full record — interactive CV, downloadable PDF, and a printable résumé.
         </p>
         <div className="rule-gold mt-10" />
@@ -55,7 +55,7 @@ function CVFeatureBlock() {
             <div className="p-8 md:p-12 flex flex-col justify-between gap-8">
               <div>
                 <p className="label-gold mb-4">Curriculum Vitae · 2025</p>
-                <h2 className="font-display text-3xl md:text-5xl text-ink group-hover:text-gold transition-colors duration-500 leading-tight">
+                <h2 className="font-display text-2xl md:text-3xl lg:text-4xl text-ink group-hover:text-gold transition-colors duration-500 leading-tight">
                   Geetika Gehlot
                 </h2>
                 <p className="mt-3 font-mono text-xs uppercase tracking-[0.3em] text-ink-soft">

@@ -23,10 +23,10 @@ const Dashboard = () => {
           <span className="eyebrow">Pages</span>
           <span className="flex-1 h-px bg-border" />
         </div>
-        <h1 className="display-xl text-5xl md:text-7xl lg:text-8xl text-balance max-w-5xl animate-fade-up">
+        <h1 className="display-xl text-4xl md:text-5xl lg:text-6xl text-balance max-w-5xl animate-fade-up">
           One hub for every page.
         </h1>
-        <p className="mt-8 max-w-2xl text-lg md:text-xl text-ink-soft leading-relaxed font-display italic animate-fade-up">
+        <p className="mt-8 max-w-2xl text-base md:text-lg text-ink-soft leading-relaxed font-accent italic animate-fade-up">
           Choose a doorway into the dossier, or use the top-right index as usual.
         </p>
         <div className="rule-gold mt-12" />
@@ -45,13 +45,13 @@ const Dashboard = () => {
                   <div className="flex items-start justify-between gap-4">
                     <div>
                       <p className="font-mono text-[0.65rem] tracking-[0.3em] text-gold">{page.num}</p>
-                      <h2 className="font-display text-3xl md:text-4xl leading-tight text-ink group-hover:text-gold transition-colors duration-300 mt-3">
+                      <h2 className="font-display text-2xl md:text-3xl leading-tight text-ink group-hover:text-gold transition-colors duration-300 mt-3">
                         {page.label}
                       </h2>
                     </div>
                     <ArrowUpRight className="w-5 h-5 text-ink-soft group-hover:text-gold group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-500" />
                   </div>
-                  <p className="mt-8 max-w-sm text-sm md:text-base text-ink-soft leading-relaxed font-display italic">
+                  <p className="mt-8 max-w-sm text-sm md:text-base text-ink-soft leading-relaxed font-accent italic">
                     {page.slug === "vault"
                       ? "Open the CV, résumé, and document archive in one place."
                       : page.slug === "contact"
@@ -104,17 +104,17 @@ const Dashboard = () => {
         <div className="grid md:grid-cols-3 gap-4">
           <a href="mailto:geetikagehlot2009@gmail.com" className="group fancy-tile block border border-border bg-paper p-6 hover:border-gold transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1">
             <p className="font-mono text-[0.65rem] tracking-[0.3em] text-gold">Email</p>
-            <h3 className="mt-4 font-display text-2xl text-ink group-hover:text-gold transition-colors">Send a message</h3>
+            <h3 className="mt-4 font-display text-xl text-ink group-hover:text-gold transition-colors">Send a message</h3>
             <p className="mt-3 text-sm text-ink-soft">Open the mail client directly.</p>
           </a>
           <Link to="/vault" className="group fancy-tile block border border-border bg-paper p-6 hover:border-gold transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1">
             <p className="font-mono text-[0.65rem] tracking-[0.3em] text-gold">CV</p>
-            <h3 className="mt-4 font-display text-2xl text-ink group-hover:text-gold transition-colors">Open the CV page</h3>
+            <h3 className="mt-4 font-display text-xl text-ink group-hover:text-gold transition-colors">Open the CV page</h3>
             <p className="mt-3 text-sm text-ink-soft">The big CV box, downloads, and PDF views live there.</p>
           </Link>
           <Link to="/" className="group fancy-tile block border border-border bg-paper p-6 hover:border-gold transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1">
             <p className="font-mono text-[0.65rem] tracking-[0.3em] text-gold">Home</p>
-            <h3 className="mt-4 font-display text-2xl text-ink group-hover:text-gold transition-colors">Return to home</h3>
+            <h3 className="mt-4 font-display text-xl text-ink group-hover:text-gold transition-colors">Return to home</h3>
             <p className="mt-3 text-sm text-ink-soft">Jump back to the hero slideshow and manifesto.</p>
           </Link>
         </div>

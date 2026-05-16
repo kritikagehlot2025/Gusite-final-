@@ -171,7 +171,7 @@ export function BentoCard({ item }: { item: BentoItem }) {
           )}
           <div className="p-7 md:p-10 relative">
             {item.eyebrow && <p className="label-gold mb-3">{item.eyebrow}</p>}
-            <DialogTitle className="font-display text-2xl md:text-4xl text-ink leading-tight pr-8">
+            <DialogTitle className="font-display text-xl md:text-2xl lg:text-3xl text-ink leading-tight pr-8">
               {item.title}
             </DialogTitle>
             {item.meta && (

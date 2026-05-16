@@ -14,10 +14,10 @@ const Proof = () => {
           <span className="eyebrow">Proof of Curiosity</span>
           <span className="flex-1 h-px bg-border" />
         </div>
-        <h1 className="display-xl text-5xl md:text-7xl lg:text-8xl text-balance max-w-5xl animate-fade-up">
+        <h1 className="display-xl text-4xl md:text-5xl lg:text-6xl text-balance max-w-5xl animate-fade-up">
           Notebook scans, sketches, half-formed ideas.
         </h1>
-        <p className="mt-8 max-w-2xl text-lg md:text-xl text-ink-soft leading-relaxed font-display italic animate-fade-up">
+        <p className="mt-8 max-w-2xl text-lg md:text-xl text-ink-soft leading-relaxed font-accent italic animate-fade-up">
           Not finished work — the raw material. Marginalia, doodles, margin calculations,
           the pages you'd normally throw away. Kept here because they prove the process is real.
         </p>
@@ -49,7 +49,7 @@ const Proof = () => {
           <span className="label-gold">Process</span>
           <span className="flex-1 h-px bg-border" />
         </div>
-        <p className="max-w-3xl text-ink-soft text-lg leading-relaxed font-display italic">
+        <p className="max-w-3xl text-ink-soft text-lg leading-relaxed font-accent italic">
           Every item here is unedited. No retouching, no reordering, no cherry-picking.
           The point is to show that curiosity leaves a paper trail — even when the paper
           is crumpled, crossed out, or coffee-stained.

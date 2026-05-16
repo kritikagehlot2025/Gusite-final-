@@ -19,11 +19,11 @@ export const PageHeader = ({
       <span className="eyebrow">{kicker}</span>
       <span className="flex-1 h-px bg-border" />
     </div>
-    <h1 className="display-xl text-5xl md:text-7xl lg:text-8xl text-balance max-w-5xl animate-fade-up">
+    <h1 className="display-xl text-4xl md:text-5xl lg:text-6xl text-balance max-w-5xl animate-fade-up">
       {title}
     </h1>
     {lede && (
-      <p className="mt-8 max-w-2xl text-lg md:text-xl text-ink-soft leading-relaxed font-display italic animate-fade-up">
+      <p className="mt-8 max-w-2xl text-base md:text-lg text-ink-soft leading-relaxed font-accent italic animate-fade-up">
         {lede}
       </p>
     )}
@@ -48,7 +48,7 @@ export const Section = ({
         {number && <span className="font-mono text-[0.7rem] text-gold tracking-widest">{number}</span>}
         <span className="eyebrow">Subsection</span>
       </div>
-      <h2 className="font-display text-3xl md:text-5xl text-ink leading-tight">{title}</h2>
+      <h2 className="font-display text-2xl md:text-3xl lg:text-4xl text-ink leading-tight">{title}</h2>
       {intro && <p className="mt-4 text-ink-soft text-lg leading-relaxed">{intro}</p>}
     </header>
     {children}
@@ -68,7 +68,7 @@ export const Card = ({
 }) => (
   <article className="dossier-card p-7 hover-lift">
     {eyebrow && <p className="label-gold mb-3">{eyebrow}</p>}
-    <h3 className="font-display text-2xl text-ink mb-2 leading-tight">{title}</h3>
+    <h3 className="font-display text-xl text-ink mb-2 leading-tight">{title}</h3>
     {meta && <p className="font-mono text-[0.7rem] uppercase tracking-widest text-muted-foreground mb-4">{meta}</p>}
     {children && <div className="text-ink-soft text-sm leading-relaxed mt-3">{children}</div>}
   </article>
@@ -76,7 +76,7 @@ export const Card = ({
 
 export const Stat = ({ value, label }: { value: string; label: string }) => (
   <div className="border-t border-ink/40 pt-3">
-    <div className="font-display text-4xl md:text-5xl text-ink leading-none">{value}</div>
+    <div className="font-display text-3xl md:text-4xl text-ink leading-none">{value}</div>
     <div className="mt-2 eyebrow">{label}</div>
   </div>
 );
@@ -84,7 +84,7 @@ export const Stat = ({ value, label }: { value: string; label: string }) => (
 export const PullQuote = ({ children, attr }: { children: ReactNode; attr?: string }) => (
   <blockquote className="my-16 max-w-3xl mx-auto text-center">
     <span className="text-gold font-display text-6xl leading-none">“</span>
-    <p className="font-display italic text-2xl md:text-3xl text-ink leading-snug -mt-4">
+    <p className="font-accent italic text-xl md:text-2xl text-ink leading-snug -mt-4">
       {children}
     </p>
     {attr && <footer className="eyebrow mt-4">— {attr}</footer>}
@@ -101,7 +101,7 @@ export const Timeline = ({
       <li key={i} className="pl-8 relative">
         <span className="absolute -left-[7px] top-2 w-3 h-3 bg-gold rounded-full" />
         <p className="font-mono text-xs text-gold tracking-widest">{it.year}</p>
-        <h4 className="font-display text-xl text-ink mt-1">{it.title}</h4>
+        <h4 className="font-display text-lg text-ink mt-1">{it.title}</h4>
         <p className="text-ink-soft text-sm mt-2 leading-relaxed">{it.body}</p>
       </li>
     ))}
@@ -124,7 +124,7 @@ export const Placeholder = ({ label, ratio = "aspect-[4/3]" }: { label: string; 
 export const Embed = ({ title, todo }: { title: string; todo: string }) => (
   <div className="border border-gold/60 bg-paper p-6 relative">
     <span className="stamp absolute -top-3 left-4 bg-paper">TODO · Embed</span>
-    <p className="font-display text-xl text-ink mt-2">{title}</p>
+    <p className="font-display text-lg text-ink mt-2">{title}</p>
     <p className="font-mono text-xs text-ink-soft mt-3 leading-relaxed">{todo}</p>
   </div>
 );
