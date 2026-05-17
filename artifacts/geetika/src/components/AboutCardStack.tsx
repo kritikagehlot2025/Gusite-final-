@@ -276,10 +276,10 @@ function ProfileCard({
   const bOp = lerp(0.18, 0.7, ep);
   const spr  = lerp(0, 90, ep);
   const gOp  = lerp(0, 0.18, ep);
-  const imgW = lerp(48, 88, ep);
+  const imgW = lerp(48, 112, ep);
   const PY   = lerp(20, 48, ep);
-  const PX   = lerp(22, 56, ep);
-  const W    = lerp(50, 94, ep);
+  const PX   = lerp(22, 72, ep);
+  const W    = lerp(58, 100, ep);
 
   return (
     <div
@@ -297,10 +297,10 @@ function ProfileCard({
       <div
         className="relative flex flex-col bg-[hsl(220_30%_7%)] border overflow-hidden"
         style={{
-          width: `${W}%`, maxWidth: "1160px",
+          width: `${W}%`, maxWidth: "1280px",
           height: `calc(100vh - ${lerp(88, 36, ep)}px)`,
           borderColor: `hsl(41 80% 60% / ${bOp})`,
-          borderRadius: `${lerp(8, 4, ep)}px`,
+          borderRadius: `${lerp(22, 14, ep)}px`,
           padding: `${PY}px ${PX}px`,
           boxShadow: `0 0 0 1px hsl(41 80% 55% / ${gOp * 0.8}), 0 ${Math.round(spr * 0.3)}px ${spr}px -12px hsl(220 90% 3%/0.96), 0 0 ${Math.round(spr * 0.5)}px -18px hsl(41 80% 55% / ${gOp * 2})`,
           transition: "width 0.8s cubic-bezier(0.22,1,0.36,1), height 0.8s cubic-bezier(0.22,1,0.36,1), padding 0.8s cubic-bezier(0.22,1,0.36,1), border-color 0.8s cubic-bezier(0.22,1,0.36,1), box-shadow 0.8s cubic-bezier(0.22,1,0.36,1), border-radius 0.8s cubic-bezier(0.22,1,0.36,1)",
@@ -312,7 +312,7 @@ function ProfileCard({
         ))}
 
         {/* Header */}
-        <header className="flex items-start gap-5 shrink-0" style={{ marginBottom: `${lerp(0, 28, ep)}px`, transition: "margin 0.8s cubic-bezier(0.22,1,0.36,1)" }}>
+        <header className="flex items-start gap-7 shrink-0" style={{ marginBottom: `${lerp(0, 34, ep)}px`, transition: "margin 0.8s cubic-bezier(0.22,1,0.36,1)" }}>
           <figure className="relative shrink-0 overflow-hidden border bg-[hsl(220_30%_10%)]"
             style={{ width: `${imgW}px`, aspectRatio: "3/4", borderColor: `hsl(41 80% 60%/${lerp(0.15, 0.45, ep)})`, transition: "width 0.8s cubic-bezier(0.22,1,0.36,1)" }}>
             <img src={heroPortrait} alt="Geetika" className="absolute inset-0 w-full h-full object-cover object-[60%_25%]" />
