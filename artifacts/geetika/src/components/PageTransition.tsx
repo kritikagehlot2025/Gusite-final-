@@ -1,15 +1,29 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
+// Standard navigation timing
 const DRIP_TIME = 600;
-const HOLD_TIME = 500;
-const LIFT_TIME = 600;
-const IDLE_HOLD = 80;
+const HOLD_TIME = 520;
+const LIFT_TIME = 700;
+const FADE_TIME = 400;
 
-// Decelerating goop: fast start, slow settle — like goo landing
+// First-render intro: slower, more dramatic
+const INTRO_DRIP = 1100;
+const INTRO_HOLD = 800;
+const INTRO_LIFT = 950;
+const INTRO_FADE = 500;
+
+// Decelerating goop: fast start, slow settle
 const EASE_OUT_DECEL = "cubic-bezier(0.22, 1, 0.36, 1)";
 
-type Phase = "idle" | "dripping" | "covered" | "lifting" | "afterlift";
+// Phases:
+//   idle       — panel at -180%, opacity 0, invisible, ready for next
+//   dripping   — panel drops from -180% to 0%, opacity fades in
+//   covered    — panel at 0%, fully visible, holds while page navigates
+//   lifting    — panel drops from 0% to +180%, fully visible
+//   fading     — panel stays at +180%, opacity fades to 0
+//   idle       — panel snaps to -180%, opacity already 0, no glitch
+type Phase = "idle" | "dripping" | "covered" | "lifting" | "fading";
 
 const PAGE_LABELS: Record<string, string> = {
   "/": "Geetika Gehlot",
@@ -51,6 +65,13 @@ export function PageTransition() {
   const timers = useRef<number[]>([]);
   const pendingDest = useRef<string | null>(null);
 
+  // Pick timing based on whether this is the first-load intro
+  const isIntro = firstRender;
+  const drip = isIntro ? INTRO_DRIP : DRIP_TIME;
+  const hold = isIntro ? INTRO_HOLD : HOLD_TIME;
+  const lift = isIntro ? INTRO_LIFT : LIFT_TIME;
+  const fade = isIntro ? INTRO_FADE : FADE_TIME;
+
   const runTransition = useCallback((destPathname: string, doReload = false) => {
     timers.current.forEach(window.clearTimeout);
     timers.current = [];
@@ -65,86 +86,63 @@ export function PageTransition() {
     setShrinkLabel(false);
     setPhase("dripping");
 
+    const d = DRIP_TIME;
+    const h = HOLD_TIME;
+    const l = LIFT_TIME;
+    const f = FADE_TIME;
+
     timers.current.push(
-      // Phase 1: dripping → covered (screen fully covers)
       window.setTimeout(() => {
         setPhase("covered");
-        // Navigate NOW — screen is fully covered, no flash possible
         if (doReload) {
           window.setTimeout(() => window.location.reload(), 60);
         } else if (pendingDest.current && pendingDest.current !== lastPath.current) {
           navigate(pendingDest.current);
         }
-      }, DRIP_TIME),
-      // Phase 2: covered → lifting (start revealing new page)
+      }, d),
       window.setTimeout(() => {
         lastPath.current = destPathname;
         setShrinkLabel(true);
         setPhase("lifting");
-      }, DRIP_TIME + HOLD_TIME),
-      // Phase 3: lifting → afterlift (panel below viewport, invisible)
-      window.setTimeout(() => setPhase("afterlift"), DRIP_TIME + HOLD_TIME + LIFT_TIME),
-      // Phase 4: afterlift → idle (snap back above viewport, ready for next)
+      }, d + h),
+      window.setTimeout(() => setPhase("fading"), d + h + l),
       window.setTimeout(() => {
         setPhase("idle");
         setShrinkLabel(false);
         pendingDest.current = null;
-      }, DRIP_TIME + HOLD_TIME + LIFT_TIME + IDLE_HOLD),
+      }, d + h + l + f),
     );
   }, [navigate]);
 
-  // --- Global click interceptor ---
-  // Catches all <a> clicks, including react-router <Link> elements,
-  // and routes them through gg-force-nav so the transition plays first.
   useEffect(() => {
     const onClick = (e: MouseEvent) => {
       const anchor = (e.target as HTMLElement).closest("a");
       if (!anchor) return;
-
       const href = anchor.getAttribute("href");
       if (!href) return;
-
-      // Let browser handle external links, special protocols, downloads, new tabs
       if (
-        href.startsWith("http") ||
-        href.startsWith("//") ||
-        href.startsWith("mailto:") ||
-        href.startsWith("tel:") ||
-        anchor.hasAttribute("download") ||
-        anchor.target === "_blank"
+        href.startsWith("http") || href.startsWith("//") || href.startsWith("mailto:") ||
+        href.startsWith("tel:") || anchor.hasAttribute("download") || anchor.target === "_blank"
       ) return;
-
-      // Let browser handle modifier clicks (open in new tab, etc.)
       if (e.ctrlKey || e.metaKey || e.shiftKey || e.button !== 0) return;
-
-      // Skip same-page hash-only links (let browser scroll)
       if (href.startsWith("#")) return;
-
-      // Only intercept internal paths
       if (!href.startsWith("/")) return;
-
       e.preventDefault();
       window.dispatchEvent(
         new CustomEvent("gg-force-nav", { detail: { to: href, reload: false } })
       );
     };
-
     document.addEventListener("click", onClick);
     return () => document.removeEventListener("click", onClick);
   }, []);
 
-  // --- gg-force-nav handler ---
-  // This is the ONLY way to trigger a transition. It starts the overlay,
-  // then navigates once the screen is fully covered.
   useEffect(() => {
     const handler = (e: Event) => {
       const { to, reload } = (e as CustomEvent<{ to: string; reload?: boolean }>).detail;
       if (to === pathname) {
-        // Same page — replay transition, optionally reload
         runTransition(to, reload ?? false);
         return;
       }
-      // Different page — store destination, start transition
       pendingDest.current = to;
       runTransition(to, false);
     };
@@ -152,10 +150,6 @@ export function PageTransition() {
     return () => window.removeEventListener("gg-force-nav", handler);
   }, [pathname, runTransition]);
 
-  // --- Pathname change handler ---
-  // On first render: play the intro transition.
-  // On subsequent renders: the URL changed because navigate() was called
-  // during the covered phase. Just update lastPath — DO NOT start a new transition.
   useEffect(() => {
     if (firstRender) {
       const label =
@@ -166,64 +160,70 @@ export function PageTransition() {
       setShrinkLabel(false);
       setPhase("idle");
 
-      // Kick off after paint so the CSS transition actually fires
       requestAnimationFrame(() => {
         requestAnimationFrame(() => setPhase("dripping"));
       });
 
       timers.current = [
-        window.setTimeout(() => setPhase("covered"), DRIP_TIME),
+        window.setTimeout(() => setPhase("covered"), drip),
         window.setTimeout(() => {
           lastPath.current = pathname;
           setShrinkLabel(true);
           setPhase("lifting");
-        }, DRIP_TIME + HOLD_TIME),
-        window.setTimeout(() => setPhase("afterlift"), DRIP_TIME + HOLD_TIME + LIFT_TIME),
+        }, drip + hold),
+        window.setTimeout(() => setPhase("fading"), drip + hold + lift),
         window.setTimeout(() => {
           setPhase("idle");
           setShrinkLabel(false);
           setFirstRender(false);
-        }, DRIP_TIME + HOLD_TIME + LIFT_TIME + IDLE_HOLD),
+        }, drip + hold + lift + fade),
       ];
       return () => timers.current.forEach(window.clearTimeout);
     }
-
-    // Not first render: pathname changed from navigate() during covered phase
     if (pathname === lastPath.current) return;
     lastPath.current = pathname;
-  }, [pathname, firstRender]);
+  }, [pathname, firstRender, drip, hold, lift, fade]);
 
-  // --- Motion: always drops downward ---
+  // --- Motion ---
   //
-  //  Entry (idle → dripping):  hidden above (-110%) → visible (0%)
-  //    → Panel drops DOWN from above. Decelerating like goo landing.
+  //  Panel position:
+  //    idle      : -180% (above viewport, invisible)
+  //    dripping  : 0%   (centered, dropped down from above)
+  //    covered   : 0%   (holding still)
+  //    lifting   : +180% (dropped down past bottom)
+  //    fading    : +180% (holding still, fading out)
+  //    idle      : -180% (snapped back, opacity already 0)
   //
-  //  Exit  (covered → lifting): visible (0%) → hidden below (+110%)
-  //    → Panel drops DOWN past bottom. Goo drips away.
-  //
-  //  Idle: panel sits at -110% (above viewport, invisible, ready to drop again)
+  //  Wrapper opacity:
+  //    idle      : 0
+  //    dripping  : 1 (with fade-in transition)
+  //    covered   : 1
+  //    lifting   : 1
+  //    fading    : 0 (with fade-out transition — lasts long enough!)
+  //    idle      : 0 (already 0, no visual change when snapping)
 
   const panelTranslateY =
-    phase === "idle" ? -110
+    phase === "idle" ? -180
     : phase === "dripping" ? 0
     : phase === "covered" ? 0
-    : phase === "lifting" ? 110
-    : 110;
+    : 180;
 
-  const panelOpacity = phase === "idle" || phase === "afterlift" ? 0 : 1;
+  const wrapperOpacity = phase === "idle" || phase === "fading" ? 0 : 1;
 
   const transformTransition =
     phase === "dripping"
-      ? `transform ${DRIP_TIME}ms ${EASE_OUT_DECEL}`
-      : phase === "lifting" || phase === "afterlift"
-      ? `transform ${LIFT_TIME}ms ${EASE_OUT_DECEL}`
+      ? `transform ${drip}ms ${EASE_OUT_DECEL}`
+      : phase === "lifting"
+      ? `transform ${lift}ms ${EASE_OUT_DECEL}`
       : "none";
 
-  const opacityTransition =
+  const wrapperOpacityTransition =
     phase === "dripping"
-      ? `opacity ${DRIP_TIME * 0.5}ms ease`
-      : phase === "lifting" || phase === "afterlift"
-      ? `opacity ${LIFT_TIME * 0.6}ms ease`
+      ? `opacity ${drip * 0.6}ms ease`
+      : phase === "lifting"
+      ? `opacity ${fade}ms ease`
+      : phase === "fading"
+      ? `opacity ${fade}ms ease`
       : "none";
 
   const labelOpacity = phase === "covered" && !shrinkLabel ? 1 : 0;
@@ -235,10 +235,13 @@ export function PageTransition() {
 
   const labelTransition =
     phase === "lifting"
-      ? `opacity ${Math.round(LIFT_TIME * 0.5)}ms ease, transform ${Math.round(LIFT_TIME * 0.85)}ms cubic-bezier(0.4, 0, 0.2, 1)`
+      ? `opacity ${Math.round(lift * 0.5)}ms ease, transform ${Math.round(lift * 0.85)}ms cubic-bezier(0.4, 0, 0.2, 1)`
       : phase === "covered"
       ? "opacity 200ms ease 100ms"
       : "none";
+
+  // Home intro gets a unique extra element — a thin decorative line
+  const showIntroLine = isHomeDest && isIntro;
 
   return (
     <>
@@ -258,16 +261,17 @@ export function PageTransition() {
         </defs>
       </svg>
 
-      {/* Always mounted — no mount/unmount flash */}
+      {/* Outer wrapper — controls opacity. Always mounted. */}
       <div
         aria-hidden
         className="pointer-events-none fixed inset-0 overflow-hidden"
         style={{
           zIndex: 9999,
-          opacity: panelOpacity,
-          transition: opacityTransition,
+          opacity: wrapperOpacity,
+          transition: wrapperOpacityTransition,
         }}
       >
+        {/* Inner panel — moves with transform. */}
         <div
           style={{
             position: "absolute",
@@ -275,6 +279,7 @@ export function PageTransition() {
             transform: `translateY(${panelTranslateY}%)`,
             transition: transformTransition,
             willChange: "transform",
+            opacity: 1,
           }}
         >
           {/* Background */}
@@ -330,15 +335,26 @@ export function PageTransition() {
                 >
                   Geetika Gehlot
                 </span>
+                {showIntroLine && (
+                  <span
+                    style={{
+                      width: "clamp(40px, 8vw, 80px)",
+                      height: 1,
+                      background: "hsl(43 60% 55% / 0.4)",
+                      marginTop: "clamp(0.8rem, 2vh, 1.4rem)",
+                      transition: "width 800ms ease 400ms",
+                    }}
+                  />
+                )}
                 <span
                   style={{
                     fontFamily: "'Playfair Display', Georgia, serif",
-                    fontSize: "clamp(0.85rem, 1.5vw, 1.1rem)",
+                    fontSize: "clamp(1.4rem, 3vw, 2.2rem)",
                     fontWeight: 500,
                     fontStyle: "italic",
-                    color: "hsl(43 60% 55% / 0.65)",
-                    letterSpacing: "0.08em",
-                    marginTop: "clamp(1.5rem, 4vh, 2.5rem)",
+                    color: "hsl(43 60% 55% / 0.75)",
+                    letterSpacing: "0.1em",
+                    marginTop: "clamp(2.6rem, 8vh, 4.5rem)",
                   }}
                 >
                   Home
@@ -363,12 +379,12 @@ export function PageTransition() {
                 <span
                   style={{
                     fontFamily: "'Playfair Display', Georgia, serif",
-                    fontSize: "clamp(0.85rem, 1.5vw, 1.1rem)",
+                    fontSize: "clamp(1.4rem, 3vw, 2.2rem)",
                     fontWeight: 500,
                     fontStyle: "italic",
-                    color: "hsl(43 60% 55% / 0.65)",
-                    letterSpacing: "0.08em",
-                    marginTop: "clamp(1.5rem, 4vh, 2.5rem)",
+                    color: "hsl(43 60% 55% / 0.75)",
+                    letterSpacing: "0.1em",
+                    marginTop: "clamp(2.6rem, 8vh, 4.5rem)",
                   }}
                 >
                   Geetika Gehlot
@@ -377,7 +393,7 @@ export function PageTransition() {
             )}
           </div>
 
-          {/* Top goop — drips down with the panel */}
+          {/* Top goop */}
           <svg
             aria-hidden
             viewBox="0 0 1000 200"
@@ -401,7 +417,7 @@ export function PageTransition() {
             </g>
           </svg>
 
-          {/* Bottom goop — drips down with the panel */}
+          {/* Bottom goop */}
           <svg
             aria-hidden
             viewBox="0 0 1000 200"
