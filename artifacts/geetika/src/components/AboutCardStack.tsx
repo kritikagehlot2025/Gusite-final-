@@ -67,7 +67,7 @@ function EssayPhoto({ src, alt, caption, align = "right" }: { src: string; alt: 
 
 function Essay() {
   return (
-    <article style={{ maxWidth: "640px", margin: "0 auto", paddingBottom: "3rem" }}>
+    <article style={{ maxWidth: "640px", margin: "0 auto", paddingBottom: "0.25rem" }}>
 
       <section style={{ marginBottom: "2.5rem" }}>
         <h3 style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: "clamp(13px,1.1vw,15px)", fontWeight: 600, letterSpacing: "0.22em", textTransform: "uppercase", color: "hsl(43 70% 58%)", marginBottom: "1rem", opacity: 0.85 }}>I. Origin</h3>

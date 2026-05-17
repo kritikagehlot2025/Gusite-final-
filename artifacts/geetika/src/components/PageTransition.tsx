@@ -36,6 +36,16 @@ export function PageTransition() {
   const [isHomeDest, setIsHomeDest] = useState(false);
   const [shrinkLabel, setShrinkLabel] = useState(false);
   const timers = useRef<number[]>([]);
+  const [bgEntryOpacity, setBgEntryOpacity] = useState(0);
+  const entryRaf = useRef<number | null>(null);
+
+  const triggerBgFadeIn = useCallback(() => {
+    setBgEntryOpacity(0);
+    if (entryRaf.current !== null) cancelAnimationFrame(entryRaf.current);
+    entryRaf.current = requestAnimationFrame(() => {
+      entryRaf.current = requestAnimationFrame(() => setBgEntryOpacity(1));
+    });
+  }, []);
 
   const runTransition = useCallback((destPathname: string, doReload = false) => {
     timers.current.forEach(window.clearTimeout);
@@ -49,6 +59,7 @@ export function PageTransition() {
     setIsHomeDest(destPathname === "/");
     setShrinkLabel(false);
     setPhase("dripping");
+    triggerBgFadeIn();
 
     timers.current.push(
       window.setTimeout(() => setPhase("covered"), DRIP_TIME),
@@ -65,7 +76,7 @@ export function PageTransition() {
         setShrinkLabel(false);
       }, DRIP_TIME + HOLD_TIME + LIFT_TIME),
     );
-  }, []);
+  }, [triggerBgFadeIn]);
 
   useEffect(() => {
     if (firstRender) {
@@ -76,6 +87,7 @@ export function PageTransition() {
       setIsHomeDest(pathname === "/");
       setShrinkLabel(false);
       setPhase("dripping");
+      triggerBgFadeIn();
       timers.current = [
         window.setTimeout(() => setPhase("covered"), DRIP_TIME),
         window.setTimeout(() => {
@@ -180,6 +192,8 @@ export function PageTransition() {
                 inset: 0,
                 background:
                   "linear-gradient(175deg, hsl(220 52% 5%) 0%, hsl(220 48% 4%) 100%)",
+                opacity: bgEntryOpacity,
+                transition: "opacity 160ms ease",
               }}
             />
 
@@ -190,6 +204,8 @@ export function PageTransition() {
                 background:
                   "radial-gradient(ellipse 60% 45% at 50% 50%, hsl(43 60% 14% / 0.5) 0%, transparent 100%)",
                 pointerEvents: "none",
+                opacity: bgEntryOpacity,
+                transition: "opacity 160ms ease",
               }}
             />
 
@@ -282,6 +298,8 @@ export function PageTransition() {
                 height: 190,
                 display: "block",
                 overflow: "visible",
+                opacity: bgEntryOpacity,
+                transition: "opacity 160ms ease",
               }}
             >
               <g filter="url(#gg-slime-goo)" fill="hsl(43 82% 50%)">
