@@ -11,6 +11,7 @@ import Works from "./pages/Works.tsx";
 import Vault from "./pages/Vault.tsx";
 import Contact from "./pages/Contact.tsx";
 import { ScrollToTop } from "./components/ScrollToTop";
+import { PageTransition } from "./components/PageTransition";
 import { LEGACY_REDIRECTS } from "./data/clusters";
 import NotFound from "./pages/NotFound.tsx";
 
@@ -23,6 +24,7 @@ const App = () => (
       <Sonner />
       <BrowserRouter basename={import.meta.env.BASE_URL}>
         <ScrollToTop />
+        <PageTransition />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/dashboard" element={<Dashboard />} />
