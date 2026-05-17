@@ -30,7 +30,7 @@ const Contact = () => {
         <div className="rule-gold mt-10" />
       </section>
 
-      <section className="container pb-16">
+      <section className="container pb-16 flex justify-center">
         <ContactBlock />
       </section>
     </PageShell>
@@ -65,7 +65,7 @@ function ContactBlock() {
   ];
 
   return (
-    <div className="space-y-10">
+    <div className="space-y-10 w-full max-w-4xl mx-auto">
       {/* Archive-style channel tiles */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
         {channels.map(({ icon: I, label, value, href, num }) => {
@@ -100,7 +100,7 @@ function ContactBlock() {
       </div>
 
       {/* Contact form */}
-      <form onSubmit={onSubmit} className="bg-paper-deep border border-border p-6 md:p-8 space-y-4 max-w-2xl">
+      <form onSubmit={onSubmit} className="bg-paper-deep border border-border p-6 md:p-8 space-y-4 w-full max-w-3xl mx-auto">
         <p className="font-mono text-[0.65rem] uppercase tracking-[0.3em] text-gold mb-6">Send a message</p>
         <div className="grid sm:grid-cols-2 gap-4">
           <label className="block">
