@@ -19,7 +19,7 @@ const About = () => {
         <div className="grid md:grid-cols-[1fr,auto] gap-8 items-start">
           <div>
             <h1 className="display-xl text-5xl md:text-7xl lg:text-8xl text-balance max-w-5xl animate-fade-up">
-              Who I am, where I come from, and where I am headed.
+              My Story
             </h1>
             <p className="mt-8 max-w-2xl text-lg md:text-xl text-ink-soft leading-relaxed font-display italic animate-fade-up">
               Born in India, raised between continents, now building from Montréal.
