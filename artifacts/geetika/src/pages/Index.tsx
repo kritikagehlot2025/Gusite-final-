@@ -175,11 +175,6 @@ const Index = () => {
           </div>
         </div>
       </section>
-      <div data-reveal>
-        <PullQuote attr="The operating principle">
-          Curiosity is not my hobby. It is my operating system.
-        </PullQuote>
-      </div>
       {/* SKILLS TOOLKIT — layered telescope + cosmos veil + scanlines */}
       <section className="relative py-10 md:py-14 overflow-hidden scanlines film-grain dust weave-soft stipple">
         <img
