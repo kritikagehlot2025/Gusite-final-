@@ -76,8 +76,8 @@ export const CLUSTERS: Cluster[] = [
     topics: [
       topic("Education Timeline", "India to Québec secondary system.",
         "Schooling began in India and continued in Canada after relocation in 2024. Current studies are based in Montréal within the Quebec secondary system, completing Secondary IV. Academic focus includes mathematics, physics, chemistry, biology, computer science, languages, and humanities, alongside participation in advanced preparation programs."),
-      topic("Graduation 2026", "Secondary IV — crossing the stage.",
-        "Completing Secondary IV in Montréal in 2026. A milestone that marks the close of high school and the launch of the next chapter — university-level science and research. Four years condensed into one gown, one stage, and a lot of accumulated work.",
+      topic("Graduation 2026", "Sec 5 — crossing the stage.",
+        "Completing Sec 5 in Montréal in 2026. A milestone that marks the close of high school and the launch of the next chapter — university-level science and research. Four years condensed into one gown, one stage, and a lot of accumulated work.",
         { type: "image", src: "/photo-graduation.jpg", caption: "Graduation — Secondary IV, Montréal 2025" }),
       topic("Subject Strengths", "Mathematics, physics, computer science.",
         "Primary focus areas are mathematics, physics, and computer science. Additional competence in languages, writing, and humanities subjects. Academic performance includes strong results in standardized evaluations and school examinations."),

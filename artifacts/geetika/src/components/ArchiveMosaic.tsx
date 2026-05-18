@@ -1,7 +1,14 @@
-import { useState } from "react";
-import { ArrowUpRight, ExternalLink } from "lucide-react";
+import { useMemo, useState } from "react";
+import { ArrowUpRight, ChevronLeft, ChevronRight, ExternalLink, Play } from "lucide-react";
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
 import type { TopicData } from "@/data/clusters";
+
+type GalleryItem = NonNullable<TopicData["embed"]>;
+
+function getGallery(topic: TopicData): GalleryItem[] {
+  const embeds = (topic as TopicData & { gallery?: GalleryItem[] }).gallery;
+  return embeds?.length ? embeds : topic.embed ? [topic.embed] : [];
+}
 
 // We use a 6-column grid (LCM of 2 and 3) so spans are always whole integers:
 //   2-col row items  → col-span-3  (half of 6)
@@ -56,7 +63,13 @@ function ArchiveTile({
   spanClass: string;
 }) {
   const [open, setOpen] = useState(false);
+  const [mediaIndex, setMediaIndex] = useState(0);
   const num = String(index + 1).padStart(2, "0");
+  const gallery = useMemo(() => getGallery(topic), [topic]);
+  const media = gallery[mediaIndex];
+  const hasGallery = gallery.length > 1;
+  const prevMedia = () => setMediaIndex((v) => (v - 1 + gallery.length) % gallery.length);
+  const nextMedia = () => setMediaIndex((v) => (v + 1) % gallery.length);
 
   return (
     <>
@@ -90,38 +103,38 @@ function ArchiveTile({
         <DialogContent className="max-w-2xl p-0 overflow-hidden bg-paper">
           <div className="grid md:grid-cols-[1fr,1.1fr]">
             <div className="relative min-h-[200px] md:min-h-[440px] overflow-hidden bg-navy-deep">
-              {topic.embed?.type === "youtube" && (
+              {media?.type === "youtube" && (
                 <iframe
-                  src={topic.embed.src}
-                  title={topic.embed.caption ?? topic.label}
+                  src={media.src}
+                  title={media.caption ?? topic.label}
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                   className="absolute inset-0 w-full h-full"
                   style={{ border: 0 }}
                 />
               )}
-              {topic.embed?.type === "image" && (
+              {media?.type === "image" && (
                 <img
-                  src={topic.embed.src}
-                  alt={topic.embed.caption ?? topic.label}
+                  src={media.src}
+                  alt={media.caption ?? topic.label}
                   className="absolute inset-0 w-full h-full object-cover object-top"
                 />
               )}
-              {topic.embed?.type === "link" && (
+              {media?.type === "link" && (
                 <div className="absolute inset-0 flex flex-col items-center justify-center p-8 gap-6">
                   <div className="text-center space-y-3">
                     <span className="font-mono text-[0.55rem] uppercase tracking-[0.32em] text-gold/60 block">
                       External Site
                     </span>
                     <p className="font-display text-xl text-paper-contrast leading-tight">
-                      {topic.embed.caption ?? topic.label}
+                      {media.caption ?? topic.label}
                     </p>
                     <p className="font-mono text-[0.58rem] uppercase tracking-[0.18em] text-gold/50">
-                      {topic.embed.src.replace(/^https?:\/\//, "")}
+                      {media.src.replace(/^https?:\/\//, "")}
                     </p>
                   </div>
                   <a
-                    href={topic.embed.src}
+                    href={media.src}
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={(e) => e.stopPropagation()}
@@ -131,7 +144,7 @@ function ArchiveTile({
                   </a>
                 </div>
               )}
-              {!topic.embed && (
+              {!media && (
                 <div className="absolute inset-0 flex items-center justify-center">
                   <span className="font-display text-4xl text-gold/20 tracking-widest">—</span>
                 </div>
@@ -139,10 +152,21 @@ function ArchiveTile({
               <div className="absolute inset-0 bg-gradient-to-t from-navy-deep/70 via-transparent to-transparent pointer-events-none" />
               <div className="absolute bottom-5 left-5 right-5 pointer-events-none">
                 <span className="font-mono text-[0.6rem] uppercase tracking-[0.3em] text-gold/70">{num}</span>
-                {topic.embed?.caption && topic.embed.type !== "link" && (
-                  <p className="font-mono text-[0.55rem] uppercase tracking-[0.2em] text-gold/45 mt-1 line-clamp-2">{topic.embed.caption}</p>
+                {media?.caption && media.type !== "link" && (
+                  <p className="font-mono text-[0.55rem] uppercase tracking-[0.2em] text-gold/45 mt-1 line-clamp-2">{media.caption}</p>
                 )}
               </div>
+              {hasGallery && (
+                <div className="absolute top-4 right-4 flex items-center gap-2 bg-navy-deep/60 border border-gold/20 px-2 py-1 text-gold">
+                  <button type="button" onClick={(e) => { e.stopPropagation(); prevMedia(); }} className="pointer-events-auto">
+                    <ChevronLeft className="h-3.5 w-3.5" />
+                  </button>
+                  <span className="font-mono text-[0.5rem] uppercase tracking-[0.22em]">{String(mediaIndex + 1).padStart(2, "0")}/{String(gallery.length).padStart(2, "0")}</span>
+                  <button type="button" onClick={(e) => { e.stopPropagation(); nextMedia(); }} className="pointer-events-auto">
+                    <ChevronRight className="h-3.5 w-3.5" />
+                  </button>
+                </div>
+              )}
             </div>
             <div className="p-7 md:p-9 flex flex-col justify-center">
               <DialogTitle className="font-display text-2xl md:text-3xl leading-tight text-ink mb-2">
@@ -159,6 +183,23 @@ function ArchiveTile({
                   ))}
                 </div>
               </DialogDescription>
+              {hasGallery && (
+                <div className="mt-6 flex flex-wrap gap-2">
+                  {gallery.map((item, i) => (
+                    <button
+                      key={`${item.type}-${item.src}-${i}`}
+                      type="button"
+                      onClick={() => setMediaIndex(i)}
+                      className={`inline-flex items-center gap-1.5 border px-3 py-1.5 font-mono text-[0.58rem] uppercase tracking-[0.2em] transition-colors ${
+                        i === mediaIndex ? "border-gold text-gold bg-gold/10" : "border-border text-ink-soft hover:border-gold/50"
+                      }`}
+                    >
+                      {item.type === "youtube" ? <Play className="h-3 w-3" /> : null}
+                      {item.caption ?? `${topic.label} ${i + 1}`}
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         </DialogContent>
