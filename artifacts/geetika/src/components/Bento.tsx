@@ -3,7 +3,7 @@ import { ArrowUpRight } from "lucide-react";
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 
 /**
- * Bento system — magazine-style mixed-size cards.
+ * Bento system, magazine-style mixed-size cards.
  * - Always expanded (no toggles).
  * - On HOVER: card grows / lifts in place, hover blurb fades in.
  * - On CLICK: opens a dimmed modal with the full detail (image + long body + meta).
@@ -84,7 +84,7 @@ export function BentoCard({ item, randomize = false }: { item: BentoItem; random
           hasImage ? "film-grain crumpled-paper stipple" : "crumpled-paper film-grain fibers stipple",
           accent === "navy" ? ACCENT_BG.navy : ACCENT_BG[accent],
         ].join(" ")}
-        aria-label={`${item.title} — open detail`}
+        aria-label={`${item.title}, open detail`}
       >
         {/* Background image */}
         {hasImage && (

@@ -14,7 +14,7 @@ const INTRO_LIFT = 1300;
 // Decelerating ease: fast start, slow settle
 const EASE_OUT_DECEL = "cubic-bezier(0.22, 1, 0.36, 1)";
 
-// Panel sits at ±220% when hidden — far enough that the fractal SVG overflow
+// Panel sits at ±220% when hidden, far enough that the fractal SVG overflow
 // never peeks into the viewport, even on phones.
 const OFFSCREEN = 220;
 
@@ -33,7 +33,7 @@ const PAGE_LABELS: Record<string, string> = {
 // ---------------------------------------------------------------------------
 // 3-level Sierpinski triangle edge tiles (128×72 px, fixed physical size)
 // Tile for BOTTOM edge: triangle pointing DOWN, apex at y=72
-// All holes via fill-rule=evenodd — transparent gaps show page bg through.
+// All holes via fill-rule=evenodd, transparent gaps show page bg through.
 // ---------------------------------------------------------------------------
 const _SIERPINSKI_BOTTOM = `<svg xmlns="http://www.w3.org/2000/svg" width="128" height="72" viewBox="0 0 128 72"><path fill-rule="evenodd" fill="hsl(43,82%,50%)" d="M0,0 L128,0 L64,72 Z M64,0 L32,36 L96,36 Z M32,0 L16,18 L48,18 Z M96,0 L80,18 L112,18 Z M64,36 L48,54 L80,54 Z M16,0 L8,9 L24,9 Z M48,0 L40,9 L56,9 Z M32,18 L24,27 L40,27 Z M80,0 L72,9 L88,9 Z M112,0 L104,9 L120,9 Z M96,18 L88,27 L104,27 Z M48,36 L40,45 L56,45 Z M80,36 L72,45 L88,45 Z M64,54 L56,63 L72,63 Z"/></svg>`;
 
@@ -43,7 +43,7 @@ const _SIERPINSKI_TOP = `<svg xmlns="http://www.w3.org/2000/svg" width="128" hei
 const FRACTAL_URI_BOTTOM = `url("data:image/svg+xml,${encodeURIComponent(_SIERPINSKI_BOTTOM)}")`;
 const FRACTAL_URI_TOP    = `url("data:image/svg+xml,${encodeURIComponent(_SIERPINSKI_TOP)}")`;
 
-// Fixed tile dimensions — these never scale with viewport
+// Fixed tile dimensions, these never scale with viewport
 const TILE_W = 128;
 const TILE_H = 72;
 
@@ -155,7 +155,7 @@ export function PageTransition() {
         (pathname.replace("/", "").replace(/^\w/, (c) => c.toUpperCase()) || "Home");
       setDestLabel(label);
       setShrinkLabel(false);
-      // Already "covered" from initial state — skip drip, just hold then lift
+      // Already "covered" from initial state, skip drip, just hold then lift
       timers.current = [
         window.setTimeout(() => {
           lastPath.current = pathname;
@@ -296,7 +296,7 @@ export function PageTransition() {
           </span>
         </div>
 
-        {/* Top fractal edge — fixed-size Sierpinski triangles, pointing UP */}
+        {/* Top fractal edge, fixed-size Sierpinski triangles, pointing UP */}
         <div
           style={{
             position: "absolute",
@@ -312,7 +312,7 @@ export function PageTransition() {
           }}
         />
 
-        {/* Bottom fractal edge — fixed-size Sierpinski triangles, pointing DOWN */}
+        {/* Bottom fractal edge, fixed-size Sierpinski triangles, pointing DOWN */}
         <div
           style={{
             position: "absolute",

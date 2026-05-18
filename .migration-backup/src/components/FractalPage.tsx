@@ -33,7 +33,7 @@ function SubpageHeader({ kicker, num, title, lede, portrait }: { kicker: string;
           <figure className="relative shrink-0 w-32 md:w-44 aspect-[3/4] overflow-hidden border border-border bg-paper-deep">
             <img
               src={portrait}
-              alt="Geetika Gehlot — portrait"
+              alt="Geetika Gehlot, portrait"
               className="absolute inset-0 w-full h-full object-cover object-[60%_30%]"
               loading="lazy"
             />
@@ -93,13 +93,13 @@ function RelatedRail({ clusterSlug }: { clusterSlug: string }) {
 function OverviewInner({ cluster }: { cluster: Cluster }) {
   const trio: BentoItem[] = [
     { id: "trio-1", size: "md", eyebrow: "Signature win", title: "The headline achievement", blurb: "Replace with the single most impressive thing in this cluster.", meta: "TODO · most recent or biggest" },
-    { id: "trio-2", size: "md", eyebrow: "Origin", title: "Where it started", blurb: "The first spark — when, where, and why this began.", meta: "TODO" },
+    { id: "trio-2", size: "md", eyebrow: "Origin", title: "Where it started", blurb: "The first spark, when, where, and why this began.", meta: "TODO" },
     { id: "trio-3", size: "md", eyebrow: "What's next", title: "The next chapter", blurb: "What I'm currently building inside this cluster.", meta: "TODO" },
   ];
   return (
     <div className="space-y-8">
       <div className="relative overflow-hidden border border-border aspect-[21/9]">
-        <img src={heroFallback} alt={`${cluster.label} — atmospheric hero`} className="absolute inset-0 w-full h-full object-cover" />
+        <img src={heroFallback} alt={`${cluster.label}, atmospheric hero`} className="absolute inset-0 w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-navy-deep via-navy-deep/60 to-navy-deep/10" />
         <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-12 text-paper">
           <p className="label-gold mb-3">§ {cluster.num} · {cluster.label}</p>
@@ -116,10 +116,10 @@ function OverviewInner({ cluster }: { cluster: Cluster }) {
 
 function HighlightsInner({ cluster }: { cluster: Cluster }) {
   const items: BentoItem[] = [
-    { id: "h1", size: "xl", eyebrow: "Featured", title: `${cluster.label} — best of`, blurb: "The anchor item. Big, bold, the one I'd lead with in a conversation.", image: heroFallback, meta: "TODO · replace" },
-    { id: "h2", size: "md", eyebrow: "Highlight", title: "Second favourite", blurb: "Strong supporting work — different in tone from the lead." },
-    { id: "h3", size: "md", eyebrow: "Highlight", title: "Recent win", blurb: "Something fresh — within the last 6 months." },
-    { id: "h4", size: "lg", eyebrow: "Highlight", title: "The under-rated one", blurb: "A quieter piece I'm proud of — context unlocks why.", image: heroFallback },
+    { id: "h1", size: "xl", eyebrow: "Featured", title: `${cluster.label}, best of`, blurb: "The anchor item. Big, bold, the one I'd lead with in a conversation.", image: heroFallback, meta: "TODO · replace" },
+    { id: "h2", size: "md", eyebrow: "Highlight", title: "Second favourite", blurb: "Strong supporting work, different in tone from the lead." },
+    { id: "h3", size: "md", eyebrow: "Highlight", title: "Recent win", blurb: "Something fresh, within the last 6 months." },
+    { id: "h4", size: "lg", eyebrow: "Highlight", title: "The under-rated one", blurb: "A quieter piece I'm proud of, context unlocks why.", image: heroFallback },
     { id: "h5", size: "md", eyebrow: "Highlight", title: "Collaboration", blurb: "Made with someone whose taste I trust." },
     { id: "h6", size: "md", eyebrow: "Highlight", title: "The hard one", blurb: "Almost broke me. Worth it." },
   ];
@@ -163,10 +163,10 @@ function ReflectionInner() {
 
 function TopicInner({ topicLabel }: { topicLabel: string }) {
   const items: BentoItem[] = [
-    { id: "t1", size: "xl", eyebrow: "Anchor", title: `${topicLabel} — the headline`, blurb: "The single thing someone should know about this thread.", image: heroFallback },
+    { id: "t1", size: "xl", eyebrow: "Anchor", title: `${topicLabel}, the headline`, blurb: "The single thing someone should know about this thread.", image: heroFallback },
     { id: "t2", size: "md", eyebrow: "Item", title: "Anchor 2", blurb: "Replace with the real entry." },
     { id: "t3", size: "md", eyebrow: "Item", title: "Anchor 3", blurb: "Replace with the real entry." },
-    { id: "t4", size: "lg", eyebrow: "Media", title: `${topicLabel} — visual`, blurb: "Photo, video, or scan that grounds this topic.", image: heroFallback },
+    { id: "t4", size: "lg", eyebrow: "Media", title: `${topicLabel}, visual`, blurb: "Photo, video, or scan that grounds this topic.", image: heroFallback },
     { id: "t5", size: "md", eyebrow: "Item", title: "Anchor 4", blurb: "Replace with the real entry." },
   ];
   return (
@@ -181,7 +181,7 @@ function TopicInner({ topicLabel }: { topicLabel: string }) {
 }
 
 const KIND_META: Record<string, { icon: IconCmp; label: string; title: (cl: string) => string }> = {
-  overview:    { icon: Sparkles, label: "Overview",   title: (cl) => `${cl} — at a glance` },
+  overview:    { icon: Sparkles, label: "Overview",   title: (cl) => `${cl}, at a glance` },
   highlights:  { icon: Sparkles, label: "Highlights", title: () => "Best-of, hand-picked" },
   evidence:    { icon: FileText, label: "Evidence",   title: () => "Documents, scores, certificates" },
   media:       { icon: ImgIcon,  label: "Media",      title: () => "Photos, video, audio, embeds" },
@@ -322,7 +322,7 @@ function ContactBlock() {
           {sending ? "Sending…" : "Send via email"}
         </button>
         <p className="font-mono text-[0.6rem] uppercase tracking-[0.2em] text-ink-soft">
-          Submitting opens your mail app — nothing is stored on this site.
+          Submitting opens your mail app, nothing is stored on this site.
         </p>
       </form>
 
@@ -513,7 +513,7 @@ function WorksMoodBoard() {
         <h2 className="font-display text-xl md:text-2xl text-ink text-right">A drawer of miscellany</h2>
       </header>
       <p className="max-w-2xl text-ink-soft text-sm md:text-base font-accent italic mb-6 leading-relaxed">
-        Scraps, swatches, polaroids, half-tickets — the off-cuts that don't fit a single rail
+        Scraps, swatches, polaroids, half-tickets, the off-cuts that don't fit a single rail
         but together explain the room. Hover any piece to straighten it.
       </p>
       <div className="relative -mx-4 md:-mx-12 px-4 md:px-12 overflow-x-auto pb-4">

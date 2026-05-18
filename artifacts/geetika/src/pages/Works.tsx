@@ -10,7 +10,7 @@ const ON_SCREEN_CREDITS = [
   { src: "/tv-barun.png",         alt: "Geetika with Barun Sobti on set",                       caption: "With Barun Sobti",                channel: "Star Parivaar" },
   { src: "/tv-dalljiet.png",      alt: "Geetika with Dalljiet Kaur",                            caption: "With Dalljiet Kaur",              channel: "Iss Pyar Ko Kya Naam Doon" },
   { src: "/tv-jayshree.png",      alt: "Geetika with Jayshree T. and Utkarsha Naik",            caption: "With Jayshree T. & Utkarsha Naik",channel: "Star Parivaar" },
-  { src: "/tv-holi.png",          alt: "Geetika with Amit Behl and Priyanka Sharma at Holi",   caption: "With Amit Behl & Priyanka Sharma", channel: "Zee TV — Holi Special" },
+  { src: "/tv-holi.png",          alt: "Geetika with Amit Behl and Priyanka Sharma at Holi",   caption: "With Amit Behl & Priyanka Sharma", channel: "Zee TV, Holi Special" },
   { src: "/tv-sudeep.png",        alt: "Geetika with Sudeep Sahir",                             caption: "With Sudeep Sahir",               channel: "Zee TV" },
   { src: "/tv-ridhi.png",         alt: "Geetika with Ridhi Dogra",                              caption: "With Ridhi Dogra",                channel: "On Set" },
   { src: "/tv-onset.png",         alt: "Geetika with Shalini Arora and Buneet Kapoor",          caption: "With Shalini Arora & Buneet Kapoor", channel: "On Set" },
@@ -42,7 +42,7 @@ const Works = () => {
           </h1>
         </div>
         <p className="mt-8 max-w-2xl text-base md:text-lg text-ink-soft leading-relaxed font-accent italic animate-fade-up">
-          Robotics, writing, music, screen, design, art, leadership, sport — FL Studio, DaVinci Resolve, event hosting, freelance —
+          Robotics, writing, music, screen, design, art, leadership, sport, FL Studio, DaVinci Resolve, event hosting, freelance,
           click any box to see the receipts, build logs, and performance reels.
         </p>
         <div className="rule-gold mt-10" />

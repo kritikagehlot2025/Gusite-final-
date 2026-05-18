@@ -19,7 +19,7 @@ const About = () => {
           Who I am, where I come from, and where I am headed.
         </h1>
         <p className="mt-3 max-w-xl text-sm text-ink-soft leading-relaxed font-accent italic animate-fade-up">
-          Scroll through the profile — the essay reads itself, then the facets stack on top.
+          Scroll through the profile, the essay reads itself, then the facets stack on top.
         </p>
       </section>
 

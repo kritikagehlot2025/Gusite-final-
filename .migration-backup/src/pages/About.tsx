@@ -23,13 +23,13 @@ const About = () => {
             </h1>
             <p className="mt-8 max-w-2xl text-lg md:text-xl text-ink-soft leading-relaxed font-display italic animate-fade-up">
               Born in India, raised between continents, now building from Montréal.
-              This is the short version of a long story — click any box to go deeper.
+              This is the short version of a long story, click any box to go deeper.
             </p>
           </div>
           <figure className="relative shrink-0 w-32 md:w-44 aspect-[3/4] overflow-hidden border border-border bg-paper-deep animate-fade-in">
             <img
               src={heroPortrait}
-              alt="Geetika Gehlot — portrait"
+              alt="Geetika Gehlot, portrait"
               className="absolute inset-0 w-full h-full object-cover object-[60%_30%]"
               loading="lazy"
             />

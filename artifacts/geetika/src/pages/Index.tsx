@@ -10,7 +10,7 @@ import { Bento, type BentoItem } from "@/components/Bento";
 import { HeroSlideshow, type Slide } from "@/components/HeroSlideshow";
 import { CLUSTERS } from "@/data/clusters";
 import { useReveal } from "@/hooks/useReveal";
-// Triptych — fashion editorial plates (kept as-is)
+// Triptych, fashion editorial plates (kept as-is)
 import triGreenSit from "@assets/unnamed_1779118401963.jpg";
 import triGreenWide from "@assets/unnamed_1779118449424.jpg";
 import triPinkRed from "@assets/unnamed_1779118444321.jpg";
@@ -27,7 +27,7 @@ const HERO_SLIDES: Slide[] = [
     tone: "light",
     eyebrow: "Vocal Artist · Hindustani Classical",
     title: "",
-    body: "Stage performer — trained in the guru-shishya tradition of Indian classical music.",
+    body: "Stage performer, trained in the guru-shishya tradition of Indian classical music.",
   },
   {
     src: "/photo-starparivar-set.jpg",
@@ -35,7 +35,7 @@ const HERO_SLIDES: Slide[] = [
     tone: "light",
     eyebrow: "Child Artist · Star Plus · National Television",
     title: "",
-    body: "On set with Barun Sobti and Ridhi Dogra — Iss Pyar Ko Kya Naam Doon.",
+    body: "On set with Barun Sobti and Ridhi Dogra, Iss Pyar Ko Kya Naam Doon.",
   },
   {
     src: "/photo-lab-team.jpg",
@@ -43,11 +43,11 @@ const HERO_SLIDES: Slide[] = [
     tone: "light",
     eyebrow: "Scientist · McGill Cancer Cell Lab · March 2025",
     title: "",
-    body: "Gel electrophoresis, Zeiss microscopy, pipetting — real bench science.",
+    body: "Gel electrophoresis, Zeiss microscopy, pipetting, real bench science.",
   },
   {
     src: "/photo-moon-stargazing.jpg",
-    alt: "Rooftop night sky observation — stargazing and meteor tracking",
+    alt: "Rooftop night sky observation, stargazing and meteor tracking",
     tone: "light",
     eyebrow: "Self-Taught Astronomer",
     title: "",
@@ -63,7 +63,7 @@ const HERO_SLIDES: Slide[] = [
   },
   {
     src: "/photo-robotics-pit.jpg",
-    alt: "FRC Team 7700 — competition robotics pit work",
+    alt: "FRC Team 7700, competition robotics pit work",
     tone: "light",
     eyebrow: "Engineer · FRC Team 7700",
     title: "",
@@ -94,7 +94,7 @@ const FEATURED: BentoItem[] = [
     title: "FRC Team 7700",
     blurb: "Build seasons, mechanical instinct, and the controlled chaos of competition robotics.",
     image: "/photo-robotics-pit.jpg", meta: "Works · Engineering",
-    detail: "From CAD reviews at midnight to driver-station nerves on game day — Team 7700 is where I learned to design under deadline, debug under pressure, and trust a team. Click through to the Works cluster for the full build log.",
+    detail: "From CAD reviews at midnight to driver-station nerves on game day, Team 7700 is where I learned to design under deadline, debug under pressure, and trust a team. Click through to the Works cluster for the full build log.",
   },
   {
     id: "f-novel", size: "lg", eyebrow: "Writing",
@@ -117,7 +117,7 @@ const FEATURED: BentoItem[] = [
   {
     id: "f-acting", size: "md", eyebrow: "Screen",
     title: "Child Artist Reel",
-    blurb: "Years on screen — lead roles, national television, voice acting.",
+    blurb: "Years on screen, lead roles, national television, voice acting.",
     image: "/photo-starparivar-set.jpg", meta: "Works · Acting",
   },
   {
@@ -130,7 +130,7 @@ const FEATURED: BentoItem[] = [
 
 /* -------------------- CURIOSITIES / BELTS & MEDALS -------------------- */
 const CURIOSITIES: BentoItem[] = [
-  { id: "c-karate", size: "md", eyebrow: "Belt", title: "Karate", blurb: "Years on the mat — discipline that bleeds into everything else.", image: "/photo-karate.jpg", meta: "Works · Athletics" },
+  { id: "c-karate", size: "md", eyebrow: "Belt", title: "Karate", blurb: "Years on the mat, discipline that bleeds into everything else.", image: "/photo-karate.jpg", meta: "Works · Athletics" },
   { id: "c-abacus", size: "md", eyebrow: "Mental Math", title: "Abacus Medals", blurb: "Lightning arithmetic from the elementary years.", image: achAbacus, meta: "Works · Math" },
   { id: "c-chess", size: "sm", eyebrow: "Strategy", title: "Chess", blurb: "Tournament play and pattern obsession.", meta: "Works · Games" },
   { id: "c-bad", size: "sm", eyebrow: "Court", title: "Badminton", blurb: "Smash, drop, repeat.", meta: "Works · Athletics" },
@@ -143,7 +143,7 @@ const Index = () => {
 
   return (
     <PageShell>
-      {/* HERO — fullscreen navigable slideshow */}
+      {/* HERO, fullscreen navigable slideshow */}
       <HeroSlideshow slides={HERO_SLIDES} />
 
       {/* MANIFESTO */}
@@ -163,7 +163,7 @@ const Index = () => {
                 className="font-display text-2xl md:text-3xl lg:text-4xl text-ink leading-[1.05] text-balance drop-cap"
                 data-reveal
               >
-                This is not a résumé. It is a working dossier — equal parts laboratory
+                This is not a résumé. It is a working dossier, equal parts laboratory
                 notebook, gallery catalogue, and founder's manifesto. Every page has
                 layers, sublayers, evidence. Every claim is meant to be examined.
               </p>
@@ -175,7 +175,7 @@ const Index = () => {
               >
                 I was born in India, raised between two continents, and I now write,
                 perform, code, and study physics from Montréal. I have spent the
-                last ten years collecting questions — this site is where I begin to
+                last ten years collecting questions, this site is where I begin to
                 answer them, in public, with proof.
               </p>
             </div>
@@ -245,7 +245,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* TRIPTYCH — three editorial plates */}
+      {/* TRIPTYCH, three editorial plates */}
       <section className="container py-8 md:py-10">
         <div className="grid md:grid-cols-3 gap-2">
           {[
@@ -303,7 +303,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* GRAND GROUPS — site index */}
+      {/* GRAND GROUPS, site index */}
       <section className="relative py-10 md:py-16 overflow-hidden film-grain dust crumpled-paper marble fibers">
         <div className="container relative">
           <div className="flex items-end justify-between mb-10 gap-6 flex-wrap" data-reveal>
@@ -313,7 +313,7 @@ const Index = () => {
                 Five pages, <span className="font-accent text-gold">one dossier.</span>
               </h2>
               <p className="mt-4 max-w-xl text-ink-soft text-sm leading-relaxed font-accent italic">
-                The whole site lives across five pages — about, academics & research,
+                The whole site lives across five pages, about, academics & research,
                 the merged works, the CV &amp; Resume archive, and a way to reach me. No grand
                 groupings, no fractal cul-de-sacs. Just five doors.
               </p>

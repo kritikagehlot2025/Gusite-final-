@@ -82,18 +82,18 @@ function CVContent() {
   const languages = ["English", "French", "Hindi", "Marwari"];
 
   const experience = [
-    { role: "Frontend Lead", date: "Jan 24 — Present", org: "Alpha", place: "Cupertino, CA",
+    { role: "Frontend Lead", date: "Jan 24, Present", org: "Alpha", place: "Cupertino, CA",
       desc: "Spearheaded development of a suite of progressive web applications using React, Swift, and GraphQL." },
-    { role: "Frontend Engineer", date: "Sep 22 — Dec 23", org: "Sigma", place: "New York, NY",
+    { role: "Frontend Engineer", date: "Sep 22, Dec 23", org: "Sigma", place: "New York, NY",
       desc: "Enhanced UI for the Sigma Web Player using React and Redux, achieving a 25% increase in engagement." },
-    { role: "Junior Software Engineer", date: "Feb 20 — Dec 23", org: "Omega", place: "Menlo Park, CA",
+    { role: "Junior Software Engineer", date: "Feb 20, Dec 23", org: "Omega", place: "Menlo Park, CA",
       desc: "Owned feature lifecycle from concept to deployment with a focus on responsive design and accessibility." },
   ];
 
   const education = [
-    { role: "Master of Science in Computer Science", date: "Sep 18 — Jun 20", org: "Astra University", place: "Stanford, CA",
+    { role: "Master of Science in Computer Science", date: "Sep 18, Jun 20", org: "Astra University", place: "Stanford, CA",
       desc: "Specialized in Software Engineering. Thesis: Scalable Architectures for Real-Time Web Applications. Distinction." },
-    { role: "Bachelor of Science in Software Engineering", date: "Sep 15 — Sep 18", org: "Nova University", place: "Providence, RI",
+    { role: "Bachelor of Science in Software Engineering", date: "Sep 15, Sep 18", org: "Nova University", place: "Providence, RI",
       desc: "Honors. Coursework: Advanced Algorithms, Web Development, UI Design." },
   ];
 
@@ -136,7 +136,7 @@ function CVContent() {
         <section>
           <CVEyebrow>Intro</CVEyebrow>
           <div className="space-y-4 text-base leading-relaxed max-w-2xl">
-            <p>I'm Geetika Gehlot — a student-builder working across academics, STEM research, art, robotics, and youth leadership. I focus on intuitive design and rigorous craft.</p>
+            <p>I'm Geetika Gehlot, a student-builder working across academics, STEM research, art, robotics, and youth leadership. I focus on intuitive design and rigorous craft.</p>
             <p>Currently exploring computer science, design, and interdisciplinary research while serving as Vice President of the YMCA Youth Co-op and contributing to robotics teams.</p>
           </div>
         </section>

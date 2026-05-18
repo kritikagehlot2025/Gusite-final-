@@ -5,7 +5,7 @@
 @tailwind utilities;
 
 /*
-  Geetika Gehlot — E-Portfolio Design System
+  Geetika Gehlot, E-Portfolio Design System
   Meta-hybrid: editorial magazine + research dossier + cinematic founder.
   Palette: deep navy / ivory paper / antique gold / oxblood accent.
   All colors HSL.
@@ -309,7 +309,7 @@
     image-rendering: pixelated;
   }
 
-  /* Vellum mist — chunky cloud blobs */
+  /* Vellum mist, chunky cloud blobs */
   .crumpled-paper::before,
   .dots::before,
   .dots-fine::before,
@@ -337,7 +337,7 @@
       radial-gradient(50% 45% at 55% 55%, hsl(220 55% 14% / 0.3), transparent 75%);
   }
 
-  /* Crinkle — chunky pixel-block noise */
+  /* Crinkle, chunky pixel-block noise */
   .crinkle::before {
     content: '';
     position: absolute;
@@ -351,7 +351,7 @@
   }
   .dark .crinkle::before { mix-blend-mode: screen; opacity: 0.03; }
 
-  /* Scanlines — wider, softer */
+  /* Scanlines, wider, softer */
   .scanlines::after {
     content: '';
     position: absolute;
@@ -363,7 +363,7 @@
   }
   .dark .scanlines::after { background-image: repeating-linear-gradient(0deg, hsl(var(--paper) / 0.05) 0 1px, transparent 1px 6px); mix-blend-mode: screen; }
 
-  /* Film-grain — low-res */
+  /* Film-grain, low-res */
   .film-grain::after {
     content: '';
     position: absolute;
@@ -377,7 +377,7 @@
   }
   .dark .film-grain::after { mix-blend-mode: screen; opacity: 0.035; }
 
-  /* Dust — minimal scattered specks */
+  /* Dust, minimal scattered specks */
   .dust::before {
     content: '';
     position: absolute;
@@ -390,7 +390,7 @@
   }
   .dark .dust::before { mix-blend-mode: screen; opacity: 0.03; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cg fill='%23fff'%3E%3Ccircle cx='30' cy='50' r='1'/%3E%3Ccircle cx='160' cy='40' r='1'/%3E%3Ccircle cx='90' cy='120' r='1'/%3E%3Ccircle cx='180' cy='160' r='1'/%3E%3Ccircle cx='50' cy='170' r='1'/%3E%3C/g%3E%3C/svg%3E"); }
 
-  /* Leak — single soft glow */
+  /* Leak, single soft glow */
   .leak::before {
     content: '';
     position: absolute;
@@ -404,7 +404,7 @@
     background: radial-gradient(55% 40% at 88% 12%, hsl(41 80% 60% / 0.12), transparent 72%);
   }
 
-  /* Glitch — wider lines */
+  /* Glitch, wider lines */
   .glitch::after {
     content: '';
     position: absolute;
@@ -415,7 +415,7 @@
     background-image: repeating-linear-gradient(0deg, hsl(var(--gold) / 0.18) 0 1px, transparent 1px 8px);
   }
 
-  /* Linen — wider weave */
+  /* Linen, wider weave */
   .linen::before {
     content: '';
     position: absolute;
@@ -553,7 +553,7 @@
 
   /* ============ Subtle low-res accents ============ */
 
-  /* Fibers — chunky soft streaks */
+  /* Fibers, chunky soft streaks */
   .fibers::before {
     content: '';
     position: absolute;
@@ -577,7 +577,7 @@
       transparent 15px 32px);
   }
 
-  /* Parchment — broad warm wash */
+  /* Parchment, broad warm wash */
   .parchment::before {
     content: '';
     position: absolute;
@@ -597,7 +597,7 @@
       radial-gradient(70% 55% at 85% 80%, hsl(var(--gold) / 0.08), transparent 72%);
   }
 
-  /* Marble — chunky low-res blobs */
+  /* Marble, chunky low-res blobs */
   .marble::before {
     content: '';
     position: absolute;
@@ -617,7 +617,7 @@
     image-rendering: pixelated;
   }
 
-  /* Stipple — sparse low-res pixel grain */
+  /* Stipple, sparse low-res pixel grain */
   .stipple::after {
     content: '';
     position: absolute;
@@ -637,7 +637,7 @@
     image-rendering: pixelated;
   }
 
-  /* Weave-soft — wider diagonal cross-hatch */
+  /* Weave-soft, wider diagonal cross-hatch */
   .weave-soft::before {
     content: '';
     position: absolute;

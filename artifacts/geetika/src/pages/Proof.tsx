@@ -18,7 +18,7 @@ const Proof = () => {
           Notebook scans, sketches, half-formed ideas.
         </h1>
         <p className="mt-8 max-w-2xl text-lg md:text-xl text-ink-soft leading-relaxed font-accent italic animate-fade-up">
-          Not finished work — the raw material. Marginalia, doodles, margin calculations,
+          Not finished work, the raw material. Marginalia, doodles, margin calculations,
           the pages you'd normally throw away. Kept here because they prove the process is real.
         </p>
         <div className="rule-gold mt-12" />
@@ -35,12 +35,12 @@ const Proof = () => {
           <span className="flex-1 h-px bg-border" />
         </div>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 [grid-auto-flow:dense]">
-          <Placeholder label="Notebook scan — physics derivation" ratio="col-span-2 md:col-span-2 aspect-[16/9]" />
-          <Placeholder label="Sketch — robot arm concept" ratio="col-span-1 md:col-span-1 aspect-[4/5]" />
-          <Placeholder label="Margin notes — novel draft" ratio="col-span-1 md:col-span-1 aspect-[4/3]" />
-          <Placeholder label="Doodle — embroidery pattern" ratio="col-span-2 md:col-span-2 aspect-[16/9]" />
-          <Placeholder label="Calculation sheet — abacus practice" ratio="col-span-1 md:col-span-1 aspect-[4/3]" />
-          <Placeholder label="Half-formed idea — worldbuilding map" ratio="col-span-1 md:col-span-1 aspect-[1/1]" />
+          <Placeholder label="Notebook scan, physics derivation" ratio="col-span-2 md:col-span-2 aspect-[16/9]" />
+          <Placeholder label="Sketch, robot arm concept" ratio="col-span-1 md:col-span-1 aspect-[4/5]" />
+          <Placeholder label="Margin notes, novel draft" ratio="col-span-1 md:col-span-1 aspect-[4/3]" />
+          <Placeholder label="Doodle, embroidery pattern" ratio="col-span-2 md:col-span-2 aspect-[16/9]" />
+          <Placeholder label="Calculation sheet, abacus practice" ratio="col-span-1 md:col-span-1 aspect-[4/3]" />
+          <Placeholder label="Half-formed idea, worldbuilding map" ratio="col-span-1 md:col-span-1 aspect-[1/1]" />
         </div>
       </section>
 
@@ -51,7 +51,7 @@ const Proof = () => {
         </div>
         <p className="max-w-3xl text-ink-soft text-lg leading-relaxed font-accent italic">
           Every item here is unedited. No retouching, no reordering, no cherry-picking.
-          The point is to show that curiosity leaves a paper trail — even when the paper
+          The point is to show that curiosity leaves a paper trail, even when the paper
           is crumpled, crossed out, or coffee-stained.
         </p>
       </section>

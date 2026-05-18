@@ -20,7 +20,7 @@ import atmosMusic from "@/assets/atmos-music.jpg";
 /* -------------------- HERO SLIDESHOW -------------------- */
 const HERO_SLIDES: Slide[] = [
   {
-    src: heroPortrait, alt: "Geetika Gehlot — portrait",
+    src: heroPortrait, alt: "Geetika Gehlot, portrait",
     tone: "light", eyebrow: "Geetika Gehlot · I",
     title: "Building worlds.",
     body: "Scientist · Researcher · Creator · Musician · Storyteller · Innovator. A 15-year-old multidisciplinary mind from Montréal.",
@@ -47,7 +47,7 @@ const HERO_SLIDES: Slide[] = [
     src: texturePaper, alt: "Aged paper texture",
     tone: "dark", eyebrow: "Plate V · Dossier",
     title: "Examined in public.",
-    body: "Every claim, every clipping, every receipt — open for inspection.",
+    body: "Every claim, every clipping, every receipt, open for inspection.",
   },
 ];
 
@@ -75,7 +75,7 @@ const FEATURED: BentoItem[] = [
     title: "FRC Team 7700",
     blurb: "Build seasons, mechanical instinct, and the controlled chaos of competition robotics.",
     image: atmosTelescope, meta: "Cluster 04 · Robotics",
-    detail: "From CAD reviews at midnight to driver-station nerves on game day — Team 7700 is where I learned to design under deadline, debug under pressure, and trust a team. Click through to the cluster for the full build log.",
+    detail: "From CAD reviews at midnight to driver-station nerves on game day, Team 7700 is where I learned to design under deadline, debug under pressure, and trust a team. Click through to the cluster for the full build log.",
   },
   {
     id: "f-novel", size: "lg", eyebrow: "Writing",
@@ -108,12 +108,12 @@ const FEATURED: BentoItem[] = [
 
 /* -------------------- RANDOM WINS / CURIOSITIES TEASER -------------------- */
 const CURIOSITIES: BentoItem[] = [
-  { id: "c-karate", size: "md", eyebrow: "Belt", title: "Karate", blurb: "Years on the mat — discipline that bleeds into everything else.", meta: "TODO · belt level + dojo" },
+  { id: "c-karate", size: "md", eyebrow: "Belt", title: "Karate", blurb: "Years on the mat, discipline that bleeds into everything else.", meta: "TODO · belt level + dojo" },
   { id: "c-abacus", size: "md", eyebrow: "Mental Math", title: "Abacus medals", blurb: "Lightning arithmetic from the elementary years.", meta: "TODO · grades + competitions" },
   { id: "c-chess", size: "sm", eyebrow: "Strategy", title: "Chess", blurb: "Tournament play and pattern obsession.", meta: "TODO · rating" },
   { id: "c-bad", size: "sm", eyebrow: "Court", title: "Badminton", blurb: "Smash, drop, repeat.", meta: "TODO" },
   { id: "c-tt", size: "sm", eyebrow: "Court", title: "Table Tennis", blurb: "Reflex over reach.", meta: "TODO" },
-  { id: "c-misc", size: "wide", eyebrow: "Side quests", title: "And a few oddities I'm proud of", blurb: "Random certificates, half-wins, things that don't fit a category but absolutely shaped me.", meta: "Cluster 15 · Curiosities — full archive" },
+  { id: "c-misc", size: "wide", eyebrow: "Side quests", title: "And a few oddities I'm proud of", blurb: "Random certificates, half-wins, things that don't fit a category but absolutely shaped me.", meta: "Cluster 15 · Curiosities, full archive" },
 ];
 
 const Index = () => {
@@ -121,10 +121,10 @@ const Index = () => {
 
   return (
     <PageShell>
-      {/* HERO — fullscreen navigable slideshow */}
+      {/* HERO, fullscreen navigable slideshow */}
       <HeroSlideshow slides={HERO_SLIDES} />
 
-      {/* MANIFESTO — layered: paper bg + drifting notebook + telescope corner + crumpled-paper veil */}
+      {/* MANIFESTO, layered: paper bg + drifting notebook + telescope corner + crumpled-paper veil */}
       <section
         id="after-hero"
         className="relative py-16 md:py-24 scroll-mt-16 overflow-hidden crumpled-paper crinkle film-grain leak parchment fibers"
@@ -160,7 +160,7 @@ const Index = () => {
                 className="font-display text-3xl md:text-5xl text-ink leading-[1.05] text-balance drop-cap"
                 data-reveal
               >
-                This is not a résumé. It is a working dossier — equal parts laboratory
+                This is not a résumé. It is a working dossier, equal parts laboratory
                 notebook, gallery catalogue, and founder's manifesto. Every page has
                 layers, sublayers, evidence. Every claim is meant to be examined.
               </p>
@@ -172,7 +172,7 @@ const Index = () => {
               >
                 I was born in India, raised between two continents, and I now write,
                 perform, code, and study physics from Montréal. I have spent the
-                last ten years collecting questions — this site is where I begin to
+                last ten years collecting questions, this site is where I begin to
                 answer them, in public, with proof.
               </p>
             </div>
@@ -186,7 +186,7 @@ const Index = () => {
         </PullQuote>
       </div>
 
-      {/* SKILLS TOOLKIT — layered telescope + cosmos veil + scanlines */}
+      {/* SKILLS TOOLKIT, layered telescope + cosmos veil + scanlines */}
       <section className="relative py-14 md:py-20 overflow-hidden scanlines film-grain dust weave-soft stipple">
         <img
           src={atmosTelescope}
@@ -234,7 +234,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* FEATURED HIGHLIGHTS BENTO — cosmos bg + crumpled-paper field + drifting notebook */}
+      {/* FEATURED HIGHLIGHTS BENTO, cosmos bg + crumpled-paper field + drifting notebook */}
       <section className="relative py-14 md:py-20 overflow-hidden crumpled-paper film-grain leak marble fibers">
         <img
           src={textureCosmos}
@@ -266,7 +266,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* TRIPTYCH — three layered plates */}
+      {/* TRIPTYCH, three layered plates */}
       <section className="container py-8 md:py-10">
         <div className="grid md:grid-cols-3 gap-2">
           {[
@@ -300,7 +300,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* RANDOM WINS / CURIOSITIES TEASER — paper texture wash + crinkle */}
+      {/* RANDOM WINS / CURIOSITIES TEASER, paper texture wash + crinkle */}
       <section className="relative py-12 md:py-16 overflow-hidden crinkle film-grain dust linen parchment weave-soft">
         <img
           src={texturePaper}
@@ -330,7 +330,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* GRAND GROUPS — index, layered music plate */}
+      {/* GRAND GROUPS, index, layered music plate */}
       <section className="relative py-16 md:py-24 overflow-hidden film-grain dust crumpled-paper marble fibers">
         <img
           src={atmosMusic}
@@ -352,7 +352,7 @@ const Index = () => {
                 Five pages, <span className="font-accent text-gold">one dossier.</span>
               </h2>
               <p className="mt-4 max-w-xl text-ink-soft text-sm leading-relaxed font-accent italic">
-                The whole site lives across five pages — about, academics & research,
+                The whole site lives across five pages, about, academics & research,
                 the merged works, the document vault, and a way to reach me. No grand
                 groupings, no fractal cul-de-sacs. Just five doors.
               </p>
@@ -386,7 +386,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* CORE TRAITS BAND — layered cosmos + telescope + crumpled-paper veil */}
+      {/* CORE TRAITS BAND, layered cosmos + telescope + crumpled-paper veil */}
       <section className="force-light bg-navy-deep text-paper py-20 md:py-28 relative overflow-hidden grain crumpled-paper film-grain leak marble stipple">
         <img
           src={textureCosmos}

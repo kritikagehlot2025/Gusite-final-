@@ -31,7 +31,7 @@ const CVResume = () => {
           </h1>
         </div>
         <p className="mt-8 max-w-2xl text-base md:text-lg text-ink-soft leading-relaxed font-accent italic animate-fade-up">
-          The full record — interactive CV, downloadable PDF, and a printable résumé.
+          The full record, interactive CV, downloadable PDF, and a printable résumé.
         </p>
         <div className="rule-gold mt-10" />
       </section>
@@ -63,7 +63,7 @@ function CVFeatureBlock() {
           className="group fancy-tile w-full text-left border border-border bg-paper hover:border-gold transition-all duration-700 ease-cinematic hover:-translate-y-1 hover:scale-[1.005] overflow-hidden"
         >
           <div className="grid md:grid-cols-[1fr,380px]">
-            {/* Left — CTA */}
+            {/* Left, CTA */}
             <div className="p-8 md:p-12 flex flex-col justify-between gap-8">
               <div>
                 <p className="label-gold mb-4">Curriculum Vitae · 2025</p>
@@ -93,7 +93,7 @@ function CVFeatureBlock() {
               </div>
             </div>
 
-            {/* Right — mini peek preview */}
+            {/* Right, mini peek preview */}
             <div className="hidden md:block border-l border-border bg-paper-deep p-6 overflow-hidden relative">
               <div className="absolute inset-0 grain opacity-40 pointer-events-none" />
               <p className="label-gold mb-4 text-[0.55rem]">Preview</p>
@@ -280,18 +280,18 @@ function CVContent() {
   const languages = ["English", "French", "Hindi", "Marwari"];
 
   const experience = [
-    { role: "Frontend Lead", date: "Jan 24 — Present", org: "Alpha", place: "Cupertino, CA",
+    { role: "Frontend Lead", date: "Jan 24, Present", org: "Alpha", place: "Cupertino, CA",
       desc: "Spearheaded development of a suite of progressive web applications using React, Swift, and GraphQL." },
-    { role: "Frontend Engineer", date: "Sep 22 — Dec 23", org: "Sigma", place: "New York, NY",
+    { role: "Frontend Engineer", date: "Sep 22, Dec 23", org: "Sigma", place: "New York, NY",
       desc: "Enhanced UI for the Sigma Web Player using React and Redux, achieving a 25% increase in engagement." },
-    { role: "Junior Software Engineer", date: "Feb 20 — Dec 23", org: "Omega", place: "Menlo Park, CA",
+    { role: "Junior Software Engineer", date: "Feb 20, Dec 23", org: "Omega", place: "Menlo Park, CA",
       desc: "Owned feature lifecycle from concept to deployment with a focus on responsive design and accessibility." },
   ];
 
   const education = [
-    { role: "Master of Science in Computer Science", date: "Sep 18 — Jun 20", org: "Astra University", place: "Stanford, CA",
+    { role: "Master of Science in Computer Science", date: "Sep 18, Jun 20", org: "Astra University", place: "Stanford, CA",
       desc: "Specialized in Software Engineering. Thesis: Scalable Architectures for Real-Time Web Applications. Distinction." },
-    { role: "Bachelor of Science in Software Engineering", date: "Sep 15 — Sep 18", org: "Nova University", place: "Providence, RI",
+    { role: "Bachelor of Science in Software Engineering", date: "Sep 15, Sep 18", org: "Nova University", place: "Providence, RI",
       desc: "Honors. Coursework: Advanced Algorithms, Web Development, UI Design." },
   ];
 
@@ -334,8 +334,8 @@ function CVContent() {
         <section>
           <CVEyebrow>Intro</CVEyebrow>
           <div className="space-y-4 text-base leading-relaxed max-w-2xl">
-            <p>I'm Geetika Gehlot — a multidisciplinary creator, scientist, performer, and producer based in Montréal. I work across STEM research, robotics, music production, video editing, writing, visual art, and event production.</p>
-            <p>Using FL Studio and DaVinci Resolve since 2020. Freelance design and event hosting since my early teens — paid, delivered, real. Currently serving as VP of the YMCA Youth Co-op and contributing to FRC robotics Team 7700.</p>
+            <p>I'm Geetika Gehlot, a multidisciplinary creator, scientist, performer, and producer based in Montréal. I work across STEM research, robotics, music production, video editing, writing, visual art, and event production.</p>
+            <p>Using FL Studio and DaVinci Resolve since 2020. Freelance design and event hosting since my early teens, paid, delivered, real. Currently serving as VP of the YMCA Youth Co-op and contributing to FRC robotics Team 7700.</p>
           </div>
         </section>
 

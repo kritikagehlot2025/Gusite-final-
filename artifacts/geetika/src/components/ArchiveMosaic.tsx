@@ -176,7 +176,7 @@ function CollageThumb({
 }
 
 /* ──────────────────────────────────────────
-   Layout engine — 6-column grid
+   Layout engine, 6-column grid
    Pattern: [span-3, span-3], [span-2, span-2, span-2], repeat
    ────────────────────────────────────────── */
 type LayoutEntry =
@@ -277,7 +277,7 @@ function ArchiveTile({
         {/* Hover overlay tint */}
         <div className="absolute inset-0 opacity-0 group-hover/tile:opacity-100 transition-opacity duration-500 bg-navy-deep/20 z-[1]" />
 
-        {/* Content — always on top */}
+        {/* Content, always on top */}
         <div className="relative z-10 h-full flex flex-col justify-between p-5 md:p-6" style={{ minHeight: `${minH}px` }}>
           <div className="flex items-start justify-end">
             <ArrowUpRight className={`w-4 h-4 transition-all duration-400 ${hasMedia ? "text-gold/70 group-hover/tile:text-gold" : "text-ink-soft group-hover/tile:text-gold"} group-hover/tile:translate-x-0.5 group-hover/tile:-translate-y-0.5`} />

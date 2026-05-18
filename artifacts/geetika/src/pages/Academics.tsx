@@ -23,7 +23,7 @@ const Academics = () => {
           </h1>
         </div>
         <p className="mt-6 max-w-2xl text-sm md:text-base text-ink-soft leading-relaxed font-accent italic animate-fade-up">
-          Every academic claim has evidence. Click any box for the full story —
+          Every academic claim has evidence. Click any box for the full story,
           transcripts, competition records, and the physics log.
         </p>
         <div className="rule-gold mt-8" />

@@ -188,14 +188,14 @@ export function ScrollExpandProfile() {
             }}
           />
 
-          {/* ── Essay body — page-scroll drives scrollTop ── */}
+          {/* ── Essay body, page-scroll drives scrollTop ── */}
           <div
             ref={essayRef}
             className="flex-1 min-h-0 overflow-hidden essay-scroll"
             style={{
               opacity: clamp((ep - 0.25) / 0.45, 0, 1),
               transition: "opacity 0.5s ease",
-              // intentionally NOT overflow-y: auto — we drive scroll programmatically
+              // intentionally NOT overflow-y: auto, we drive scroll programmatically
               overflowY: "hidden",
             }}
           >
@@ -273,7 +273,7 @@ function Essay() {
         <h3 className="essay-heading">I. Origin</h3>
         <EssayPhoto src={achCasual} alt="Geetika in casual wear" caption="Montréal, 2024" align="right" />
         <p className="drop-cap">
-          I was born in a city that does not sleep lightly. Rajasthan, India — sandstone
+          I was born in a city that does not sleep lightly. Rajasthan, India, sandstone
           and spice and a sky so wide it made ambition feel obligatory. My earliest memories
           are not of a classroom but of the space between things: between words in a
           conversation I was too young to join, between the notes of a raag my grandmother
@@ -286,7 +286,7 @@ function Essay() {
           out, is not emptiness. It is where everything interesting happens.
         </p>
         <p>
-          My family moved when I was young — first within India, then out of it entirely,
+          My family moved when I was young, first within India, then out of it entirely,
           to Canada, to Montréal, a city whose own identity is built on the productive
           tension between languages and traditions. I did not know it then, but I was
           training for that city my whole life.
@@ -299,7 +299,7 @@ function Essay() {
         <p>
           Moving between countries at a formative age is not a neutral event. It rewires
           something. You stop assuming that the way things are done where you grew up is the
-          only way — or even the best way. You develop a kind of permeability to context,
+          only way, or even the best way. You develop a kind of permeability to context,
           an ability to read rooms that are not yours and find your footing faster than you
           should.
         </p>
@@ -307,7 +307,7 @@ function Essay() {
           I speak four languages: English, French, Hindi, and Marwari. Each one carries a
           different register of myself. English is where I think most precisely. French
           navigates the city. Hindi is where old memories arrive in intact sentences.
-          Marwari is where I belong without explanation — the language of family dinners,
+          Marwari is where I belong without explanation, the language of family dinners,
           festivals, and stories that predate every version of me I have so far been.
         </p>
         <p>
@@ -316,7 +316,7 @@ function Essay() {
           they do not have to. I grew up learning to find those load-bearing silences in
           more than one culture, more than one linguistic family. It made me a better
           thinker, a better writer, and a better scientist. The best researchers I have
-          encountered are all translators of a kind — moving fluently between levels of
+          encountered are all translators of a kind, moving fluently between levels of
           abstraction, between formalism and intuition, between their discipline's
           vocabulary and the common tongue.
         </p>
@@ -329,7 +329,7 @@ function Essay() {
 
       <section className="essay-section mb-9">
         <h3 className="essay-heading">III. The Mind and Its Obsessions</h3>
-        <EssayPhoto src={achCrown} alt="Crown portrait" caption="Observing — always observing" align="right" />
+        <EssayPhoto src={achCrown} alt="Crown portrait" caption="Observing, always observing" align="right" />
         <p>
           If you asked me to identify the central obsession of my intellectual life, I
           would not give you a subject. I would give you a posture. I am obsessed with
@@ -341,7 +341,7 @@ function Essay() {
           Physics found me through my father, who treated it not as a subject but as a
           lens. Before I had a name for it, I was learning to see forces as conversations,
           energy as currency, time as a dimension rather than a river. The formal study
-          came later, and it came hard — I will not pretend otherwise. The mathematical
+          came later, and it came hard, I will not pretend otherwise. The mathematical
           machinery of physics is not gentle. But I kept returning to it because of what
           it promised: a language precise enough to describe the universe without losing
           its strangeness.
@@ -357,7 +357,7 @@ function Essay() {
         <p>
           Computer science arrived as a natural extension. I came to programming not from
           wanting to build apps but from wanting to build things that think. I taught myself
-          React and TypeScript. I learned Python. I built this site — not because I want to
+          React and TypeScript. I learned Python. I built this site, not because I want to
           be a software engineer, but because I want to be someone who can build whatever
           needs to be built, in whatever medium is required.
         </p>
@@ -371,7 +371,7 @@ function Essay() {
 
       <section className="essay-section mb-9">
         <h3 className="essay-heading">IV. The Creative Life</h3>
-        <EssayPhoto src={achSinging} alt="Singing performance" caption="Riyaaz — daily practice in Hindustani vocal" align="left" />
+        <EssayPhoto src={achSinging} alt="Singing performance" caption="Riyaaz, daily practice in Hindustani vocal" align="left" />
         <p>
           The assumption that STEM and the arts are in competition is one I have never
           been able to take seriously, because it has never matched my experience. The
@@ -379,8 +379,8 @@ function Essay() {
           a novel are not different in kind. They are different in material.
         </p>
         <p>
-          I have been training in Hindustani classical vocal for years. Riyaaz — daily
-          practice — is non-negotiable. A raag is not a melody; it is a grammar. It
+          I have been training in Hindustani classical vocal for years. Riyaaz, daily
+          practice, is non-negotiable. A raag is not a melody; it is a grammar. It
           specifies which notes are permitted, which are forbidden, which are emphasised,
           in which direction the phrases typically move, what emotional territory the raag
           inhabits. Within those constraints, improvisation is not just allowed but
@@ -389,14 +389,14 @@ function Essay() {
           science asks of you as well.
         </p>
         <p>
-          Writing is the other major strand. I am several volumes into a novel series —
+          Writing is the other major strand. I am several volumes into a novel series,
           a world built over years, with its own internal history, its own geography, its
           own rules for how power and knowledge are distributed. Worldbuilding at that
           scale is a systems design problem. Every chapter I revise makes me a better
           thinker.
         </p>
         <p>
-          Badminton, chess, table tennis, karate, abacus competitions — each sounds like a
+          Badminton, chess, table tennis, karate, abacus competitions, each sounds like a
           hobby until you look closely at the underlying skill being built. In every case,
           it is the same: accurate perception under time pressure, decision-making with
           incomplete information, recovery from error without losing composure.
@@ -406,8 +406,8 @@ function Essay() {
       <section className="essay-section mb-9">
         <h3 className="essay-heading">V. What I Am Building</h3>
         <p>
-          This site is an artifact. I built it from scratch — React, TypeScript, Vite,
-          Tailwind — not because I needed a portfolio but because I needed a structure
+          This site is an artifact. I built it from scratch, React, TypeScript, Vite,
+          Tailwind, not because I needed a portfolio but because I needed a structure
           that could hold the full picture. Most portfolios are curated highlights.
           This is a dossier: every claim has evidence, every skill has a receipt, every
           curiosity has a paper trail.
@@ -416,11 +416,11 @@ function Essay() {
           The FRC robotics team taught me what it means to build under pressure with a
           team that is counting on you. Build season is twelve weeks of design, iteration,
           fabrication, and testing, ending in competition. It is also twelve weeks of
-          learning to communicate across roles — between the software team and the
+          learning to communicate across roles, between the software team and the
           mechanical team, between the strategic vision and the engineering constraints.
         </p>
         <p>
-          Zionaxelle is a multimedia brand I designed from nothing — visual identity,
+          Zionaxelle is a multimedia brand I designed from nothing, visual identity,
           content strategy, web presence, production pipeline. It exists because I wanted
           to know whether I could build something coherent and ship it. I can. I did.
         </p>

@@ -97,7 +97,7 @@ export function HeroSlideshow({ slides, intervalMs = 6000 }: Props) {
       {/* Gradient overlay */}
       {showText && <div className={`absolute inset-0 ${overlayGrad}`} />}
 
-      {/* Text overlay — pl-16 on small screens to clear the left nav arrow */}
+      {/* Text overlay, pl-16 on small screens to clear the left nav arrow */}
       {showText && (
         <div className={`relative container h-full pt-32 pb-24 flex flex-col justify-between ${textMain} animate-fade-in`}>
           <div className={`flex items-baseline justify-between font-mono text-[0.65rem] uppercase tracking-[0.3em] ${textFaint}`}>
@@ -108,7 +108,7 @@ export function HeroSlideshow({ slides, intervalMs = 6000 }: Props) {
             </span>
           </div>
 
-          {/* Text block — padded left on mobile so the nav arrow doesn't overlap the gold eyebrow */}
+          {/* Text block, padded left on mobile so the nav arrow doesn't overlap the gold eyebrow */}
           <div className="max-w-4xl pl-14 sm:pl-0">
             {s.eyebrow && (
               <p className={`font-mono text-xs uppercase tracking-[0.3em] ${accent} mb-6`}>
@@ -151,7 +151,7 @@ export function HeroSlideshow({ slides, intervalMs = 6000 }: Props) {
         </div>
       )}
 
-      {/* Eye toggle — top right */}
+      {/* Eye toggle, top right */}
       <div className="absolute top-24 right-6 md:right-10 z-20 flex items-center gap-2">
         <button
           onClick={() => setShowText((v) => !v)}
@@ -163,7 +163,7 @@ export function HeroSlideshow({ slides, intervalMs = 6000 }: Props) {
         </button>
       </div>
 
-      {/* Left nav arrow — positioned at bottom third so it doesn't overlap the text block */}
+      {/* Left nav arrow, positioned at bottom third so it doesn't overlap the text block */}
       <button
         onClick={prev}
         aria-label="Previous slide"
@@ -172,7 +172,7 @@ export function HeroSlideshow({ slides, intervalMs = 6000 }: Props) {
         <ChevronLeft className="w-5 h-5" />
       </button>
 
-      {/* Right nav arrow — matching position */}
+      {/* Right nav arrow, matching position */}
       <button
         onClick={next}
         aria-label="Next slide"
