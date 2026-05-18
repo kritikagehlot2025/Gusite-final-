@@ -10,6 +10,13 @@ const topLinks = [
   { to: "/dashboard", label: "Pages", num: "✦✦" },
 ];
 
+function pageLabelFromPath(pathname: string): string {
+  if (pathname === "/") return "Home";
+  if (pathname === "/dashboard") return "Pages";
+  const cluster = CLUSTERS.find((c) => pathname.startsWith(`/${c.slug}`));
+  return cluster?.label ?? "";
+}
+
 function forceNav(to: string) {
   if (to === window.location.pathname) {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
@@ -52,6 +59,7 @@ export const SiteNav = () => {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { pathname } = useLocation();
+  const currentLabel = pageLabelFromPath(pathname);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -92,7 +100,7 @@ export const SiteNav = () => {
               aria-label="Open menu"
             >
               <span className="hidden md:inline eyebrow !text-paper group-hover:!text-gold transition-colors [text-shadow:0_2px_8px_hsl(220_60%_4%/0.65),0_1px_2px_hsl(220_60%_4%/0.8)]">
-                Index
+                Index: {currentLabel}
               </span>
               <Menu className="w-5 h-5 !text-paper group-hover:!text-gold transition-colors drop-shadow-[0_2px_6px_hsl(220_60%_4%/0.65)]" />
             </button>
@@ -156,46 +164,53 @@ export const SiteNav = () => {
   );
 };
 
-export const SiteFooter = forwardRef<HTMLElement>((_, ref) => (
-  <footer ref={ref} className="force-light bg-navy-deep text-paper relative overflow-hidden grain">
-    <div className="container py-10 grid md:grid-cols-3 gap-8">
-      <div className="md:col-span-2">
-        <p className="label-gold mb-4">Colophon</p>
-        <p className="font-display text-2xl text-balance leading-tight">
-          A living dossier of one curious mind, updated as the work continues.
-        </p>
-      </div>
-      <div>
-        <p className="eyebrow text-paper/60 mb-4">Navigate</p>
-        <ul className="space-y-2 font-mono text-xs">
-          <li>
-            <button onClick={() => forceNav("/")} className="link-underline hover:text-gold bg-transparent border-0 p-0 cursor-pointer text-left">
-              00 · Home
-            </button>
-          </li>
-          <li>
-            <button onClick={() => forceNav("/dashboard")} className="link-underline hover:text-gold bg-transparent border-0 p-0 cursor-pointer text-left">
-              ✦✦ · Pages
-            </button>
-          </li>
-          {CLUSTERS.map((c) => (
-            <li key={c.slug}>
-              <button onClick={() => forceNav(`/${c.slug}`)} className="link-underline hover:text-gold bg-transparent border-0 p-0 cursor-pointer text-left">
-                {c.num} · {c.label}
+export const SiteFooter = forwardRef<HTMLElement>((_, ref) => {
+  const { pathname } = useLocation();
+  const footerLinkClass = (to: string) =>
+    `link-underline hover:text-gold bg-transparent border-0 p-0 cursor-pointer text-left ${
+      pathname === to ? "text-gold" : "text-paper"
+    }`;
+  return (
+    <footer ref={ref} className="force-light bg-navy-deep text-paper relative overflow-hidden grain">
+      <div className="container py-10 grid md:grid-cols-3 gap-8">
+        <div className="md:col-span-2">
+          <p className="label-gold mb-4">Colophon</p>
+          <p className="font-display text-2xl text-balance leading-tight">
+            A living dossier of one curious mind, updated as the work continues.
+          </p>
+        </div>
+        <div>
+          <p className="eyebrow text-paper/60 mb-4">Navigate</p>
+          <ul className="space-y-2 font-mono text-xs">
+            <li>
+              <button onClick={() => forceNav("/")} className={footerLinkClass("/")}>
+                00 · Home
               </button>
             </li>
-          ))}
-        </ul>
+            <li>
+              <button onClick={() => forceNav("/dashboard")} className={footerLinkClass("/dashboard")}>
+                ✦✦ · Pages
+              </button>
+            </li>
+            {CLUSTERS.map((c) => (
+              <li key={c.slug}>
+                <button onClick={() => forceNav(`/${c.slug}`)} className={footerLinkClass(`/${c.slug}`)}>
+                  {c.num} · {c.label}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
-    </div>
-    <div className="border-t border-paper/10">
-      <div className="container py-3 flex flex-col md:flex-row justify-between gap-2 font-mono text-[0.65rem] uppercase tracking-[0.25em] text-paper/50">
-        <span>© {new Date().getFullYear()} Geetika Gehlot · Montréal</span>
-        <span>Edition I · Volume One · Ongoing</span>
+      <div className="border-t border-paper/10">
+        <div className="container py-3 flex flex-col md:flex-row justify-between gap-2 font-mono text-[0.65rem] uppercase tracking-[0.25em] text-paper/50">
+          <span>© {new Date().getFullYear()} Geetika Gehlot · Montréal</span>
+          <span>Edition I · Volume One · Ongoing</span>
+        </div>
       </div>
-    </div>
-  </footer>
-));
+    </footer>
+  );
+});
 
 SiteFooter.displayName = "SiteFooter";
 
