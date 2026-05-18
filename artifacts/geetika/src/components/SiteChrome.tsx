@@ -10,7 +10,10 @@ const topLinks = [
 ];
 
 function forceNav(to: string) {
-  if (to === window.location.pathname) return;
+  if (to === window.location.pathname) {
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" as ScrollBehavior });
+    return;
+  }
   window.dispatchEvent(
     new CustomEvent("gg-force-nav", { detail: { to, reload: false } })
   );
