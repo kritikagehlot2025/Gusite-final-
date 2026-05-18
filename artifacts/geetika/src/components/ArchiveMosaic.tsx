@@ -2,9 +2,6 @@ import { useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
 import type { TopicData } from "@/data/clusters";
-function pickImage(_topic: TopicData, _index: number): string | null {
-  return null;
-}
 
 // We use a 6-column grid (LCM of 2 and 3) so spans are always whole integers:
 //   2-col row items  → col-span-3  (half of 6)
@@ -95,9 +92,29 @@ function ArchiveTile({
         <DialogContent className="max-w-2xl p-0 overflow-hidden bg-paper">
           <div className="grid md:grid-cols-[1fr,1.1fr]">
             <div className="relative min-h-[200px] md:min-h-[440px] overflow-hidden bg-navy-deep">
-              <div className="absolute inset-0 bg-gradient-to-t from-navy-deep/80 to-transparent" />
-              <div className="absolute bottom-5 left-5">
+              {topic.embed?.type === "youtube" && (
+                <iframe
+                  src={topic.embed.src}
+                  title={topic.embed.caption ?? topic.label}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  className="absolute inset-0 w-full h-full"
+                  style={{ border: 0 }}
+                />
+              )}
+              {topic.embed?.type === "image" && (
+                <img
+                  src={topic.embed.src}
+                  alt={topic.embed.caption ?? topic.label}
+                  className="absolute inset-0 w-full h-full object-cover object-top"
+                />
+              )}
+              <div className="absolute inset-0 bg-gradient-to-t from-navy-deep/70 via-transparent to-transparent pointer-events-none" />
+              <div className="absolute bottom-5 left-5 right-5 pointer-events-none">
                 <span className="font-mono text-[0.6rem] uppercase tracking-[0.3em] text-gold/70">{num}</span>
+                {topic.embed?.caption && (
+                  <p className="font-mono text-[0.55rem] uppercase tracking-[0.2em] text-gold/45 mt-1 line-clamp-2">{topic.embed.caption}</p>
+                )}
               </div>
             </div>
             <div className="p-7 md:p-9 flex flex-col justify-center">
