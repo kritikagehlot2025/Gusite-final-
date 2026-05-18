@@ -277,21 +277,6 @@ export function AboutCardStack({ topics: _topics }: { topics: TopicData[] }) {
     };
   }, []);
 
-  useEffect(() => {
-    const measure = () => {
-      if (essayContainerRef.current && essayContentRef.current) {
-        const containerH = essayContainerRef.current.offsetHeight;
-        const contentH = essayContentRef.current.scrollHeight;
-        setMaxEssayScroll(Math.max(0, contentH - containerH));
-      }
-    };
-    measure();
-    const ro = new ResizeObserver(measure);
-    if (essayContainerRef.current) ro.observe(essayContainerRef.current);
-    if (essayContentRef.current) ro.observe(essayContentRef.current);
-    return () => ro.disconnect();
-  }, [contentVisible, cardPad]);
-
   const totalScroll = shellRef.current ? Math.max(1, shellRef.current.offsetHeight - vh) : 1;
   const t = clamp(scrollY / totalScroll, 0, 1);
 
@@ -309,6 +294,23 @@ export function AboutCardStack({ topics: _topics }: { topics: TopicData[] }) {
 
   const contentVisible = expandT > 0.7;
   const contentOpacity = easeOut(clamp((expandT - 0.7) / 0.3, 0, 1));
+
+  // Measure essay scroll distance after contentVisible and cardPad are known
+  useEffect(() => {
+    const measure = () => {
+      if (essayContainerRef.current && essayContentRef.current) {
+        const containerH = essayContainerRef.current.offsetHeight;
+        const contentH = essayContentRef.current.scrollHeight;
+        setMaxEssayScroll(Math.max(0, contentH - containerH));
+      }
+    };
+    measure();
+    const ro = new ResizeObserver(measure);
+    if (essayContainerRef.current) ro.observe(essayContainerRef.current);
+    if (essayContentRef.current) ro.observe(essayContentRef.current);
+    return () => ro.disconnect();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [contentVisible, cardPad]);
 
   const initialLabelOpacity = easeOut(clamp((expandT < 0.5 ? expandT / 0.35 : 1 - (expandT - 0.35) / 0.3), 0, 1));
 
