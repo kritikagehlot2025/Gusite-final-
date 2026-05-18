@@ -37,7 +37,7 @@ const Dashboard = () => {
             <Link
               key={page.slug}
               to={`/${page.slug}`}
-              className="group fancy-tile block border border-border bg-paper hover:border-gold transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1 overflow-hidden"
+              className="group fancy-tile block border border-border bg-paper hover:border-gold transition-all duration-700 ease-cinematic hover:-translate-y-1 overflow-hidden"
             >
               <div className="grid md:grid-cols-[1.35fr,0.9fr] min-h-[320px]">
                 <div className="p-7 md:p-8 flex flex-col justify-between">
@@ -100,17 +100,17 @@ const Dashboard = () => {
       </section>
       <section className="container pb-16 md:pb-20" data-reveal>
         <div className="grid md:grid-cols-3 gap-4">
-          <a href="mailto:geetikagehlot2009@gmail.com" className="group fancy-tile block border border-border bg-paper p-6 hover:border-gold transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1">
+          <a href="mailto:geetikagehlot2009@gmail.com" className="group fancy-tile block border border-border bg-paper p-6 hover:border-gold transition-all duration-700 ease-cinematic hover:-translate-y-1">
             <p className="font-mono text-[0.65rem] tracking-[0.3em] text-gold">Contact & Links</p>
             <h3 className="mt-4 font-display text-xl text-ink group-hover:text-gold transition-colors">Get in Touch</h3>
             <p className="mt-3 text-sm text-ink-soft">With in-built email form and social links</p>
           </a>
-          <Link to="/vault" className="group fancy-tile block border border-border bg-paper p-6 hover:border-gold transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1">
+          <Link to="/vault" className="group fancy-tile block border border-border bg-paper p-6 hover:border-gold transition-all duration-700 ease-cinematic hover:-translate-y-1">
             <p className="font-mono text-[0.65rem] tracking-[0.3em] text-gold">Documents</p>
             <h3 className="mt-4 font-display text-xl text-ink group-hover:text-gold transition-colors">Open the CV & Resume page</h3>
             <p className="mt-3 text-sm text-ink-soft">With interactive, in-built visual and viewable pdf formats.</p>
           </Link>
-          <Link to="/" className="group fancy-tile block border border-border bg-paper p-6 hover:border-gold transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1">
+          <Link to="/" className="group fancy-tile block border border-border bg-paper p-6 hover:border-gold transition-all duration-700 ease-cinematic hover:-translate-y-1">
             <p className="font-mono text-[0.65rem] tracking-[0.3em] text-gold">Home</p>
             <h3 className="mt-4 font-display text-xl text-ink group-hover:text-gold transition-colors">Return to home</h3>
             <p className="mt-3 text-sm text-ink-soft">Jump back to the slideshow page.</p>

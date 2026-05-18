@@ -77,7 +77,7 @@ export function BentoCard({ item, randomize = false }: { item: BentoItem; random
         className={[
           SIZE_CLASS[size],
           "group fancy-tile relative overflow-hidden border border-border text-left",
-          "transition-all duration-[700ms] ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform",
+          "transition-all duration-700 ease-cinematic will-change-transform",
           "hover:border-gold",
           "hover:-translate-y-1.5 hover:scale-[1.02] hover:rotate-[0.25deg] hover:z-10",
           "focus:outline-none focus-visible:border-gold focus-visible:ring-2 focus-visible:ring-gold/40",

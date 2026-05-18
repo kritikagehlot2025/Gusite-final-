@@ -43,7 +43,7 @@ const DialogContent = React.forwardRef<
     >
       {children}
       <DialogPrimitive.Close
-        className="group absolute right-3 top-3 z-[1200] flex items-center justify-center rounded-full border border-gold/40 bg-[hsl(43_60%_14%_/_0.7)] text-gold backdrop-blur-sm transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:scale-[6] hover:bg-[hsl(43_82%_50%)] hover:border-gold hover:text-black hover:shadow-[0_0_32px_6px_hsl(43_82%_50%/0.55),0_0_64px_12px_hsl(43_82%_50%/0.25)] focus:outline-none disabled:pointer-events-none"
+        className="group absolute right-3 top-3 z-[1200] flex items-center justify-center rounded-full border border-gold/40 bg-[hsl(43_60%_14%_/_0.7)] text-gold backdrop-blur-sm transition-all duration-500 ease-cinematic hover:scale-[6] hover:bg-[hsl(43_82%_50%)] hover:border-gold hover:text-black hover:shadow-[0_0_32px_6px_hsl(43_82%_50%/0.55),0_0_64px_12px_hsl(43_82%_50%/0.25)] focus:outline-none disabled:pointer-events-none"
         style={{ width: 72, height: 72 }}
       >
         <X className="h-9 w-9 transition-transform duration-500 group-hover:scale-150 group-hover:rotate-90" strokeWidth={2} />

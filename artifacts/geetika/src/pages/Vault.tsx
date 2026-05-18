@@ -60,7 +60,7 @@ function CVFeatureBlock() {
       <DialogTrigger asChild>
         <button
           type="button"
-          className="group fancy-tile w-full text-left border border-border bg-paper hover:border-gold transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1 hover:scale-[1.005] overflow-hidden"
+          className="group fancy-tile w-full text-left border border-border bg-paper hover:border-gold transition-all duration-700 ease-cinematic hover:-translate-y-1 hover:scale-[1.005] overflow-hidden"
         >
           <div className="grid md:grid-cols-[1fr,380px]">
             {/* Left — CTA */}
@@ -252,7 +252,7 @@ function CVDocumentGrid() {
         href="https://www.linkedin.com/in/geetika-gehlot"
         target="_blank"
         rel="noreferrer"
-        className="fancy-tile group block border border-border bg-paper hover:border-gold transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1 overflow-hidden p-6"
+        className="fancy-tile group block border border-border bg-paper hover:border-gold transition-all duration-700 ease-cinematic hover:-translate-y-1 overflow-hidden p-6"
       >
         <div className="flex items-start justify-between mb-6">
           <span className="flex h-10 w-10 items-center justify-center rounded-full bg-gold/10 text-gold border border-gold/20">

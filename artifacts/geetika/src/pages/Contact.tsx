@@ -71,7 +71,7 @@ function ContactBlock() {
         {channels.map(({ icon: I, label, value, href, num }) => {
           const inner = (
             <div
-              className="fancy-tile group/tile relative block p-5 h-full bg-paper border border-border hover:bg-navy-deep hover:text-paper-contrast transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1 hover:border-gold fibers stipple overflow-hidden"
+              className="fancy-tile group/tile relative block p-5 h-full bg-paper border border-border hover:bg-navy-deep hover:text-paper-contrast transition-all duration-700 ease-cinematic hover:-translate-y-1 hover:border-gold fibers stipple overflow-hidden"
               style={{ minHeight: "140px" }}
             >
               <div className="relative z-10 h-full flex flex-col justify-between">

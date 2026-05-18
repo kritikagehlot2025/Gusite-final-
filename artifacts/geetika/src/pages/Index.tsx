@@ -219,7 +219,7 @@ const Index = () => {
                 key={label}
                 data-reveal
                 data-reveal-delay={String(idx * 40)}
-                className="fancy-tile bg-paper border border-border p-5 group hover:bg-navy-deep hover:text-paper-contrast transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] relative overflow-hidden fibers stipple hover:-translate-y-1 hover:border-gold"
+                className="fancy-tile bg-paper border border-border p-5 group hover:bg-navy-deep hover:text-paper-contrast transition-all duration-700 ease-cinematic relative overflow-hidden fibers stipple hover:-translate-y-1 hover:border-gold"
               >
                 <I className="w-5 h-5 text-gold mb-4 transition-transform duration-500 group-hover:rotate-[8deg] group-hover:scale-110" />
                 <p className="font-display text-xl leading-tight">{label}</p>
@@ -287,7 +287,7 @@ const Index = () => {
                 width={1600}
                 height={1000}
                 loading="lazy"
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1400ms] group-hover:scale-110"
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-1400 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-navy-deep/95 via-navy-deep/30 to-transparent" />
               <div className="absolute inset-3 border border-paper/15 pointer-events-none" />
@@ -367,7 +367,7 @@ const Index = () => {
                 <li key={c.slug}>
                   <Link
                     to={`/${c.slug}`}
-                    className="fancy-tile group/tile block p-6 h-full bg-paper border border-border hover:bg-navy-deep hover:text-paper-contrast transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] relative overflow-hidden fibers stipple hover:-translate-y-1 hover:border-gold"
+                    className="fancy-tile group/tile block p-6 h-full bg-paper border border-border hover:bg-navy-deep hover:text-paper-contrast transition-all duration-700 ease-cinematic relative overflow-hidden fibers stipple hover:-translate-y-1 hover:border-gold"
                   >
                     <div className="flex items-start justify-between mb-6">
                       <CI className="w-5 h-5 text-gold" />

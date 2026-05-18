@@ -83,7 +83,7 @@ function ArchiveTile({
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className={`fancy-tile group/tile relative ${spanClass} overflow-hidden bg-paper border border-border hover:bg-navy-deep hover:text-paper-contrast transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 hover:border-gold fibers stipple text-left`}
+        className={`fancy-tile group/tile relative ${spanClass} overflow-hidden bg-paper border border-border hover:bg-navy-deep hover:text-paper-contrast transition-all duration-500 ease-cinematic hover:-translate-y-0.5 hover:border-gold fibers stipple text-left`}
         style={{ height: "160px" }}
       >
         <div className="absolute inset-0 opacity-0 group-hover/tile:opacity-100 transition-opacity duration-500">
