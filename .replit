@@ -2,7 +2,9 @@ modules = ["nodejs-24"]
 
 [deployment]
 router = "application"
-deploymentTarget = "autoscale"
+deploymentTarget = "static"
+build = ["bash", "-c", "pnpm install && pnpm --filter @workspace/geetika run build"]
+publicDir = "artifacts/geetika/dist/public"
 
 [deployment.postBuild]
 args = ["pnpm", "store", "prune"]
