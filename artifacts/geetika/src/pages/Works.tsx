@@ -42,7 +42,7 @@ const Works = () => {
           </h1>
         </div>
         <p className="mt-8 max-w-2xl text-base md:text-lg text-ink-soft leading-relaxed font-accent italic animate-fade-up">
-          Robotics, writing, music, screen, design, art, leadership, sport —
+          Robotics, writing, music, screen, design, art, leadership, sport — FL Studio, DaVinci Resolve, event hosting, freelance —
           click any box to see the receipts, build logs, and performance reels.
         </p>
         <div className="rule-gold mt-10" />

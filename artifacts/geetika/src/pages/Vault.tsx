@@ -272,8 +272,10 @@ function CVDocumentGrid() {
 
 function CVContent() {
   const skills = [
-    "Full-stack Web Designing", "React", "Python", "Git", "Agile", "CI/CD",
-    "Node.js", "Docker", "MongoDB", "Typescript", "AWS", "JavaScript",
+    "Full-stack Web Designing", "React", "TypeScript", "Python", "Git",
+    "FL Studio", "DaVinci Resolve", "Music Production", "Video Editing",
+    "Freelance Design", "Event Hosting & Production",
+    "CAD (Onshape / SolidWorks)", "Robotics (FRC)", "AI & Machine Learning",
   ];
   const languages = ["English", "French", "Hindi", "Marwari"];
 
@@ -332,8 +334,8 @@ function CVContent() {
         <section>
           <CVEyebrow>Intro</CVEyebrow>
           <div className="space-y-4 text-base leading-relaxed max-w-2xl">
-            <p>I'm Geetika Gehlot — a student-builder working across academics, STEM research, art, robotics, and youth leadership. I focus on intuitive design and rigorous craft.</p>
-            <p>Currently exploring computer science, design, and interdisciplinary research while serving as Vice President of the YMCA Youth Co-op and contributing to robotics teams.</p>
+            <p>I'm Geetika Gehlot — a multidisciplinary creator, scientist, performer, and producer based in Montréal. I work across STEM research, robotics, music production, video editing, writing, visual art, and event production.</p>
+            <p>Using FL Studio and DaVinci Resolve since 2020. Freelance design and event hosting since my early teens — paid, delivered, real. Currently serving as VP of the YMCA Youth Co-op and contributing to FRC robotics Team 7700.</p>
           </div>
         </section>
 
