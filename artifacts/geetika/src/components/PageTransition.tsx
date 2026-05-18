@@ -67,9 +67,7 @@ export function PageTransition() {
   const lift = isIntro ? INTRO_LIFT : LIFT_TIME;
 
   const runTransition = useCallback((destPathname: string, doReload = false) => {
-    if (transitionBusy.current && transitionTarget.current === destPathname && !doReload) {
-      return;
-    }
+    if (transitionBusy.current && !doReload) return;
     transitionBusy.current = true;
     timers.current.forEach(window.clearTimeout);
     timers.current = [];
@@ -137,9 +135,7 @@ export function PageTransition() {
   useEffect(() => {
     const handler = (e: Event) => {
       const { to, reload } = (e as CustomEvent<{ to: string; reload?: boolean }>).detail;
-      if (transitionBusy.current && transitionTarget.current !== to && !reload) return;
-      if (transitionTarget.current === to && !reload) return;
-      // Same-page click: skip transition entirely to avoid double animation / hang
+      if (transitionBusy.current && !reload) return;
       if (to === pathname && !reload) return;
       if (to === pathname) {
         runTransition(to, true);
