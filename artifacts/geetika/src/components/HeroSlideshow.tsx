@@ -95,7 +95,7 @@ export function HeroSlideshow({ slides, intervalMs = 6000 }: Props) {
           key={idx}
           src={slide.src}
           alt={slide.alt}
-          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
+          className={`absolute inset-0 w-full h-full object-cover object-top transition-opacity duration-1000 ${
             idx === i ? "opacity-100" : "opacity-0"
           }`}
           aria-hidden={idx !== i}
