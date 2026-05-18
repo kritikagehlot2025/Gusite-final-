@@ -79,7 +79,7 @@ function LightboxCard({ card, index }: { card: typeof LIGHTBOX_CARDS[0]; index: 
           src={card.photo}
           alt=""
           aria-hidden
-          className="absolute inset-0 w-full h-full object-cover opacity-[0.07] grayscale pointer-events-none"
+          className="absolute inset-0 w-full h-full object-cover opacity-25 pointer-events-none"
         />
         <div
           className="absolute inset-0"

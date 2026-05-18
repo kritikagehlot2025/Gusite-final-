@@ -8,75 +8,68 @@ import { PageShell } from "@/components/SiteChrome";
 import { PullQuote } from "@/components/Editorial";
 import { Bento, type BentoItem } from "@/components/Bento";
 import { HeroSlideshow, type Slide } from "@/components/HeroSlideshow";
-import { CLUSTERS, findCluster } from "@/data/clusters";
+import { CLUSTERS } from "@/data/clusters";
 import { useReveal } from "@/hooks/useReveal";
-import atmosTelescope from "@/assets/atmos-telescope.jpg";
-import atmosNotebook from "@/assets/atmos-notebook.jpg";
-import atmosMusic from "@/assets/atmos-music.jpg";
-// Hero slideshow — fashion / modelling photos
-import slideGarden from "@assets/unnamed_1779118479483.jpg";
-import slidePinkBlue from "@assets/unnamed_1779118456324.jpg";
-import slideCreamGold from "@assets/unnamed_1779118459816.jpg";
-import slideBlueOutdoor from "@assets/unnamed_1779118420608.jpg";
-import slideGreenTeal from "@assets/unnamed_1779118473437.jpg";
-import slideYellowJacket from "@assets/unnamed_1779118416014.jpg";
-// Triptych — more fashion photos
+// Triptych — fashion editorial plates (kept as-is)
 import triGreenSit from "@assets/unnamed_1779118401963.jpg";
 import triGreenWide from "@assets/unnamed_1779118449424.jpg";
 import triPinkRed from "@assets/unnamed_1779118444321.jpg";
-// Additional fashion / modelling
-import fashNavy from "@assets/unnamed_1779118410872.jpg";
-import fashTeal from "@assets/unnamed_1779118424529.jpg";
-import fashGreenSit2 from "@assets/unnamed_1779118428503.jpg";
-import fashYellowSpin from "@assets/unnamed_1779118470385.jpg";
-// Achievement / personal photos
+// Achievement photos for bento
 import achGladrags from "@assets/unnamed_1779118342065.jpg";
-import achGladragsGroup from "@assets/unnamed_1779118348001.jpg";
-import achCrown from "@assets/unnamed_1779118490987.jpg";
-import achSinging from "@assets/unnamed_1779118497700.jpg";
-import achCasual from "@assets/unnamed_1779118514805.jpg";
 import achAbacus from "@assets/unnamed_1779118522303.jpg";
 
 /* -------------------- HERO SLIDESHOW -------------------- */
+/* Diverse mix: singing → acting → science lab → astronomy → physics → robotics */
 const HERO_SLIDES: Slide[] = [
   {
-    src: slideGarden, alt: "Geetika modelling a yellow and pink lehenga choli in a garden",
-    tone: "light", eyebrow: "Geetika Gehlot · Modelling",
+    src: "/photo-singing.jpg",
+    alt: "Geetika performing Hindustani classical vocal on stage",
+    tone: "light",
+    eyebrow: "Vocal Artist · Hindustani Classical",
     title: "",
-    body: "International fashion model · child artist · Montréal.",
+    body: "Stage performer — trained in the guru-shishya tradition of Indian classical music.",
   },
   {
-    src: slidePinkBlue, alt: "Geetika in a pink lehenga with blue dupatta",
-    tone: "light", eyebrow: "Fashion · Festive Wear",
+    src: "/photo-starparivar-set.jpg",
+    alt: "Geetika on the Star Parivaar set with Barun Sobti and Ridhi Dogra",
+    tone: "light",
+    eyebrow: "Child Artist · Star Plus · National Television",
     title: "",
-    body: "Lead model for international fashion stores — UK, US & NZ.",
+    body: "On set with Barun Sobti and Ridhi Dogra — Iss Pyar Ko Kya Naam Doon.",
   },
   {
-    src: slideCreamGold, alt: "Geetika in a cream and gold lehenga with flower crown",
-    tone: "light", eyebrow: "Fashion · Bridal Collection",
+    src: "/photo-lab-team.jpg",
+    alt: "Geetika with the McGill cancer cell research lab team",
+    tone: "light",
+    eyebrow: "Scientist · McGill Cancer Cell Lab · March 2025",
     title: "",
-    body: "Garment shoots for Amazon, Alibaba, Indiamart and more.",
+    body: "Gel electrophoresis, Zeiss microscopy, pipetting — real bench science.",
   },
   {
-    src: slideBlueOutdoor, alt: "Geetika in a blue lehenga outdoors",
-    tone: "light", eyebrow: "Fashion · Designer Wear",
+    src: "/photo-moon-stargazing.jpg",
+    alt: "Rooftop night sky observation — stargazing and meteor tracking",
+    tone: "light",
+    eyebrow: "Self-Taught Astronomer",
     title: "",
-    body: "Selected for top-10 Little Miss Gladrags India.",
+    body: "Every constellation. Every blank space. A full year of shooting stars.",
   },
   {
-    src: slideGreenTeal, alt: "Geetika in a teal and gold lehenga",
-    tone: "light", eyebrow: "Fashion · Wedding Collection",
+    src: "/photo-jun-ye-selfie.jpg",
+    alt: "Geetika with quantum physicist Dr. Jun Ye at McGill",
+    tone: "light",
+    eyebrow: "Physicist · Jun Ye Seminar · McGill 2025",
     title: "",
-    body: "Screen credits — Veere Di Wedding · Hindi Medium · Alt Balaji.",
+    body: "Youngest attendee at a Nobel-adjacent precision physics lecture.",
   },
   {
-    src: slideYellowJacket, alt: "Geetika in a yellow lehenga with embroidered jacket",
-    tone: "light", eyebrow: "Fashion · Festive Collection",
+    src: "/photo-robotics-pit.jpg",
+    alt: "FRC Team 7700 — competition robotics pit work",
+    tone: "light",
+    eyebrow: "Engineer · FRC Team 7700",
     title: "",
-    body: "Performer · Band-it Festival 2019 · Ryan International.",
+    body: "Build seasons, mechanical instinct, and the controlled chaos of competition robotics.",
   },
 ];
-
 
 /* -------------------- SKILLS TOOLKIT -------------------- */
 const SKILLS: { icon: React.ComponentType<{ className?: string }>; label: string; level: string }[] = [
@@ -97,52 +90,53 @@ const SKILLS: { icon: React.ComponentType<{ className?: string }>; label: string
 /* -------------------- FEATURED HIGHLIGHTS BENTO -------------------- */
 const FEATURED: BentoItem[] = [
   {
-    id: "f-frc", size: "xl", eyebrow: "Robotics",
+    id: "f-frc", size: "xl", eyebrow: "Engineering & Robotics",
     title: "FRC Team 7700",
     blurb: "Build seasons, mechanical instinct, and the controlled chaos of competition robotics.",
-    image: atmosTelescope, meta: "Cluster 04 · Robotics",
-    detail: "From CAD reviews at midnight to driver-station nerves on game day — Team 7700 is where I learned to design under deadline, debug under pressure, and trust a team. Click through to the cluster for the full build log.",
+    image: "/photo-robotics-pit.jpg", meta: "Works · Engineering",
+    detail: "From CAD reviews at midnight to driver-station nerves on game day — Team 7700 is where I learned to design under deadline, debug under pressure, and trust a team. Click through to the Works cluster for the full build log.",
   },
   {
     id: "f-novel", size: "lg", eyebrow: "Writing",
     title: "The Novel Cycle",
     blurb: "A multi-book story world I've been building for years.",
-    image: atmosNotebook, meta: "Cluster 05 · Writing",
+    image: "/photo-screenplay-board.jpg", meta: "Works · Writing",
   },
   {
     id: "f-vocal", size: "md", eyebrow: "Performance",
     title: "Hindustani Vocal",
     blurb: "Stage repertoire, raagas, and live performance reels.",
-    image: atmosMusic, meta: "Cluster 06 · Music",
+    image: "/photo-singing.jpg", meta: "Works · Music",
   },
   {
     id: "f-ap", size: "md", eyebrow: "Academics",
     title: "AP Track + Olympiads",
-    blurb: "The transcript backing the curiosity.", meta: "Cluster 02 · Academics",
+    blurb: "The transcript backing the curiosity.",
+    image: "/photo-quantum-research.jpg", meta: "Academics",
   },
   {
     id: "f-acting", size: "md", eyebrow: "Screen",
     title: "Child Artist Reel",
-    blurb: "Years on screen, in front of a camera and a microphone.", meta: "Cluster 07 · Acting",
+    blurb: "Years on screen — lead roles, national television, voice acting.",
+    image: "/photo-starparivar-set.jpg", meta: "Works · Acting",
   },
   {
     id: "f-zion", size: "md", eyebrow: "Tech",
     title: "Zionaxelle",
-    blurb: "A multimedia universe I built from scratch.", meta: "Cluster 08 · Tech",
+    blurb: "A multimedia universe I built from scratch.",
+    image: achGladrags, meta: "Works · Tech",
   },
 ];
-// explicit — no randomize so lg/md sizes render as intended
 
-/* -------------------- RANDOM WINS / CURIOSITIES TEASER -------------------- */
+/* -------------------- CURIOSITIES / BELTS & MEDALS -------------------- */
 const CURIOSITIES: BentoItem[] = [
-  { id: "c-karate", size: "md", eyebrow: "Belt", title: "Karate", blurb: "Years on the mat — discipline that bleeds into everything else.", meta: "TODO · belt level + dojo" },
-  { id: "c-abacus", size: "md", eyebrow: "Mental Math", title: "Abacus medals", blurb: "Lightning arithmetic from the elementary years.", meta: "TODO · grades + competitions" },
-  { id: "c-chess", size: "sm", eyebrow: "Strategy", title: "Chess", blurb: "Tournament play and pattern obsession.", meta: "TODO · rating" },
-  { id: "c-bad", size: "sm", eyebrow: "Court", title: "Badminton", blurb: "Smash, drop, repeat.", meta: "TODO" },
-  { id: "c-tt", size: "sm", eyebrow: "Court", title: "Table Tennis", blurb: "Reflex over reach.", meta: "TODO" },
-  { id: "c-misc", size: "wide", eyebrow: "Side quests", title: "And a few oddities I'm proud of", blurb: "Random certificates, half-wins, things that don't fit a category but absolutely shaped me.", meta: "Cluster 15 · Curiosities — full archive" },
+  { id: "c-karate", size: "md", eyebrow: "Belt", title: "Karate", blurb: "Years on the mat — discipline that bleeds into everything else.", image: "/photo-karate.jpg", meta: "Works · Athletics" },
+  { id: "c-abacus", size: "md", eyebrow: "Mental Math", title: "Abacus Medals", blurb: "Lightning arithmetic from the elementary years.", image: achAbacus, meta: "Works · Math" },
+  { id: "c-chess", size: "sm", eyebrow: "Strategy", title: "Chess", blurb: "Tournament play and pattern obsession.", meta: "Works · Games" },
+  { id: "c-bad", size: "sm", eyebrow: "Court", title: "Badminton", blurb: "Smash, drop, repeat.", meta: "Works · Athletics" },
+  { id: "c-tt", size: "sm", eyebrow: "Court", title: "Table Tennis", blurb: "Reflex over reach.", meta: "Works · Athletics" },
+  { id: "c-misc", size: "wide", eyebrow: "Side Quests", title: "And a few oddities I'm proud of", blurb: "Random certificates, half-wins, things that don't fit a category but absolutely shaped me.", image: "/photo-hulahoop.jpg", meta: "Works · Curiosities" },
 ];
-// explicit — no randomize: row1=karate+abacus(md+md), row2=chess+bad+tt(sm+sm+sm), row3=misc(wide)
 
 const Index = () => {
   useReveal();
@@ -152,7 +146,7 @@ const Index = () => {
       {/* HERO — fullscreen navigable slideshow */}
       <HeroSlideshow slides={HERO_SLIDES} />
 
-      {/* MANIFESTO — layered: paper bg + drifting notebook + telescope corner + crumpled-paper veil */}
+      {/* MANIFESTO */}
       <section
         id="after-hero"
         className="relative py-12 md:py-16 scroll-mt-16 overflow-hidden crumpled-paper crinkle film-grain leak parchment fibers"
@@ -195,7 +189,7 @@ const Index = () => {
         </PullQuote>
       </div>
 
-      {/* SKILLS TOOLKIT — layered telescope + cosmos veil + scanlines */}
+      {/* SKILLS TOOLKIT */}
       <section className="relative py-10 md:py-14 overflow-hidden scanlines film-grain dust weave-soft stipple">
         <div className="container relative">
           <div className="flex items-end justify-between mb-8 gap-6 flex-wrap" data-reveal>
@@ -231,7 +225,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* FEATURED HIGHLIGHTS BENTO — cosmos bg + crumpled-paper field + drifting notebook */}
+      {/* FEATURED HIGHLIGHTS BENTO */}
       <section className="relative py-10 md:py-14 overflow-hidden crumpled-paper film-grain leak marble fibers">
         <div className="container relative">
           <div className="flex items-end justify-between mb-8 gap-6 flex-wrap" data-reveal>
@@ -251,7 +245,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* TRIPTYCH — three layered plates */}
+      {/* TRIPTYCH — three editorial plates */}
       <section className="container py-8 md:py-10">
         <div className="grid md:grid-cols-3 gap-2">
           {[
@@ -285,7 +279,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* RANDOM WINS / CURIOSITIES TEASER — paper texture wash + crinkle */}
+      {/* CURIOSITIES / BELTS, MEDALS & SIDE QUESTS */}
       <section className="relative py-10 md:py-14 overflow-hidden crinkle film-grain dust linen parchment weave-soft">
         <div className="container relative">
           <div className="flex items-end justify-between mb-8 gap-6 flex-wrap" data-reveal>
@@ -309,7 +303,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* GRAND GROUPS — index, layered music plate */}
+      {/* GRAND GROUPS — site index */}
       <section className="relative py-10 md:py-16 overflow-hidden film-grain dust crumpled-paper marble fibers">
         <div className="container relative">
           <div className="flex items-end justify-between mb-10 gap-6 flex-wrap" data-reveal>
@@ -353,7 +347,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* CORE TRAITS BAND — layered cosmos + telescope + crumpled-paper veil */}
+      {/* CORE TRAITS BAND */}
       <section className="force-light bg-navy-deep text-paper py-14 md:py-20 relative overflow-hidden grain crumpled-paper film-grain leak marble stipple">
         <div className="container relative">
           <p className="label-gold mb-6" data-reveal>§ 05 · Core Traits</p>

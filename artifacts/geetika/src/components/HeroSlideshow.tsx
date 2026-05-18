@@ -23,15 +23,12 @@ export function HeroSlideshow({ slides, intervalMs = 6000 }: Props) {
   const total = slides.length;
   const sectionRef = useRef<HTMLElement | null>(null);
 
-  // While the slideshow is on screen, mark the document so the global header
-  // can flip to light-on-dark styling regardless of the active theme.
   useEffect(() => {
     const el = sectionRef.current;
     if (!el) return;
     const root = document.documentElement;
     const obs = new IntersectionObserver(
       ([entry]) => {
-        // Treat "any visible part of the slideshow" as in-view.
         if (entry.isIntersecting && entry.intersectionRatio > 0.05) {
           root.classList.add("hero-in-view");
         } else {
@@ -47,19 +44,16 @@ export function HeroSlideshow({ slides, intervalMs = 6000 }: Props) {
     };
   }, []);
 
-
   const go = (n: number) => setI(((n % total) + total) % total);
   const next = () => go(i + 1);
   const prev = () => go(i - 1);
 
-  // autoplay
   useEffect(() => {
     if (!intervalMs) return;
     const t = setInterval(() => setI((p) => (p + 1) % total), intervalMs);
     return () => clearInterval(t);
   }, [intervalMs, total]);
 
-  // keyboard
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "ArrowRight") next();
@@ -72,7 +66,6 @@ export function HeroSlideshow({ slides, intervalMs = 6000 }: Props) {
   }, [i, total]);
 
   const s = slides[i];
-  // Always-dark overlay system → always light text.
   const textMain = "text-paper";
   const textSoft = "text-paper/80";
   const textFaint = "text-paper/60";
@@ -80,7 +73,6 @@ export function HeroSlideshow({ slides, intervalMs = 6000 }: Props) {
   const overlayGrad = "bg-gradient-to-r from-navy-deep/85 via-navy-deep/45 to-navy-deep/15";
   const chromeBorder = "border-paper/30";
   const chromeHover = "hover:border-gold hover:text-gold";
-
 
   return (
     <section
@@ -102,10 +94,10 @@ export function HeroSlideshow({ slides, intervalMs = 6000 }: Props) {
         />
       ))}
 
-      {/* Tone-aware gradient for legibility */}
+      {/* Gradient overlay */}
       {showText && <div className={`absolute inset-0 ${overlayGrad}`} />}
 
-      {/* Text overlay */}
+      {/* Text overlay — pl-16 on small screens to clear the left nav arrow */}
       {showText && (
         <div className={`relative container h-full pt-32 pb-24 flex flex-col justify-between ${textMain} animate-fade-in`}>
           <div className={`flex items-baseline justify-between font-mono text-[0.65rem] uppercase tracking-[0.3em] ${textFaint}`}>
@@ -116,7 +108,8 @@ export function HeroSlideshow({ slides, intervalMs = 6000 }: Props) {
             </span>
           </div>
 
-          <div className="max-w-4xl">
+          {/* Text block — padded left on mobile so the nav arrow doesn't overlap the gold eyebrow */}
+          <div className="max-w-4xl pl-14 sm:pl-0">
             {s.eyebrow && (
               <p className={`font-mono text-xs uppercase tracking-[0.3em] ${accent} mb-6`}>
                 {s.eyebrow}
@@ -131,7 +124,7 @@ export function HeroSlideshow({ slides, intervalMs = 6000 }: Props) {
 
           {/* Bottom row: dots + scroll cue */}
           <div className="flex items-end justify-between gap-6">
-            <div className="flex items-center gap-2" role="tablist" aria-label="Slide navigation">
+            <div className="flex items-center gap-2 pl-14 sm:pl-0" role="tablist" aria-label="Slide navigation">
               {slides.map((_, idx) => (
                 <button
                   key={idx}
@@ -144,7 +137,6 @@ export function HeroSlideshow({ slides, intervalMs = 6000 }: Props) {
                       ? "w-10 bg-gold"
                       : "w-5 bg-paper/40 hover:bg-paper/70"
                   }`}
-
                 />
               ))}
             </div>
@@ -159,7 +151,7 @@ export function HeroSlideshow({ slides, intervalMs = 6000 }: Props) {
         </div>
       )}
 
-      {/* Chrome controls (always visible) */}
+      {/* Eye toggle — top right */}
       <div className="absolute top-24 right-6 md:right-10 z-20 flex items-center gap-2">
         <button
           onClick={() => setShowText((v) => !v)}
@@ -171,17 +163,20 @@ export function HeroSlideshow({ slides, intervalMs = 6000 }: Props) {
         </button>
       </div>
 
+      {/* Left nav arrow — positioned at bottom third so it doesn't overlap the text block */}
       <button
         onClick={prev}
         aria-label="Previous slide"
-        className={`absolute left-3 md:left-6 top-1/2 -translate-y-1/2 z-20 w-12 h-12 flex items-center justify-center border ${chromeBorder} ${chromeHover} ${textMain} backdrop-blur-sm bg-black/10 transition-colors`}
+        className={`absolute left-3 md:left-6 bottom-36 z-20 w-12 h-12 flex items-center justify-center border ${chromeBorder} ${chromeHover} ${textMain} backdrop-blur-sm bg-black/10 transition-colors`}
       >
         <ChevronLeft className="w-5 h-5" />
       </button>
+
+      {/* Right nav arrow — matching position */}
       <button
         onClick={next}
         aria-label="Next slide"
-        className={`absolute right-3 md:right-6 top-1/2 -translate-y-1/2 z-20 w-12 h-12 flex items-center justify-center border ${chromeBorder} ${chromeHover} ${textMain} backdrop-blur-sm bg-black/10 transition-colors`}
+        className={`absolute right-3 md:right-6 bottom-36 z-20 w-12 h-12 flex items-center justify-center border ${chromeBorder} ${chromeHover} ${textMain} backdrop-blur-sm bg-black/10 transition-colors`}
       >
         <ChevronRight className="w-5 h-5" />
       </button>
