@@ -1,10 +1,92 @@
 import { useMemo, useState } from "react";
-import { ArrowUpRight, ChevronLeft, ChevronRight, ExternalLink, Play } from "lucide-react";
+import { ArrowUpRight, ChevronLeft, ExternalLink, Play } from "lucide-react";
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
 import type { EmbedItem, TopicData } from "@/data/clusters";
 
 function getGallery(topic: TopicData): EmbedItem[] {
   return topic.gallery?.length ? topic.gallery : topic.embed ? [topic.embed] : [];
+}
+
+function getYTThumbnail(src: string): string | null {
+  const m = src.match(/\/embed\/([A-Za-z0-9_-]{11})/);
+  return m ? `https://img.youtube.com/vi/${m[1]}/mqdefault.jpg` : null;
+}
+
+function CollageThumb({
+  item,
+  onClick,
+  label,
+}: {
+  item: EmbedItem;
+  onClick: () => void;
+  label: string;
+}) {
+  if (item.type === "image") {
+    return (
+      <button
+        type="button"
+        onClick={onClick}
+        className="relative w-full h-full overflow-hidden group cursor-pointer"
+      >
+        <img
+          src={item.src}
+          alt={item.caption ?? label}
+          className="w-full h-full object-cover object-center transition-transform duration-300 group-hover:scale-105"
+        />
+        <div className="absolute inset-0 bg-navy-deep/0 group-hover:bg-navy-deep/30 transition-colors duration-200" />
+        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+          <div className="w-6 h-6 border border-gold/60 bg-navy-deep/50 flex items-center justify-center">
+            <ArrowUpRight className="w-3 h-3 text-gold" />
+          </div>
+        </div>
+      </button>
+    );
+  }
+  if (item.type === "youtube") {
+    const thumb = getYTThumbnail(item.src);
+    return (
+      <button
+        type="button"
+        onClick={onClick}
+        className="relative w-full h-full overflow-hidden group cursor-pointer bg-navy-deep/80"
+      >
+        {thumb ? (
+          <img
+            src={thumb}
+            alt={item.caption ?? label}
+            className="w-full h-full object-cover object-center transition-transform duration-300 group-hover:scale-105"
+          />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center">
+            <span className="font-mono text-[0.5rem] uppercase tracking-[0.24em] text-gold/30">Playlist</span>
+          </div>
+        )}
+        <div className="absolute inset-0 bg-navy-deep/20 group-hover:bg-navy-deep/40 transition-colors duration-200" />
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="w-8 h-8 rounded-full bg-navy-deep/60 border border-gold/50 flex items-center justify-center group-hover:bg-gold/20 transition-colors duration-200">
+            <Play className="w-3.5 h-3.5 text-gold ml-0.5" />
+          </div>
+        </div>
+        {item.caption && (
+          <div className="absolute bottom-0 left-0 right-0 p-1.5 bg-gradient-to-t from-navy-deep/90 to-transparent">
+            <p className="font-mono text-[0.45rem] uppercase tracking-[0.2em] text-gold/60 line-clamp-1">{item.caption}</p>
+          </div>
+        )}
+      </button>
+    );
+  }
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className="relative w-full h-full bg-navy-deep/50 flex flex-col items-center justify-center gap-1 group cursor-pointer hover:bg-navy-deep/80 transition-colors duration-200"
+    >
+      <ExternalLink className="w-4 h-4 text-gold/40 group-hover:text-gold transition-colors" />
+      <span className="font-mono text-[0.45rem] uppercase tracking-[0.2em] text-gold/30 group-hover:text-gold/60 transition-colors">
+        {item.src.replace(/^https?:\/\//, "").split("/")[0]}
+      </span>
+    </button>
+  );
 }
 
 // We use a 6-column grid (LCM of 2 and 3) so spans are always whole integers:
@@ -60,19 +142,31 @@ function ArchiveTile({
   spanClass: string;
 }) {
   const [open, setOpen] = useState(false);
+  const [viewMode, setViewMode] = useState<"collage" | "expanded">("collage");
   const [mediaIndex, setMediaIndex] = useState(0);
   const num = String(index + 1).padStart(2, "0");
   const gallery = useMemo(() => getGallery(topic), [topic]);
   const media = gallery[mediaIndex];
-  const hasGallery = gallery.length > 1;
-  const prevMedia = () => setMediaIndex((v) => (v - 1 + gallery.length) % gallery.length);
-  const nextMedia = () => setMediaIndex((v) => (v + 1) % gallery.length);
+  const isMulti = gallery.length > 1;
+
+  const openDialog = () => {
+    setMediaIndex(0);
+    setViewMode(isMulti ? "collage" : "expanded");
+    setOpen(true);
+  };
+
+  const expandAt = (i: number) => {
+    setMediaIndex(i);
+    setViewMode("expanded");
+  };
+
+  const showCollage = isMulti && viewMode === "collage";
 
   return (
     <>
       <button
         type="button"
-        onClick={() => setOpen(true)}
+        onClick={openDialog}
         className={`fancy-tile group/tile relative ${spanClass} overflow-hidden bg-paper border border-border hover:bg-navy-deep hover:text-paper-contrast transition-all duration-500 ease-cinematic hover:-translate-y-0.5 hover:border-gold fibers stipple text-left`}
         style={{ height: "160px" }}
       >
@@ -99,73 +193,119 @@ function ArchiveTile({
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent className="max-w-2xl p-0 overflow-hidden bg-paper">
           <div className="grid md:grid-cols-[1fr,1.1fr]">
-            <div className="relative min-h-[200px] md:min-h-[440px] overflow-hidden bg-navy-deep">
-              {media?.type === "youtube" && (
-                <iframe
-                  src={media.src}
-                  title={media.caption ?? topic.label}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  className="absolute inset-0 w-full h-full"
-                  style={{ border: 0 }}
-                />
-              )}
-              {media?.type === "image" && (
-                <img
-                  src={media.src}
-                  alt={media.caption ?? topic.label}
-                  className="absolute inset-0 w-full h-full object-cover object-top"
-                />
-              )}
-              {media?.type === "link" && (
-                <div className="absolute inset-0 flex flex-col items-center justify-center p-8 gap-6">
-                  <div className="text-center space-y-3">
-                    <span className="font-mono text-[0.55rem] uppercase tracking-[0.32em] text-gold/60 block">
-                      External Site
-                    </span>
-                    <p className="font-display text-xl text-paper-contrast leading-tight">
-                      {media.caption ?? topic.label}
-                    </p>
-                    <p className="font-mono text-[0.58rem] uppercase tracking-[0.18em] text-gold/50">
-                      {media.src.replace(/^https?:\/\//, "")}
-                    </p>
+            {/* ── LEFT: media panel ── */}
+            <div className="flex flex-col min-h-[200px] md:min-h-[440px] bg-navy-deep overflow-hidden">
+              {showCollage ? (
+                /* COLLAGE GRID */
+                <div
+                  className="flex-1 grid gap-px bg-navy-deep/60"
+                  style={{
+                    gridTemplateColumns: "repeat(2, 1fr)",
+                    gridAutoRows: `${Math.max(100, Math.floor(440 / Math.ceil(gallery.length / 2)))}px`,
+                  }}
+                >
+                  {gallery.map((item, i) => (
+                    <CollageThumb
+                      key={`${item.type}-${item.src}-${i}`}
+                      item={item}
+                      onClick={() => expandAt(i)}
+                      label={topic.label}
+                    />
+                  ))}
+                </div>
+              ) : (
+                /* EXPANDED SINGLE VIEW */
+                <>
+                  <div className="flex-1 relative overflow-hidden">
+                    {media?.type === "youtube" && (
+                      <iframe
+                        src={media.src}
+                        title={media.caption ?? topic.label}
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                        className="absolute inset-0 w-full h-full"
+                        style={{ border: 0 }}
+                      />
+                    )}
+                    {media?.type === "image" && (
+                      <img
+                        src={media.src}
+                        alt={media.caption ?? topic.label}
+                        className="absolute inset-0 w-full h-full object-contain"
+                      />
+                    )}
+                    {media?.type === "link" && (
+                      <iframe
+                        src={media.src}
+                        title={media.caption ?? topic.label}
+                        className="absolute inset-0 w-full h-full"
+                        style={{ border: 0 }}
+                      />
+                    )}
+                    {!media && (
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <span className="font-display text-4xl text-gold/20 tracking-widest">—</span>
+                      </div>
+                    )}
+
+                    {/* caption strip at bottom of image area */}
+                    {media?.caption && (
+                      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-navy-deep/80 via-navy-deep/30 to-transparent p-3 pointer-events-none">
+                        <p className="font-mono text-[0.5rem] uppercase tracking-[0.2em] text-gold/55 line-clamp-2">
+                          {media.caption}
+                        </p>
+                      </div>
+                    )}
+
+                    {/* back-to-collage button */}
+                    {isMulti && (
+                      <button
+                        type="button"
+                        onClick={() => setViewMode("collage")}
+                        className="absolute top-3 left-3 z-20 flex items-center gap-1 bg-navy-deep/70 border border-gold/30 px-2.5 py-1 font-mono text-[0.52rem] uppercase tracking-[0.22em] text-gold hover:bg-gold/10 transition-colors duration-200 pointer-events-auto"
+                      >
+                        <ChevronLeft className="w-3 h-3" /> All
+                      </button>
+                    )}
+
+                    {/* link open-in-new-tab button */}
+                    {media?.type === "link" && (
+                      <a
+                        href={media.src}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="absolute top-3 right-3 z-20 inline-flex items-center gap-1.5 bg-navy-deep/70 border border-gold/40 px-2.5 py-1 font-mono text-[0.52rem] uppercase tracking-[0.22em] text-gold hover:bg-gold/10 transition-colors duration-200"
+                      >
+                        Open <ExternalLink className="w-2.5 h-2.5" />
+                      </a>
+                    )}
                   </div>
-                  <a
-                    href={media.src}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={(e) => e.stopPropagation()}
-                    className="inline-flex items-center gap-2 font-mono text-[0.65rem] uppercase tracking-[0.22em] text-gold border border-gold/50 px-5 py-2.5 hover:bg-gold/10 transition-colors duration-300"
-                  >
-                    Open Site <ExternalLink className="w-3 h-3" />
-                  </a>
-                </div>
-              )}
-              {!media && (
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="font-display text-4xl text-gold/20 tracking-widest">—</span>
-                </div>
-              )}
-              <div className="absolute inset-0 bg-gradient-to-t from-navy-deep/70 via-transparent to-transparent pointer-events-none" />
-              <div className="absolute bottom-5 left-5 right-5 pointer-events-none">
-                <span className="font-mono text-[0.6rem] uppercase tracking-[0.3em] text-gold/70">{num}</span>
-                {media?.caption && media.type !== "link" && (
-                  <p className="font-mono text-[0.55rem] uppercase tracking-[0.2em] text-gold/45 mt-1 line-clamp-2">{media.caption}</p>
-                )}
-              </div>
-              {hasGallery && (
-                <div className="absolute top-4 right-4 flex items-center gap-2 bg-navy-deep/60 border border-gold/20 px-2 py-1 text-gold">
-                  <button type="button" onClick={(e) => { e.stopPropagation(); prevMedia(); }} className="pointer-events-auto">
-                    <ChevronLeft className="h-3.5 w-3.5" />
-                  </button>
-                  <span className="font-mono text-[0.5rem] uppercase tracking-[0.22em]">{String(mediaIndex + 1).padStart(2, "0")}/{String(gallery.length).padStart(2, "0")}</span>
-                  <button type="button" onClick={(e) => { e.stopPropagation(); nextMedia(); }} className="pointer-events-auto">
-                    <ChevronRight className="h-3.5 w-3.5" />
-                  </button>
-                </div>
+
+                  {/* navigation dots strip */}
+                  {isMulti && (
+                    <div className="shrink-0 flex items-center justify-center gap-2 py-2.5 bg-navy-deep/80 border-t border-gold/10">
+                      {gallery.map((_, i) => (
+                        <button
+                          key={i}
+                          type="button"
+                          onClick={() => setMediaIndex(i)}
+                          className={`rounded-full transition-all duration-200 ${
+                            i === mediaIndex
+                              ? "w-4 h-1.5 bg-gold"
+                              : "w-1.5 h-1.5 bg-gold/25 hover:bg-gold/50"
+                          }`}
+                          aria-label={`Go to item ${i + 1}`}
+                        />
+                      ))}
+                    </div>
+                  )}
+                </>
               )}
             </div>
-            <div className="p-7 md:p-9 flex flex-col justify-center">
+
+            {/* ── RIGHT: text panel ── */}
+            <div className="p-7 md:p-9 flex flex-col justify-center overflow-y-auto max-h-[440px] md:max-h-none">
               <DialogTitle className="font-display text-2xl md:text-3xl leading-tight text-ink mb-2">
                 {topic.label}
               </DialogTitle>
@@ -180,23 +320,6 @@ function ArchiveTile({
                   ))}
                 </div>
               </DialogDescription>
-              {hasGallery && (
-                <div className="mt-6 flex flex-wrap gap-2">
-                  {gallery.map((item, i) => (
-                    <button
-                      key={`${item.type}-${item.src}-${i}`}
-                      type="button"
-                      onClick={() => setMediaIndex(i)}
-                      className={`inline-flex items-center gap-1.5 border px-3 py-1.5 font-mono text-[0.58rem] uppercase tracking-[0.2em] transition-colors ${
-                        i === mediaIndex ? "border-gold text-gold bg-gold/10" : "border-border text-ink-soft hover:border-gold/50"
-                      }`}
-                    >
-                      {item.type === "youtube" ? <Play className="h-3 w-3" /> : null}
-                      {item.caption ?? `${topic.label} ${i + 1}`}
-                    </button>
-                  ))}
-                </div>
-              )}
             </div>
           </div>
         </DialogContent>
