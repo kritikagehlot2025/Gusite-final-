@@ -244,7 +244,7 @@ function Essay() {
         <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(15px,1.25vw,17px)", lineHeight: 1.82, color: "hsl(220 15% 78%)", marginBottom: "1rem" }}>
           The dossier is the argument. Everything else on this site is the evidence. The AP courses, the robotics build logs, the vocal performances, the manuscript excerpts, the physics problems — all of it adds up to a single claim: that a person can pursue many things rigorously, that breadth and depth are not opposites, that the disciplines reward each other when you let them.
         </p>
-        <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(14px,1.1vw,16px)", lineHeight: 1.82, fontStyle: "italic", color: "hsl(43 60% 55%)", borderLeft: "2px solid hsl(43 60% 55% / 0.35)", paddingLeft: "1.25rem", marginBottom: "0" }}>
+        <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(14px,1.1vw,16px)", lineHeight: 1.82, fontStyle: "italic", color: "hsl(43 60% 55%)", borderLeft: "2px solid hsl(43 60% 55% / 0.35)", paddingLeft: "1.25rem", marginBottom: "3rem" }}>
           I am building a life where curiosity is not a luxury but the method itself — where every question leads somewhere real, every discipline is a tool, and the work is always, in some sense, not yet finished.
         </p>
       </section>
