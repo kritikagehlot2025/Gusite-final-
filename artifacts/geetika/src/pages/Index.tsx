@@ -297,7 +297,7 @@ const Index = () => {
         <div className="container relative">
           <div className="flex items-end justify-between mb-8 gap-6 flex-wrap" data-reveal>
             <div>
-              <p className="label-gold mb-3">§ 03 · Random Wins</p>
+              <p className="label-gold mb-3">003 - Featured academics</p>
               <h2 className="display-xl text-2xl md:text-3xl lg:text-4xl text-ink">
                 Belts, medals <span className="font-accent text-gold">& side quests.</span>
               </h2>
