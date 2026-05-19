@@ -17,33 +17,6 @@ function easeOut(t: number) { return 1 - Math.pow(1 - clamp(t, 0, 1), 3); }
 const EXPAND_END = 0.12;
 const ESSAY_END = 0.88;
 
-const LIGHTBOX_CARDS = [
-  {
-    slug: "scientist",
-    label: "The Scientist",
-    blurb: "Physics, mathematics, and the obsession with first principles.",
-    accent: "#c9a342",
-    photo: atmosTelescope,
-    detail: `Physics found me before I found it. I remember being seven years old in Jaipur, watching my father sketch orbital diagrams on the back of a receipt and explaining why the moon doesn't fall. Something clicked, not just the fact, but the machinery of explanation itself. That there could be a language precise enough to describe the universe felt, to me, miraculous.\n\nMathematics followed as the natural companion. I moved through arithmetic into algebra, then into calculus and combinatorics, drawn less by grades than by the specific pleasure of a proof that snaps shut. Olympiad mathematics taught me that the goal is never mere computation, it is the identification of the hidden structure beneath a problem, the moment the labyrinth reveals itself to have a logic.\n\nIn Montréal I found myself in an environment where STEM was both celebrated and accessible. My school's AP track let me push ahead in physics and math simultaneously, and I began supplementing formal coursework with independent reading: Feynman's lectures, Penrose's road to reality, papers on quantum information that I understood imperfectly but returned to obsessively.\n\nChess, too, belongs here. The board is a finite combinatorial universe in which intuition and calculation must negotiate in real time. Training in chess sharpened my ability to hold several scenarios in mind, evaluate positions under pressure, and make decisions with incomplete information, skills that transfer directly into every other domain I inhabit.\n\nComputer science completed the triangle. Code is the third language, after mathematics and English, in which I think most fluently. I built this site myself, not because it was the easiest solution but because I wanted to understand the full stack: the data, the components, the types, the deployment. Understanding the whole system is the only way to build at the edges where domains meet, and that intersection is precisely where I intend to spend my life.`,
-  },
-  {
-    slug: "artist",
-    label: "The Artist",
-    blurb: "Hindustani vocal, fiction, and the discipline of daily practice.",
-    accent: "#8ab4c8",
-    photo: atmosNotebook,
-    detail: `I have been singing since before I had words for what I was doing. Hindustani classical vocal is not a hobby, it is a practice in the deepest sense of the word. The Sanskrit root of riyaaz is the same as the root of the word for repetition: you come to the tanpura every morning not because you are not yet good enough, but because perfection in this tradition is a direction, not a destination.\n\nI train in the guru-shishya tradition under a teacher who learned from a teacher who learned from a teacher, a lineage that stretches back centuries. What I am learning is not only a repertoire of raagas and taals but an entire epistemology of listening. The classical form demands that you understand silence as structure, that you hear the space between notes as meaningfully as the notes themselves.\n\nWriting is the other primary creative strand. I have been building a novel series, multiple volumes, a complete fictional world with its own geographies, languages, and histories, since I was twelve. The project has become a laboratory for every intellectual obsession I have: the physics of imaginary cosmologies, the linguistics of constructed languages, the political economy of fictional civilisations.\n\nLong-form fiction demands exactly the qualities that scientific thinking rewards: patience with complexity, willingness to revise fundamental assumptions when the evidence demands it, attention to the gap between intended meaning and received meaning. The creative life and the scientific life are not opposites, they are the same impulse expressed in different registers, both reaching toward the same goal: understanding, made communicable.\n\nI have also run a podcast, exploring the intersections of creativity, science, and culture through conversation and monologue. The discipline of speaking clearly and precisely for an audience has sharpened my writing in ways that surprised me. Every medium teaches you something the others cannot.`,
-  },
-  {
-    slug: "builder",
-    label: "The Builder",
-    blurb: "FRC Team 7700, engineering systems, and things that ship.",
-    accent: "#7bbcb4",
-    photo: atmosMusic,
-    detail: `The first time I held a drill during FRC build season, I was terrified. Six weeks to design, fabricate, wire, and programme a competition robot from a kit of parts and a game manual, that is the premise of FIRST Robotics, and it is one of the most demanding creative environments I have ever entered.\n\nTeam 7700 changed how I think about making things. The build season is a compressed version of every engineering project that exists: the initial excitement of the design phase, the brutal middle weeks when nothing works as specified, the integration hell when subsystems that tested fine individually refuse to cooperate, and then, if you have done the work, the game-day clarity when the machine does what you built it to do.\n\nI learned Onshape and SolidWorks for CAD, gained hands-on experience with fabrication (metal, plastic, pneumatics, wiring), and contributed to the programming side using Java and later Python. But the most important thing I learned on the team was not any particular tool, it was how to debug a system whose components you do not fully understand, under time pressure, with imperfect information.\n\nThat skill, systematic debugging of complex, partially-opaque systems, is the most transferable thing I own. I apply it when I am writing code, when I am revising a chapter of my novel, when I am preparing for a physics exam. Every domain I work in is, at some level, a system. The engineering mindset is the practice of engaging those systems honestly: defining inputs and outputs, isolating variables, testing assumptions one at a time.\n\nThis site is also a build. Every component, every data structure, every animation you see was designed and implemented by me. Building the dossier was itself a proof of concept: that I could ship something complete, functional, and genuinely representative of who I am.`,
-  },
-];
-
 // ---------------------------------------------------------------------------
 // Static lightbox card, no entrance animation, plain in-flow card
 // ---------------------------------------------------------------------------

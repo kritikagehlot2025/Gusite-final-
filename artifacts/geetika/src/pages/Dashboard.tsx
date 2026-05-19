@@ -7,7 +7,7 @@ import { useReveal } from "@/hooks/useReveal";
 const PAGE_BOXES = [
   { slug: "about", label: "About", num: "01", accent: "Bio-data" },
   { slug: "academics", label: "Academics", num: "02", accent: "Achievements" },
-  { slug: "works", label: "Works", num: "03", accent: "Projects & Extracurricular Achievements" },
+  { slug: "works", label: "Works", num: "03", accent: "Projects & extracurriculars" },
   { slug: "vault", label: "CV & Resume", num: "04", accent: "Records" },
   { slug: "contact", label: "Contact", num: "05", accent: "Reach out" },
 ];
@@ -72,7 +72,7 @@ const Dashboard = () => {
                   <div className="absolute inset-0 grain opacity-35 pointer-events-none" />
                   <div className="relative z-10 h-full flex flex-col justify-between">
                     <div>
-                      <p className="label-gold mb-4">Peek</p>
+                      <p className="label-gold mb-4">Page:</p>
                       <div className="space-y-3">
                         <div className="flex items-center gap-3">
                           <span className="w-10 h-10 rounded-full bg-gradient-to-br from-gold/35 to-navy-deep/30 border border-border" />

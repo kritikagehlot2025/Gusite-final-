@@ -369,7 +369,7 @@ const MOOD_SCRAPS: Scrap[] = [
   { kind: "quote", text: "Curiosity is not my hobby.", tone: "ink", tilt: -1 },
   { kind: "swatch", color: "hsl(var(--gold))", label: "Gold · 04", size: "md", tilt: 5 },
   { kind: "image", src: atmosMusic, label: "Resonance", shape: "circle", size: "md", tilt: 0 },
-  { kind: "stamp", text: "Edition I", sub: "Volume One", tilt: -6 },
+  { kind: "stamp", text: "", sub: "Volume One", tilt: -6 },
   { kind: "tag", text: "Robotics 7700", tone: "navy", tilt: 2 },
   { kind: "image", src: textureCosmos, label: "Cosmos plate", shape: "wide", size: "lg", tilt: 1 },
   { kind: "ticket", head: "FRC", body: "Build · Drive · Debug", tilt: -3 },

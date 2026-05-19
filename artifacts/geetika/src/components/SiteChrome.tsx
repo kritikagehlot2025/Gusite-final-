@@ -176,7 +176,7 @@ export const SiteFooter = forwardRef<HTMLElement>((_, ref) => {
         <div className="md:col-span-2">
           <p className="label-gold mb-4">Colophon</p>
           <p className="font-display text-2xl text-balance leading-tight">
-            ocumenting the journey of Geetika through science, creativity and taking action!
+            Documenting the journey of Geetika through science, creativity and taking action!
           </p>
         </div>
         <div>
@@ -205,7 +205,7 @@ export const SiteFooter = forwardRef<HTMLElement>((_, ref) => {
       <div className="border-t border-paper/10">
         <div className="container py-3 flex flex-col md:flex-row justify-between gap-2 font-mono text-[0.65rem] uppercase tracking-[0.25em] text-paper/50">
           <span>© {new Date().getFullYear()} Geetika Gehlot · Montréal</span>
-          <span>Edition I · Volume One · Ongoing</span>
+          <span> · Volume One · Ongoing</span>
         </div>
       </div>
     </footer>
