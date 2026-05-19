@@ -179,8 +179,7 @@ export const CLUSTERS: Cluster[] = [
       topic("Subject Strengths", "Mathematics, physics, computer science.",
         "Primary focus areas are mathematics, physics, and computer science. Additional competence in languages, writing, and humanities subjects."),
       topic("AP Prep", "All AP's given, in just 2 years",
-        "Taken in 2025, first year in Canada, & yet excelled in all: AP Biology, AP Environmental Science, AP Physics C: Electricity and Magnetism, AP Physics C: Mechanics... Zero Fails!"
-        "2026, Currently taken, scores TBD: AP Calculus AB, AP Chemistry, AP English Literature and Composition, AP Microeconomics, AP Maicroeconomics, AP Psychology),
+        "Taken in 2025, first year in Canada, & yet excelled in all: AP Biology, AP Environmental Science, AP Physics C: Electricity and Magnetism, AP Physics C: Mechanics... Zero Fails! 2026, Currently taken, scores TBD: AP Calculus AB, AP Chemistry, AP English Literature and Composition, AP Microeconomics, AP Macroeconomics, AP Psychology"),
       topic("Mentors", "Guided by Elders, Teachers, Coaches & Professors",
         "Academic guidance received through teachers, competition & training coaches, and excellent mentors in science and mathematics."),
         topic("Future STEM Goals", "University physics. Research. Applied work.",
@@ -361,7 +360,7 @@ export const CLUSTERS: Cluster[] = [
         ]),
       topic("Veere Di Wedding, Dubbing", "Voice work on a Bollywood feature film.",
         "Dubbing work on Veere Di Wedding, the 2018 Bollywood feature film starring Kareena Kapoor Khan, Sonam Kapoor, Swara Bhaskar, and Shikha Talsania. Voice-only performance contributed to the final audio mix of a major Hindi film release.",
-        { type: "image", src: "/photo-studio.jpg", caption: "Recording Studio, Veere Di Wedding Dubbing Session" },)
+        { type: "image", src: "/photo-studio.jpg", caption: "Recording Studio, Veere Di Wedding Dubbing Session" }),
       topic("Hindi Medium, Dubbing", "Voice work on an Irrfan Khan film.",
         "Dubbing work on Hindi Medium, the 2017 Bollywood film starring Irrfan Khan and Saba Qamar. An understated, critically acclaimed film about class and education. Voice performance contributed to post-production audio for the release.",
         { type: "image", src: "/photo-dubbing-studio.jpg", caption: "Recording Studio, Hindi Medium Dubbing Session" }),
