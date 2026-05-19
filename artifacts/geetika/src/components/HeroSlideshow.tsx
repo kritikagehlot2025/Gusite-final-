@@ -101,7 +101,7 @@ export function HeroSlideshow({ slides, intervalMs = 6000 }: Props) {
       {showText && (
         <div className={`relative container h-full pt-32 pb-24 flex flex-col justify-between ${textMain} animate-fade-in`}>
           <div className={`flex items-baseline justify-between font-mono text-[0.65rem] uppercase tracking-[0.3em] ${textFaint}`}>
-            <span>E-Portfolio · </span>
+            <span>E-Portfolio · Edition I</span>
             <span className="hidden md:inline">Geetika Gehlot · Montréal</span>
             <span className="font-mono">
               {String(i + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}

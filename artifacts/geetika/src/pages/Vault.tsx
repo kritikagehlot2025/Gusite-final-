@@ -41,6 +41,19 @@ const CVResume = () => {
         <CVDocumentGrid />
       </section>
 
+      <section className="pb-6">
+        <div className="container mb-5">
+          <div className="flex items-baseline gap-4">
+            <span className="font-mono text-[0.6rem] tracking-[0.3em] text-gold">CV &amp; Resume Records</span>
+            <span className="flex-1 h-px bg-border/40" />
+          </div>
+        </div>
+        <ArchiveMosaic topics={findCluster("vault")!.topics} wideSlug="recognition" />
+      </section>
+    </PageShell>
+  );
+};
+
 function CVFeatureBlock() {
   return (
     <Dialog>
