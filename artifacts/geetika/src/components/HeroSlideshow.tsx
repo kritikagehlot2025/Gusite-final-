@@ -115,6 +115,9 @@ export function HeroSlideshow({ slides, intervalMs = 6000 }: Props) {
                 {s.eyebrow}
               </p>
             )}
+            <h1 className={`font-display text-4xl sm:text-5xl md:text-7xl leading-[1.02] tracking-tight ${textMain} mt-2 mb-4`}>
+              {s.title}
+            </h1>
             {s.body && (
               <p className={`mt-2 max-w-xl text-lg leading-relaxed font-accent italic ${textSoft}`}>
                 {s.body}

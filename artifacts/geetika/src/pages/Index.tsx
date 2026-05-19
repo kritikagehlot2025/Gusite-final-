@@ -1,11 +1,9 @@
 import { Link } from "react-router-dom";
-import { ArrowUpRight } from "lucide-react";
 import {
-  Atom, Cpu, Music2, Mic2, Code2, PenTool, Languages, Trophy,
+  ArrowUpRight, Atom, Cpu, Music2, Mic2, Code2, PenTool, Languages, Trophy,
   Camera, Wand2, Brain, Palette,
 } from "lucide-react";
 import { PageShell } from "@/components/SiteChrome";
-import { PullQuote } from "@/components/Editorial";
 import { Bento, type BentoItem } from "@/components/Bento";
 import { HeroSlideshow, type Slide } from "@/components/HeroSlideshow";
 import { CLUSTERS, findCluster } from "@/data/clusters";

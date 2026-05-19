@@ -1,5 +1,5 @@
 import type { LucideIcon } from "lucide-react";
-import { User, GraduationCap, Wand as Wand2, FileText, Mail, Sparkles } from "lucide-react";
+import { User, GraduationCap, Wand as Wand2, FileText, Mail } from "lucide-react";
 
 /* ── Data model ── */
 
@@ -174,7 +174,7 @@ export const CLUSTERS: Cluster[] = [
         "Current interests include quantum mechanics, particle physics, relativity, astrophysics, and complex systems. Additional interest in computational modeling and mathematical structures underlying physical systems.",
         { type: "image", src: "/photo-quantum-research.jpg", caption: "Late-Night Physics Research, Quantum Study" }),
       /*, text-only, sorted to end, */
-      topic("education", "India to Québec secondary system.",
+      topic("Education", "India to Québec secondary system.",
         "Schooling began in India and continued in Canada after relocation in 2024. Current studies are based in Montréal within the Quebec secondary system, completing Secondary IV."),
       topic("Subject Strengths", "Mathematics, physics, computer science.",
         "Primary focus areas are mathematics, physics, and computer science. Additional competence in languages, writing, and humanities subjects."),
@@ -218,7 +218,7 @@ export const CLUSTERS: Cluster[] = [
         ]),
       topic("Detailed Rangoli Arts", "Helping homes around India during festivals.",
         "Rangoli artwork done in nearby homes, this one created in 2022",
-        { type: "image", src: "/photo-rangoli", caption: "Helping add colour and decoration to neighbourhood spaces across India thtough Mumbai, Bengaluru, Jodhpur, and Sojat." }),
+        { type: "image", src: "/photo-rangoli.jpg", caption: "Helping add colour and decoration to neighbourhood spaces across India through Mumbai, Bengaluru, Jodhpur, and Sojat." }),
       topic("Engineering Skills", "CAD, fabrication, systems thinking.",
         "Experience with CAD tools including Onshape and SolidWorks, fabrication methods, wiring systems, and mechanical assembly. Skills developed through robotics work and independent technical projects.",
         { type: "image", src: "/photo-mcgill-engineering.jpg", caption: "McGill Engineering, Formula Electric & Rocketry Display" }),
@@ -501,12 +501,6 @@ export function getSubpages(cluster: Cluster): Subpage[] {
     { slug: "related", label: "Related", kind: "related" },
   ];
 }
-
-export const PROOF_CLUSTER: Cluster = {
-  num: "06", slug: "proof", label: "Proof of Curiosity", icon: Sparkles,
-  tagline: "Notebook scans, sketches, half-formed ideas.",
-  topics: [],
-};
 
 export const LEGACY_REDIRECTS: Record<string, string> = {
   "/academic": "/academics",

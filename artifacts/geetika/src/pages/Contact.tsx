@@ -8,7 +8,7 @@ import { toast } from "@/hooks/use-toast";
 
 type IconCmp = React.ComponentType<{ className?: string }>;
 
-const CONTACT_EMAIL = "geetika@example.com";
+const CONTACT_EMAIL = "geetikagehlot2009@gmail.com";
 
 const Contact = () => {
   useReveal();

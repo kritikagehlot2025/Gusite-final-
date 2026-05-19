@@ -8,7 +8,6 @@ import achCasual from "@assets/unnamed_1779118514805.jpg";
 import achAbacus from "@assets/unnamed_1779118522303.jpg";
 import achCrown from "@assets/unnamed_1779118490987.jpg";
 import achSinging from "@assets/unnamed_1779118497700.jpg";
-import fashNavy from "@assets/unnamed_1779118410872.jpg";
 
 function clamp(v: number, lo: number, hi: number) { return Math.max(lo, Math.min(hi, v)); }
 function lerp(a: number, b: number, t: number) { return a + (b - a) * clamp(t, 0, 1); }
