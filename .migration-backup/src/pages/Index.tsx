@@ -300,36 +300,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* RANDOM WINS / CURIOSITIES TEASER, paper texture wash + crinkle */}
-      <section className="relative py-12 md:py-16 overflow-hidden crinkle film-grain dust linen parchment weave-soft">
-        <img
-          src={texturePaper}
-          alt=""
-          aria-hidden
-          className="absolute inset-0 w-full h-full object-cover opacity-30 mix-blend-multiply pointer-events-none"
-        />
-        <div className="container relative">
-          <div className="flex items-end justify-between mb-8 gap-6 flex-wrap" data-reveal>
-            <div>
-              <p className="label-gold mb-3">§ 03 · Random Wins</p>
-              <h2 className="display-xl text-3xl md:text-5xl text-ink">
-                Belts, medals <span className="font-accent text-gold">& side quests.</span>
-              </h2>
-            </div>
-            <Link
-              to="/works#karate"
-              className="font-mono text-[0.65rem] uppercase tracking-[0.3em] text-ink-soft hover:text-gold transition-colors flex items-center gap-2 group"
-            >
-              Open the full vault
-              <ArrowUpRight className="w-3 h-3 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </Link>
-          </div>
-          <div data-reveal>
-            <Bento items={CURIOSITIES} />
-          </div>
-        </div>
-      </section>
-
       {/* GRAND GROUPS, index, layered music plate */}
       <section className="relative py-16 md:py-24 overflow-hidden film-grain dust crumpled-paper marble fibers">
         <img

@@ -5,9 +5,9 @@ import { CLUSTERS } from "@/data/clusters";
 import { useReveal } from "@/hooks/useReveal";
 
 const PAGE_BOXES = [
-  { slug: "about", label: "About", num: "01", accent: "Foundations" },
-  { slug: "academics", label: "Academics", num: "02", accent: "Evidence" },
-  { slug: "works", label: "Works", num: "03", accent: "Projects" },
+  { slug: "about", label: "About", num: "01", accent: "Bio-data" },
+  { slug: "academics", label: "Academics", num: "02", accent: "Achievements" },
+  { slug: "works", label: "Works", num: "03", accent: "Projects & Extracurricular Achievements" },
   { slug: "vault", label: "CV & Resume", num: "04", accent: "Records" },
   { slug: "contact", label: "Contact", num: "05", accent: "Reach out" },
 ];
@@ -24,10 +24,10 @@ const Dashboard = () => {
           <span className="flex-1 h-px bg-border" />
         </div>
         <h1 className="display-xl text-xl md:text-2xl lg:text-3xl text-balance max-w-5xl animate-fade-up">
-          One hub for every page.
+          Learn more about Geetika
         </h1>
         <p className="mt-8 max-w-2xl text-base md:text-lg text-ink-soft leading-relaxed font-accent italic animate-fade-up">
-          Choose a doorway into the dossier, or use the top-right index as usual.
+          Choose a page, or use the top-right index as usual!
         </p>
         <div className="rule-gold mt-12" />
       </section>
@@ -83,7 +83,7 @@ const Dashboard = () => {
                         </div>
                         <div className="rule-gold opacity-60" />
                         <div className="space-y-2 text-ink-soft text-sm leading-relaxed">
-                          <p>{page.slug === "about" ? "Identity, languages, timeline, and the through-line of the whole dossier." : page.slug === "academics" ? "Education, physics, awards, growth notes, and research interests." : page.slug === "works" ? "Robotics, writing, music, screen, design, art, leadership, and sports." : page.slug === "vault" ? "CV & Résumé, PDF embeds, downloads, and document receipts." : "Email, LinkedIn, GitHub, and a direct path to get in touch."}</p>
+                          <p>{page.slug === "about" ? "The story, identity, languages, timeline and the journey." : page.slug === "academics" ? "Education, physics, awards, science, works, and research interests." : page.slug === "works" ? "Robotics, writing, music, screen, design, art, leadership, and cinema." : page.slug === "vault" ? "CV & Résumé, PDF embeds, downloads, and documents." : "Email, LinkedIn, etc. and a direct form to get in touch."}</p>
                         </div>
                       </div>
                     </div>

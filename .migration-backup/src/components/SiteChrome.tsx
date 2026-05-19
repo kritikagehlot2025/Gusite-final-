@@ -158,7 +158,7 @@ export const SiteNav = () => {
             </ol>
 
             <p className="mt-8 eyebrow text-muted-foreground">
-              Curiosity is not my hobby. It is my operating system.
+              E-Portfolio
             </p>
           </nav>
         </aside>
@@ -171,9 +171,9 @@ export const SiteFooter = forwardRef<HTMLElement>((_, ref) => (
   <footer ref={ref} className="force-light bg-navy-deep text-paper mt-32 relative overflow-hidden grain">
     <div className="container py-20 grid md:grid-cols-4 gap-12">
       <div className="md:col-span-2">
-        <p className="label-gold mb-4">Colophon</p>
+        <p className="label-gold mb-4">End</p>
         <p className="font-display text-3xl text-balance leading-tight">
-          A living dossier of one curious mind, updated as the work continues.
+          Documenting the journey of Geetika through science, creativity and taking action!
         </p>
       </div>
       <div>
@@ -201,8 +201,8 @@ export const SiteFooter = forwardRef<HTMLElement>((_, ref) => (
     </div>
     <div className="border-t border-paper/10">
       <div className="container py-6 flex flex-col md:flex-row justify-between gap-3 font-mono text-[0.65rem] uppercase tracking-[0.25em] text-paper/50">
-        <span>© {new Date().getFullYear()} Geetika Gehlot · Montréal</span>
-        <span>Edition I · Volume One · Ongoing</span>
+        <span>© {new Date().getFullYear()} Geetika Gehlot</span>
+        <span>India · Montréal</span>
       </div>
     </div>
   </footer>

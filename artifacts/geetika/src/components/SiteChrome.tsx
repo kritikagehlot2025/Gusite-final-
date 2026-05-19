@@ -176,7 +176,7 @@ export const SiteFooter = forwardRef<HTMLElement>((_, ref) => {
         <div className="md:col-span-2">
           <p className="label-gold mb-4">Colophon</p>
           <p className="font-display text-2xl text-balance leading-tight">
-            A living dossier of one curious mind, updated as the work continues.
+            ocumenting the journey of Geetika through science, creativity and taking action!
           </p>
         </div>
         <div>
