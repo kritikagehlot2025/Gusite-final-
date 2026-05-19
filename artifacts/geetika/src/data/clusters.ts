@@ -387,8 +387,7 @@ export const CLUSTERS: Cluster[] = [
         { type: "image", src: "/photo-mandir.jpg", caption: "Original Paintings, Home Mandir, Montréal 2025" }),
       topic("Embroidery & Henna", "Threads & Stains",
         "Hand Henna & embroidery work with traditional and contemporary design approaches. Uses of meditative practices that doubles as aesthetic art."),
-        { type: "image", src: "/photo-henna.jpg", caption: "Henna artwork created by Geetika in 2025" }),
-        topic("Global Cuisine", "Trying every dish from everywhere.",
+      topic("Global Cuisine", "Trying every dish from everywhere.",
         "A personal project of intentional food exploration across cuisines. Korean tteokbokki with ramyeon and a full banchan spread, kimchi, gosari, daikon, and seaweed. The interest is anthropological: what a cuisine tells you about a culture is more than any textbook.",
         { type: "image", src: "/photo-korean-food.jpg", caption: "Korean Cuisine, Tteokbokki & Banchan, Montréal" }),
       /* ── Leadership ── */
